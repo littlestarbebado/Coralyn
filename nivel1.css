@@ -1,0 +1,516 @@
+body {
+  margin: 0;
+  font-family: Arial, sans-serif;
+  background: linear-gradient(#4a7ca5, #001b3d);
+  height: 100vh;
+  overflow: hidden;
+}
+
+.titulo {
+  margin: 0;
+  padding: 12px;
+  text-align: center;
+  font-size: 32px;
+  background: rgba(255, 255, 255, 0.15);
+  color: white;
+}
+
+.jogo {
+  position: relative;
+  width: 100%;
+  height: calc(100vh - 60px);
+}
+@keyframes floatUpDown {
+  0%, 100% { transform: translate(-50%, -50%) translateY(0); }
+  50% { transform: translate(-50%, -50%) translateY(-15px); }
+}
+
+.player {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 120px;
+  height: 120px;
+  border-radius: 50%;
+  transform: translate(-50%, -50%);
+  animation: floatUpDown 2s ease-in-out infinite;
+}
+
+
+/* Lixos (quadrados com brilho) */
+.lixo {
+  width: 60px;
+  height: 60px;
+  background: #ff3131;
+  position: absolute;
+  border-radius: 8px;
+  cursor: pointer;
+  animation: brilho 1.2s infinite ease-in-out;
+}
+
+@keyframes brilho {
+  0% {
+    box-shadow: 0 0 0px 0px rgba(255, 220, 0, 0.0);
+    transform: scale(1);
+  }
+
+  50% {
+    box-shadow: 0 0 15px 6px rgba(255, 220, 0, 0.9);
+    transform: scale(1.12);
+  }
+
+  100% {
+    box-shadow: 0 0 0px 0px rgba(255, 220, 0, 0.0);
+    transform: scale(1);
+  }
+}
+
+/* Lixo desaparecendo com efeito voando */
+.lixo-voando {
+  animation: voarLixo 0.7s forwards;
+}
+
+@keyframes voarLixo {
+  0% {
+    transform: scale(1) translate(0, 0);
+    opacity: 1;
+  }
+
+  50% {
+    transform: scale(1.2) translate(0, -50px);
+    opacity: 1;
+  }
+
+  100% {
+    transform: scale(0) translate(0, -150px);
+    opacity: 0;
+  }
+}
+
+#lixo-removido {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  font-size: 48px;
+  font-weight: bold;
+  color: #00ff00;
+  text-shadow: 0 0 10px #00ff00, 0 0 20px #00aa00;
+  transform: translate(-50%, -150%) scale(1);
+  opacity: 0;
+  transition: all 0.3s ease;
+  z-index: 10000;
+}
+
+/* Partículas felizes (confetes) */
+.particle {
+  position: fixed;
+  width: 8px;
+  height: 8px;
+  background: yellow;
+  border-radius: 50%;
+  pointer-events: none;
+  opacity: 0.9;
+  transform: translate(0, 0);
+  transition: transform 0.8s ease-out, opacity 0.8s ease-out;
+  z-index: 10001;
+}
+
+.particle:nth-child(odd) {
+  background: #ff0;
+}
+
+.particle:nth-child(even) {
+  background: #ff69b4;
+}
+
+#error-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.75);
+  pointer-events: none;
+  opacity: 0;
+  transition: opacity 0.2s ease;
+  z-index: 9999;
+}
+
+/* Texto ERRO intenso */
+#erro-msg {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  font-size: 64px;
+  font-weight: bold;
+  color: #ff0000;
+  text-shadow: 0 0 20px #ff0000, 0 0 40px #990000;
+  transform: translate(-50%, -50%) scale(1);
+  opacity: 0;
+  transition: all 0.2s ease;
+  z-index: 10000;
+}
+
+/* Partículas de fragmento vermelho */
+.error-particle {
+  position: fixed;
+  width: 10px;
+  height: 10px;
+  background: #ff0000;
+  border-radius: 50%;
+  pointer-events: none;
+  opacity: 0.9;
+  transform: translate(0, 0);
+  transition: transform 0.8s ease-out, opacity 0.8s ease-out;
+  z-index: 10001;
+}
+
+/* Popup */
+.popup {
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  background: rgba(0, 0, 0, 0.45);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.hidden {
+  display: none;
+}
+
+.popup-content {
+  background: white;
+  padding: 25px;
+  border-radius: 12px;
+  width: 300px;
+  text-align: center;
+}
+
+.opcao {
+  width: 100%;
+  padding: 10px;
+  margin-top: 10px;
+  font-size: 16px;
+  border: none;
+  border-radius: 8px;
+  background: #1e3a8a;
+  color: white;
+  cursor: pointer;
+}
+
+.opcao:hover {
+  background: #335ac7;
+}
+
+/* Balão de fala */
+#fala {
+  position: absolute;
+  top: 42%;
+  left: 50%;
+  transform: translate(-50%, -120%);
+  background: white;
+  padding: 10px 15px;
+  border-radius: 12px;
+  font-size: 18px;
+  max-width: 250px;
+  text-align: center;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.25);
+  animation: fadeIn 0.6s ease-out;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translate(-50%, -140%);
+  }
+
+  to {
+    opacity: 1;
+    transform: translate(-50%, -120%);
+  }
+}
+
+/* Indicador de nível */
+#level-icon {
+  position: absolute;
+  top: 15px;
+  left: 15px;
+  width: 100px;
+  height: 100px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+#level-number-container {
+  position: absolute;
+  width: 70px;
+  height: 70px;
+  background: #0077c2;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+#level-number {
+  font-size: 28px;
+  font-weight: bold;
+  color: white;
+}
+
+#progress {
+  transform: rotate(-90deg);
+  transform-origin: 50% 50%;
+  stroke: #ff9800;
+  stroke-width: 8;
+  fill: none;
+  stroke-linecap: round;
+  transition: stroke-dashoffset 0.5s ease;
+}
+
+/* Botão de configurações (tamanho igual ao level-icon) */
+#btn-config {
+  position: absolute;
+  top: 15px;
+  right: 15px;
+  width: 100px;
+  /* mesmo tamanho do level-icon */
+  height: 100px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  z-index: 10000;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 0;
+}
+
+#btn-config img {
+  width: 80%;
+  height: 80%;
+  transition: transform 0.3s ease;
+}
+
+#btn-config:hover img {
+  transform: rotate(45deg);
+}
+
+
+/* Pop-up Definições */
+.popup-config-content {
+  background: #fff;
+  padding: 25px;
+  border-radius: 20px;
+  width: 300px;
+  text-align: center;
+  box-shadow: 0 0 15px rgba(0, 0, 0, 0.3);
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.config-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.config-item label {
+  margin-bottom: 5px;
+  font-weight: bold;
+  color: #333;
+}
+
+.config-item input[type="range"] {
+  width: 80%;
+  accent-color: #0077c2;
+  /* ponto/indicador azul */
+}
+
+/* Botões */
+.config-botoes {
+  display: flex;
+  justify-content: space-between;
+  gap: 15px;
+}
+
+.btn-sair,
+.btn-menu {
+  flex: 1;
+  padding: 10px;
+  border: none;
+  border-radius: 12px;
+  color: white;
+  font-weight: bold;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.btn-sair {
+  background-color: #800020;
+  /* vermelho escuro/bordô */
+}
+
+.btn-menu {
+  background-color: #004c66;
+  /* azul petróleo */
+}
+
+.btn-sair:hover {
+  background-color: #b3002c;
+  /* vermelho mais intenso */
+  transform: scale(1.1);
+}
+
+.btn-menu:hover {
+  background-color: #006080;
+  /* azul mais intenso */
+  transform: scale(1.1);
+}
+
+/* Botão fechar X */
+#btn-fechar-config {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  border: none;
+  background: none;
+  font-size: 20px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  color: #333;
+}
+
+#btn-fechar-config:hover {
+  color: red;
+  /* muda a cor para vermelho */
+  font-size: 24px;
+  /* aumenta o tamanho */
+}
+
+
+/* Pop-up Definições */
+#popup-config {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.45);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 9999;
+}
+
+#popup-config.hidden {
+  display: none;
+}
+
+.popup-config-content {
+  background: #fff;
+  padding: 25px;
+  border-radius: 20px;
+  width: 300px;
+  text-align: center;
+  box-shadow: 0 0 15px rgba(0, 0, 0, 0.3);
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  position: relative;
+  z-index: 10000;
+}
+
+#lixo-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: 10000;
+  /* acima do jogo, abaixo do popup */
+}
+
+/* Overlay central de nível */
+#level-up-overlay {
+  position: fixed;
+  top: 0; left: 0;
+  width: 100%; height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  pointer-events: none;
+  z-index: 11000;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  overflow: hidden;
+  background: rgba(0, 50, 100, 0.4); /* fundo água suave */
+}
+
+/* Conteúdo central */
+#level-up-content {
+  position: relative;
+  text-align: center;
+  font-size: 64px;
+  font-weight: bold;
+  color: #00ff99;
+  pointer-events: none;
+}
+
+/* Texto do nível */
+#level-up-text {
+  font-size: 64px;
+  font-weight: bold;
+  color: #00ffcc;
+  text-shadow: 
+    0 0 10px #00ffe0, 
+    0 0 20px #00ffcc, 
+    0 0 30px #00b3cc,
+    0 0 50px #0099aa;
+  transform: scale(0);
+}
+
+/* Animação zoom + bounce do texto */
+@keyframes levelUpZoomBounce {
+  0% { transform: scale(0); opacity: 0; }
+  50% { transform: scale(1.5); opacity: 1; }
+  70% { transform: scale(1.2); }
+  100% { transform: scale(1); opacity: 1; }
+}
+
+/* Ondas animadas */
+#level-up-waves {
+  position: absolute;
+  top: 50%; left: 50%;
+  width: 400px; height: 200px;
+  transform: translate(-50%, -50%);
+  background: repeating-radial-gradient(circle at center, rgba(0, 255, 255, 0.3), transparent 10px);
+  border-radius: 50%;
+  animation: wavePulse 1.5s ease-out forwards;
+  z-index: -1;
+}
+
+@keyframes wavePulse {
+  0% { transform: translate(-50%, -50%) scale(0.5); opacity: 0; }
+  50% { transform: translate(-50%, -50%) scale(1.2); opacity: 1; }
+  100% { transform: translate(-50%, -50%) scale(1); opacity: 0; }
+}
+
+/* Partículas aquáticas (bolhas felizes) */
+.level-up-particle {
+  position: fixed;
+  width: 10px; height: 10px;
+  border-radius: 50%;
+  background: radial-gradient(circle, #00ccff 0%, #00ffcc 100%);
+  pointer-events: none;
+  opacity: 0.9;
+  z-index: 10001;
+  transition: transform 1.5s ease-out, opacity 1.5s ease-out;
+}

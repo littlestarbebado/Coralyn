@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Coralyn</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+  <!-- Menu lateral -->
+  <nav id="sidebar" class="sidebar">
+    <div class="sidebar-header">
+      <h2 class="sidebar-logo">Coralyn</h2>
+      <button id="closeSidebar" class="close-btn">×</button>
+    </div>
+    <ul class="sidebar-menu">
+      <li><a href="#">🏠 Início</a></li>
+      <li><a href="#descobrir">🌊 Descobrir o Mar</a></li>
+      <li><a href="#">💧 Aqua-Ações</a></li>
+      <li><a href="#">📘 Oceanoteca</a></li>
+      <li><a href="#">💬 Créditos</a></li>
+    </ul>
+  </nav>
+
+  <!-- Header -->
+  <header class="header">
+    <img src="assets/logo.svg" alt="Coralyn" class="logo" />
+    <button id="openSidebar" class="menu-btn">☰</button>
+  </header>
+
+  <!-- Hero -->
+<section class="hero">
+  <img src="assets/background-mar.png" class="hero-bg">
+
+  <div class="hero-content">
+    <img src="assets/logo.svg" alt="Coralyn" class="hero-logo" />
+    <h1>Explora o Oceano. Salva a Vida Marinha.</h1>
+    <button class="play-btn" onclick="window.location.href='jogo.html'">▶ JOGAR</button>
+  </div>
+
+  <video autoplay loop muted playsinline class="onda">
+    <source src="assets/wave.mp4" type="video/mp4">
+  </video>
+</section>
+
+
+  <!-- Descobrir o Mar -->
+  <section id="descobrir" class="descobrir">
+    <h2>🌊 Descobrir o Mar</h2>
+    <p>
+      O oceano cobre mais de 70% do planeta e é o lar de milhões de espécies.
+      Mas todos os dias toneladas de lixo chegam até ele. No Coralyn vais descobrir
+      como pequenas ações podem fazer grandes ondas de mudança.
+    </p>
+    <div class="img-grid">
+      <img src="assets/mar1.jpg" alt="Oceano limpo">
+      <img src="assets/mar2.jpg" alt="Tartaruga marinha">
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <p>© 2025 Coralyn — Projeto Eco-Escolas ESTGV</p>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>

@@ -1,0 +1,97 @@
+/* Reset básico */
+* { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Arial', sans-serif; }
+
+body {
+  background: linear-gradient(to bottom, #6dd5fa, #2980b9); /* Fundo azul água */
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.vitoria-container {
+  position: relative;
+  text-align: center;
+}
+
+/* Coral/Alga + Faixa */
+.vitoria-header {
+  position: relative;
+  display: inline-block;
+}
+
+.coral {
+  width: 200px;
+  height: 80px;
+  background: #ff7f50; /* coral laranja */
+  border-radius: 40px;
+  display: inline-block;
+  transform: scale(0);
+  animation: aparecerConjunto 0.8s forwards;
+}
+
+.faixa {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%) scale(0);
+  background: #a0e7ff;
+  padding: 20px 40px;
+  border-radius: 12px;
+  animation: aparecerConjunto 0.8s forwards;
+}
+
+.faixa span {
+  color: white;
+  font-weight: bold;
+  font-size: 32px;
+  letter-spacing: 2px;
+}
+
+/* Estrelas */
+.estrelas {
+  margin-top: 40px;
+  position: relative;
+}
+
+.estrela {
+  font-size: 50px;
+  color: #ffd700;
+  text-shadow: 0 0 15px gold;
+  display: inline-block;
+  margin: 0 15px;
+  opacity: 0;
+  transform: translateY(-50px) rotate(0deg) scale(0.5);
+}
+
+/* Botão */
+#btn-voltar {
+  margin-top: 60px;
+  padding: 15px 40px;
+  font-size: 18px;
+  font-weight: bold;
+  border-radius: 40px;
+  border: 2px solid #333;
+  background: white;
+  cursor: pointer;
+  opacity: 0;
+  transform: translateY(50px) scale(0.8);
+}
+
+/* Animações */
+@keyframes aparecerConjunto {
+  0% { transform: scale(0); opacity: 0; }
+  80% { transform: scale(1.2); opacity: 1; }
+  100% { transform: scale(1); }
+}
+
+@keyframes estrelaSurgir {
+  0% { opacity: 0; transform: translateY(-50px) rotate(0deg) scale(0.5); }
+  50% { transform: translateY(0px) rotate(15deg) scale(1.2); opacity: 1; }
+  100% { transform: translateY(0px) rotate(0deg) scale(1); }
+}
+
+@keyframes botaoSurgir {
+  0% { opacity: 0; transform: translateY(50px) scale(0.8); }
+  100% { opacity: 1; transform: translateY(0) scale(1); }
+}
