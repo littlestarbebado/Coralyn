@@ -1,5 +1,5 @@
 /************************************
- *  CONFIGURAÇÕES GERAIS / POPUP
+ *  CONFIGURAÇÕES GERAIS / POPUP    *
  ************************************/
 const popup = document.getElementById("popup");
 const perguntaEl = document.getElementById("pergunta");
@@ -175,6 +175,13 @@ function posicaoValida(novo, existentes) {
 function abrirPergunta(lixo) {
   lixoSelecionado = lixo;
 
+  // 25% de chance — mini-jogo pH
+  if (Math.random() < 0.25) {
+    abrirMiniJogoPH();
+    return;
+  }
+
+  // Pergunta normal
   const p = perguntas[Math.floor(Math.random() * perguntas.length)];
   perguntaEl.textContent = p.q;
   respostaCorreta = p.certa;
@@ -183,6 +190,7 @@ function abrirPergunta(lixo) {
 
   popup.classList.remove("hidden");
 }
+
 
 /************************************
  *   ANIMAÇÃO LIXO REMOVIDO (feliz)
@@ -283,6 +291,8 @@ function mostrarErroDark() {
     }, 400);
   }, 1200);
 }
+
+
 
 /************************************
  *   RESPONDER PERGUNTA
