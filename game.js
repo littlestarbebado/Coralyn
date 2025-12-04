@@ -355,9 +355,13 @@ function subirNivel() {
 }
 
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
 /*ANIMAÇÃO LEVEL UP*/
 =======
 /*   ANIMAÇÃO LEVEL UP */
+>>>>>>> Stashed changes
+=======
+
 >>>>>>> Stashed changes
 function animarLevelUpCentral(nivelAtual) {
   const overlay = document.getElementById("level-up-overlay");
@@ -405,9 +409,12 @@ function animarLevelUpCentral(nivelAtual) {
 }
 
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
 /*DIFICULDADE POR NÍVEL*/
 =======
 /*   DIFICULDADE POR NÍVEL */
+>>>>>>> Stashed changes
+=======
 >>>>>>> Stashed changes
 function quantidadeLixoPorNivel(nivel) {
   const base = Math.floor(6 + Math.pow(nivel, 1.5));
@@ -416,18 +423,26 @@ function quantidadeLixoPorNivel(nivel) {
 }
 
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
 /*FIM DO JOGO*/
 =======
 /*   FIM DO JOGO */
+>>>>>>> Stashed changes
+=======
+
 >>>>>>> Stashed changes
 function mostrarFimDeJogo() {
   window.location.href = "../vitoria.html";
 }
 
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
 /*INÍCIO DO NÍVEL*/
 =======
 /*   INÍCIO DO NÍVEL */
+>>>>>>> Stashed changes
+=======
+
 >>>>>>> Stashed changes
 function iniciarNivel() {
   progresso = 0;
@@ -438,8 +453,12 @@ function iniciarNivel() {
 }
 
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
 /*INICIAR JOGO*/
 =======
 /*   INICIAR JOGO */
+>>>>>>> Stashed changes
+=======
+
 >>>>>>> Stashed changes
 iniciarNivel();
