@@ -1,6 +1,4 @@
-/************************************
- *  CONFIGURAÇÕES GERAIS / POPUP    *
- ************************************/
+/* CONFIGURAÇÕES GERAIS / POPUP    */
 const popup = document.getElementById("popup");
 const perguntaEl = document.getElementById("pergunta");
 const botoes = document.querySelectorAll(".opcao");
@@ -18,17 +16,13 @@ popupConfig.addEventListener("click", e => { if (e.target === popupConfig) popup
 btnSair.addEventListener("click", () => window.location.href = "../index.html");
 btnMenu.addEventListener("click", () => window.location.href = "../niveis.html");
 
-/************************************
- *   "FALA" INICIAL
- ************************************/
+/*  "FALA" INICIAL */
 setTimeout(() => {
   const fala = document.getElementById("fala");
   if (fala) fala.style.display = "none";
 }, 3000);
 
-/************************************
- *   PERGUNTAS
- ************************************/
+/*   PERGUNTAS */
 const perguntas = [
   { q: "Quanto plástico vai parar ao oceano por ano?", opcoes: ["8 milhões de toneladas", "10 quilos", "100 toneladas"], certa: 0 },
   { q: "Por que as tartarugas comem plástico?", opcoes: ["Parece medusas", "Cheira bem", "É nutritivo"], certa: 0 },
@@ -44,9 +38,7 @@ const perguntas = [
   { q: "Qual destes NÃO deve ir para o mar?", opcoes: ["Plástico", "Água", "Areia"], certa: 0 }
 ];
 
-/************************************
- *   SISTEMA DE NÍVEL / PROGRESSO
- ************************************/
+/*   SISTEMA DE NÍVEL / PROGRESSO */
 let nivel = 1;
 let progresso = 0;
 let lixosAtivos = [];
@@ -64,9 +56,7 @@ progressCircle.style.strokeDashoffset = circunferencia;
 const animaisPorNivel = ["Estrela de Mar", "Tartaruga", "Medusa", "Tubarão", "Polvo"];
 const variantesProgresso = { inicial: "#0077c2", meio: "#00c27f", final: "#c2a300" };
 
-/************************************
- *   CRIAR PERSONAGEM
- ************************************/
+/*  CRIAR PERSONAGEM */
 function criarPersonagem(nivelAtual) {
   let p = document.querySelector(".player");
 
@@ -102,9 +92,7 @@ function criarPersonagem(nivelAtual) {
   atualizarPersonagemVisual();
 }
 
-/************************************
- *   ATUALIZAR VISUAL DO PLAYER
- ************************************/
+/*   ATUALIZAR VISUAL DO PLAYER */
 function atualizarPersonagemVisual() {
   const p = document.querySelector(".player");
   if (!p) return;
@@ -114,9 +102,7 @@ function atualizarPersonagemVisual() {
   else p.style.background = variantesProgresso.final;
 }
 
-/************************************
- *   CRIAR LIXOS
- ************************************/
+/*   CRIAR LIXOS */
 function criarLixos(qtd) {
   lixosContainer.innerHTML = "";
   lixosAtivos = [];
@@ -169,9 +155,7 @@ function posicaoValida(novo, existentes) {
 }
 
 
-/************************************
- *   ABRIR PERGUNTA
- ************************************/
+/*   ABRIR PERGUNTA */
 function abrirPergunta(lixo) {
   lixoSelecionado = lixo;
 
@@ -192,9 +176,7 @@ function abrirPergunta(lixo) {
 }
 
 
-/************************************
- *   ANIMAÇÃO LIXO REMOVIDO (feliz)
- ************************************/
+/*   ANIMAÇÃO LIXO REMOVIDO (feliz) */
 function mostrarLixoRemovidoFeliz(x, y) {
   const msg = document.createElement("div");
   msg.id = "lixo-removido";
@@ -237,9 +219,7 @@ function mostrarLixoRemovidoFeliz(x, y) {
   }, 1200);
 }
 
-/************************************
- *   ANIMAÇÃO DARK ERRO
- ************************************/
+/*   ANIMAÇÃO DARK ERRO */
 function mostrarErroDark() {
   const overlay = document.createElement("div");
   overlay.id = "error-overlay";
@@ -294,9 +274,7 @@ function mostrarErroDark() {
 
 
 
-/************************************
- *   RESPONDER PERGUNTA
- ************************************/
+/*   RESPONDER PERGUNTA */
 function responder(opcaoEscolhida) {
   popup.classList.add("hidden");
 
@@ -321,9 +299,7 @@ function responder(opcaoEscolhida) {
   }, 600);
 }
 
-/************************************
- *   SISTEMA DE PROGRESSO
- ************************************/
+/*   SISTEMA DE PROGRESSO*/
 function atualizarProgresso() {
   if (lixosAtivos.length === 0) {
     progresso = 100;
