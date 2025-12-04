@@ -175,7 +175,7 @@ function abrirPergunta(lixo) {
   popup.classList.remove("hidden");
 }
 
-<<<<<<< Updated upstream
+
 
 
 function mostrarLixoRemovidoFeliz(x, y) {
@@ -273,7 +273,7 @@ function mostrarErroDark() {
   }, 1200);
 }
 
-<<<<<<< Updated upstream
+
 
 
 
@@ -321,11 +321,7 @@ function atualizarProgresso() {
   }
 }
 
-<<<<<<< Updated upstream
-/*SUBIR DE NÍVEL*/
-=======
 /*   SUBIR DE NÍVEL*/
->>>>>>> Stashed changes
 function subirNivel() {
   nivel++;
   levelNumber.textContent = nivel;
@@ -340,11 +336,8 @@ function subirNivel() {
   setTimeout(() => iniciarNivel(), 1600);
 }
 
-<<<<<<< Updated upstream
+
 /*ANIMAÇÃO LEVEL UP*/
-=======
-/*   ANIMAÇÃO LEVEL UP */
->>>>>>> Stashed changes
 function animarLevelUpCentral(nivelAtual) {
   const overlay = document.getElementById("level-up-overlay");
   const text = document.getElementById("level-up-text");
@@ -390,31 +383,22 @@ function animarLevelUpCentral(nivelAtual) {
   }, 1700);
 }
 
-<<<<<<< Updated upstream
+
 /*DIFICULDADE POR NÍVEL*/
-=======
-/*   DIFICULDADE POR NÍVEL */
->>>>>>> Stashed changes
 function quantidadeLixoPorNivel(nivel) {
   const base = Math.floor(6 + Math.pow(nivel, 1.5));
   const variacao = Math.floor(Math.random() * 3) - 1;
   return base + variacao;
 }
 
-<<<<<<< Updated upstream
+
 /*FIM DO JOGO*/
-=======
-/*   FIM DO JOGO */
->>>>>>> Stashed changes
 function mostrarFimDeJogo() {
   window.location.href = "../vitoria.html";
 }
 
-<<<<<<< Updated upstream
+
 /*INÍCIO DO NÍVEL*/
-=======
-/*   INÍCIO DO NÍVEL */
->>>>>>> Stashed changes
 function iniciarNivel() {
   progresso = 0;
   progressCircle.style.strokeDashoffset = circunferencia;
@@ -423,9 +407,5 @@ function iniciarNivel() {
   criarLixos(quantidadeLixoPorNivel(nivel));
 }
 
-<<<<<<< Updated upstream
 /*INICIAR JOGO*/
-=======
-
->>>>>>> Stashed changes
 iniciarNivel();
