@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+    <meta charset="UTF-8">
+    <title>Configurações</title>
+    <link rel="stylesheet" href="config.css">
+</head>
+<body>
+
+<div class="overlay">
+    <div class="popup">
+
+        <span class="fechar">✕</span>
+
+        <h2>Configurações</h2>
+
+        <div class="opcao">
+            🎵 Volume da Música
+            <input type="range" id="musica" min="0" max="100" value="50">
+            <span id="valorMusica">50%</span>
+        </div>
+
+        <div class="opcao">
+            🔊 Volume dos Efeitos
+            <input type="range" id="efeitos" min="0" max="100" value="50">
+            <span id="valorEfeitos">50%</span>
+        </div>
+
+        <button class="menu">Menu</button>
+        <button class="sair">Sair</button>
+
+    </div>
+</div>
+
+<script src="config.js"></script>
+</body>
+</html>
