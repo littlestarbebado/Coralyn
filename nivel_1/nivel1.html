@@ -1,46 +1,39 @@
 <!DOCTYPE html>
 <html lang="pt">
-
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
   <title>Nível 1 – Apanha o Lixo</title>
-<link rel="stylesheet" href="../nivel_1/nivel1.css">
+  <link rel="stylesheet" href="nivel1.css">
 </head>
-
 <body>
 
-
-<div id="level-up-overlay" class="hidden">
-  <div id="level-up-content">
-    <div id="level-up-waves"></div>
-    <div id="level-up-text">NÍVEL 1!</div>
+  <!-- Level up overlay -->
+  <div id="level-up-overlay" class="hidden">
+    <div id="level-up-content">
+      <div id="level-up-waves"></div>
+      <div id="level-up-text">NÍVEL 1!</div>
+    </div>
   </div>
-</div>
 
-
-  <!-- Botão de Configurações -->
-  <button id="btn-config">
-<img src="../assets/settings.png" alt="Configurações">
+  <!-- Config button -->
+  <button id="btn-config" aria-label="Configurações">
+    <img src="../assets/settings.png" alt="Configurações">
   </button>
-  <!-- Pop-up Definições -->
+
+  <!-- Popup configurações -->
   <div id="popup-config" class="popup hidden">
     <div class="popup-config-content">
-      <!-- Botão de fechar X -->
       <button id="btn-fechar-config" class="btn-fechar-config">✖</button>
-
       <h2>Definições</h2>
-
       <div class="config-item">
         <label for="slider-musica">Música</label>
         <input type="range" id="slider-musica" min="0" max="100" value="20">
       </div>
-
       <div class="config-item">
         <label for="slider-efeitos">Efeitos Sonoros</label>
         <input type="range" id="slider-efeitos" min="0" max="100" value="20">
       </div>
-
       <div class="config-botoes">
         <button id="btn-sair" class="btn-sair">SAIR</button>
         <button id="btn-menu" class="btn-menu">MENU</button>
@@ -48,12 +41,10 @@
     </div>
   </div>
 
-
-  
-  <!-- Level Icon -->
+  <!-- Top-left level indicator (SVG progress) -->
   <div id="level-icon">
-    <svg width="100" height="100">
-      <circle cx="50" cy="50" r="45" stroke="#ffa500" stroke-width="1" fill="none" />
+    <svg width="100" height="100" viewBox="0 0 100 100" aria-hidden="true">
+      <circle cx="50" cy="50" r="45" stroke="#1f6f9f" stroke-width="2" fill="none" />
       <circle id="progress" cx="50" cy="50" r="45" stroke="#ff9800" stroke-width="8" fill="none"
         stroke-linecap="round" />
     </svg>
@@ -62,23 +53,28 @@
     </div>
   </div>
 
+  <!-- Main game area -->
   <div class="jogo">
-  <div id="fala">Socorro! Limpa o lixo à minha volta!</div>
-  <div class="player"></div> 
-  <div id="lixos"></div>
-</div>
+    <div id="fala">Socorro! Limpa o lixo à minha volta!</div>
 
-  <!-- POPUP PERGUNTA -->
-  <div id="popup" class="popup hidden">
+    <div class="player">
+      <img src="../assets/characters/animals/estrela.svg" alt="Estrela">
+    </div>
+
+    <!-- onde os lixos aparecem -->
+    <div id="lixos"></div>
+  </div>
+
+  <!-- Popup pergunta -->
+  <div id="popup" class="popup hidden" aria-hidden="true">
     <div class="popup-content">
       <p id="pergunta">Pergunta...</p>
-      <button class="opcao" onclick="responder(0)"></button>
-      <button class="opcao" onclick="responder(1)"></button>
-      <button class="opcao" onclick="responder(2)"></button>
+      <button class="opcao" type="button"></button>
+      <button class="opcao" type="button"></button>
+      <button class="opcao" type="button"></button>
     </div>
   </div>
 
-<script src="nivel1.js"></script>
+  <script src="nivel1.js" defer></script>
 </body>
-
 </html>

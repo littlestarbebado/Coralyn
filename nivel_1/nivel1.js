@@ -1,407 +1,265 @@
-/* CONFIGURAÇÕES GERAIS / POPUP    */
-const popup = document.getElementById("popup");
-const perguntaEl = document.getElementById("pergunta");
-const botoes = document.querySelectorAll(".opcao");
-const lixosContainer = document.getElementById("lixos");
+// pag_niveis/nivel1.js
+(() => {
+  'use strict';
 
-const btnConfig = document.getElementById("btn-config");
-const popupConfig = document.getElementById("popup-config");
-const btnFecharConfig = document.getElementById("btn-fechar-config");
-const btnSair = document.getElementById("btn-sair");
-const btnMenu = document.getElementById("btn-menu");
+  // SELECTORS
+  const popup = document.getElementById('popup');
+  const perguntaEl = document.getElementById('pergunta');
+  const botoes = Array.from(document.querySelectorAll('.opcao'));
+  const lixosContainer = document.getElementById('lixos');
 
-btnConfig.addEventListener("click", () => popupConfig.classList.remove("hidden"));
-btnFecharConfig.addEventListener("click", () => popupConfig.classList.add("hidden"));
-popupConfig.addEventListener("click", e => { if (e.target === popupConfig) popupConfig.classList.add("hidden"); });
-btnSair.addEventListener("click", () => window.location.href = "../index.html");
-btnMenu.addEventListener("click", () => window.location.href = "../niveis.html");
+  const btnConfig = document.getElementById('btn-config');
+  const popupConfig = document.getElementById('popup-config');
+  const btnFecharConfig = document.getElementById('btn-fechar-config');
+  const btnSair = document.getElementById('btn-sair');
+  const btnMenu = document.getElementById('btn-menu');
 
+  const progressCircle = document.getElementById('progress');
+  const levelNumber = document.getElementById('level-number');
 
-setTimeout(() => {
-  const fala = document.getElementById("fala");
-  if (fala) fala.style.display = "none";
-}, 3000);
+  // ESTE É O TEU PLAYER (não existia #player-img)
+  const player = document.querySelector('.player');
 
+  if (!player) console.warn("⚠ .player não encontrado no HTML!");
 
-const perguntas = [
-  { q: "Quanto plástico vai parar ao oceano por ano?", opcoes: ["8 milhões de toneladas", "10 quilos", "100 toneladas"], certa: 0 },
-  { q: "Por que as tartarugas comem plástico?", opcoes: ["Parece medusas", "Cheira bem", "É nutritivo"], certa: 0 },
-  { q: "O que são microplásticos?", opcoes: ["Pequenos pedaços de plástico", "Areia colorida", "Algas tóxicas"], certa: 0 },
-  { q: "Qual é o maior problema do lixo no mar?", opcoes: ["Afeta a vida marinha", "A água fica mais quente", "A água fica mais azul"], certa: 0 },
-  { q: "Peixes podem engolir plástico?", opcoes: ["Sim", "Não", "Só os grandes"], certa: 0 },
-  { q: "Qual destes objetos demora mais a decompor?", opcoes: ["Garrafa de plástico", "Papel", "Comida"], certa: 0 },
-  { q: "O plástico no mar pode entrar na cadeia alimentar humana?", opcoes: ["Sim", "Não", "Só na China"], certa: 0 },
-  { q: "O que é uma 'ilha de lixo'?", opcoes: ["Aglomerado de plástico no mar", "Uma ilha turística", "Um vulcão"], certa: 0 },
-  { q: "Qual animal marinho mais sofre com o plástico?", opcoes: ["Tartarugas", "Golfinhos", "Caranguejos"], certa: 0 },
-  { q: "Qual a forma mais eficaz de reduzir lixo?", opcoes: ["Reciclar e reutilizar", "Deixar no chão", "Partir tudo"], certa: 0 },
-  { q: "O plástico pode libertar toxinas na água?", opcoes: ["Sim", "Não", "Só ao sol"], certa: 0 },
-  { q: "Qual destes NÃO deve ir para o mar?", opcoes: ["Plástico", "Água", "Areia"], certa: 0 }
-];
+  // quick safety checks
+  if (!lixosContainer) { console.error('#lixos não encontrado'); return; }
+  if (!popup) console.warn('popup não encontrado');
 
+  // GAME STATE
+  let nivel = 1;
+  let progresso = 0;
+  let lixosAtivos = [];
+  let lixoSelecionado = null;
+  let respostaCorreta = 0;
 
-let nivel = 1;
-let progresso = 0;
-let lixosAtivos = [];
-let lixoSelecionado = null;
-let respostaCorreta = 0;
+  // ------- PERGUNTAS -------
+  const perguntas = [
+    { q: "Quanto plástico vai parar ao oceano por ano?", opcoes: ["8 milhões de toneladas", "10 quilos", "100 toneladas"], certa: 0 },
+    { q: "Por que as tartarugas comem plástico?", opcoes: ["Parece medusas", "Cheira bem", "É nutritivo"], certa: 0 },
+    { q: "O que são microplásticos?", opcoes: ["Pequenos pedaços de plástico", "Areia colorida", "Algas tóxicas"], certa: 0 },
+    { q: "Qual é o maior problema do lixo no mar?", opcoes: ["Afeta a vida marinha", "A água fica mais quente", "A água fica mais azul"], certa: 0 },
+    { q: "Peixes podem engolir plástico?", opcoes: ["Sim", "Não", "Só os grandes"], certa: 0 },
+    { q: "Qual destes objetos demora mais a decompor?", opcoes: ["Garrafa de plástico", "Papel", "Comida"], certa: 0 },
+    { q: "O plástico no mar pode entrar na cadeia alimentar humana?", opcoes: ["Sim", "Não", "Só na China"], certa: 0 },
+    { q: "O que é uma 'ilha de lixo'?", opcoes: ["Aglomerado de plástico no mar", "Uma ilha turística", "Um vulcão"], certa: 0 },
+    { q: "Qual animal marinho mais sofre com o plástico?", opcoes: ["Tartarugas", "Golfinhos", "Caranguejos"], certa: 0 },
+    { q: "Qual a forma mais eficaz de reduzir lixo?", opcoes: ["Reciclar e reutilizar", "Deixar no chão", "Partir tudo"], certa: 0 },
+    { q: "O plástico pode libertar toxinas na água?", opcoes: ["Sim", "Não", "Só ao sol"], certa: 0 },
+    { q: "Qual destes NÃO deve ir para o mar?", opcoes: ["Plástico", "Água", "Areia"], certa: 0 }
+  ];
 
-const progressCircle = document.getElementById("progress");
-const levelNumber = document.getElementById("level-number");
-
-const raio = 45;
-const circunferencia = 2 * Math.PI * raio;
-progressCircle.style.strokeDasharray = circunferencia;
-progressCircle.style.strokeDashoffset = circunferencia;
-
-const animaisPorNivel = ["Estrela de Mar", "Tartaruga", "Medusa", "Tubarão", "Polvo"];
-const variantesProgresso = { inicial: "#0077c2", meio: "#00c27f", final: "#c2a300" };
-
-
-function criarPersonagem(nivelAtual) {
-  let p = document.querySelector(".player");
-
-  if (!p) {
-    p = document.createElement("div");
-    p.classList.add("player");
-    document.body.appendChild(p);
+  // ------- PROGRESS CIRCLE -------
+  const raio = 45;
+  const circunferencia = 2 * Math.PI * raio;
+  if (progressCircle) {
+    progressCircle.style.strokeDasharray = `${circunferencia}`;
+    progressCircle.style.strokeDashoffset = `${circunferencia}`;
   }
 
-  p.style.width = "120px";
-  p.style.height = "120px";
-  p.style.borderRadius = "50%";
-  p.style.position = "absolute";
-  p.style.top = "50%";
-  p.style.left = "50%";
-  p.style.transform = "translate(-50%, -50%)";
+  // UTILS
+  function rnd(min, max) { return Math.floor(Math.random() * (max - min + 1)) + min; }
+  function escolherPergunta() { return perguntas[Math.floor(Math.random() * perguntas.length)]; }
 
-  let t = document.getElementById("texto-animal");
-  if (!t) {
-    t = document.createElement("div");
-    t.id = "texto-animal";
-    t.style.position = "absolute";
-    t.style.top = "50%";
-    t.style.left = "50%";
-    t.style.transform = "translate(-50%,-50%)";
-    t.style.color = "white";
-    t.style.fontSize = "16px";
-    t.style.fontWeight = "bold";
-    p.appendChild(t);
+  // ------- SETTINGS POPUP -------
+  function bindSettingsUI() {
+    btnConfig?.addEventListener('click', () => popupConfig.classList.remove('hidden'));
+    btnFecharConfig?.addEventListener('click', () => popupConfig.classList.add('hidden'));
+    popupConfig?.addEventListener('click', e => { if (e.target === popupConfig) popupConfig.classList.add('hidden'); });
+    btnSair?.addEventListener('click', () => window.location.href = '../index.html');
+    btnMenu?.addEventListener('click', () => window.location.href = '../niveis.html');
   }
 
-  t.textContent = animaisPorNivel[(nivelAtual - 1) % animaisPorNivel.length];
-  atualizarPersonagemVisual();
-}
+  // ------- LIXOS -------
+  function posicaoValida(novoRect, existentesRects, minDist = 70) {
+    for (const r of existentesRects) {
+      const dx = (novoRect.left + novoRect.width / 2) - (r.left + r.width / 2);
+      const dy = (novoRect.top + novoRect.height / 2) - (r.top + r.height / 2);
+      const d = Math.sqrt(dx * dx + dy * dy);
+      if (d < minDist) return false;
+    }
+    return true;
+  }
 
-
-function atualizarPersonagemVisual() {
-  const p = document.querySelector(".player");
-  if (!p) return;
-
-  if (progresso <= 50) p.style.background = variantesProgresso.inicial;
-  else if (progresso < 100) p.style.background = variantesProgresso.meio;
-  else p.style.background = variantesProgresso.final;
-}
-
-
-function criarLixos(qtd) {
-  lixosContainer.innerHTML = "";
+  function criarLixos(qtd){
+  lixosContainer.innerHTML = '';
   lixosAtivos = [];
+  const rects = [];
 
   for (let i = 0; i < qtd; i++) {
-    const lixo = document.createElement("div");
-    lixo.classList.add("lixo");
+    const lixo = document.createElement('img');
+    lixo.className = 'lixo';
+    lixo.style.position = 'absolute';
+    lixo.style.width = '150px';
+    lixo.style.height = '150px';
+
+    // Escolher imagem aleatória de lixo-01.svg a lixo-06.svg
+    const n = rnd(1, 6);
+    lixo.src = `../assets/lixo/lixo${n}.svg`;  // <-- AGORA CERTO
+    lixo.alt = "lixo";
 
     lixosContainer.appendChild(lixo);
 
-    // Tentativas de encontrar posição válida
-    let tentativas = 0;
-    let valido = false;
+    let tent = 0, colocado = false;
+    while (!colocado && tent < 80) {
+      const left = rnd(6, 84);
+      const top = rnd(8, 78);
 
-    while (!valido && tentativas < 50) {
-      lixo.style.left = Math.random() * 75 + 10 + "%";
-      lixo.style.top = Math.random() * 75 + 10 + "%";
+      lixo.style.left = left + '%';
+      lixo.style.top = top + '%';
 
-      valido = posicaoValida(lixo, lixosAtivos);
-      tentativas++;
+      const rect = lixo.getBoundingClientRect();
+      if (posicaoValida(rect, rects, 70)) {
+        rects.push(rect);
+        colocado = true;
+      }
+      tent++;
     }
 
-    // caso extremo: coloca em último sítio gerado
-    lixo.style.animationDelay = (Math.random() * 2).toFixed(2) + "s";
-
-    lixo.addEventListener("click", () => abrirPergunta(lixo));
-
+    lixo.addEventListener('click', ()=> abrirPergunta(lixo));
     lixosAtivos.push(lixo);
   }
 }
 
 
-function posicaoValida(novo, existentes) {
-  const raio = 25; // raio aproximado do lixo (tamanho médio do quadrado)
-  const distanciaMinima = raio * 2 + 10; // garante espaço entre eles
 
-  for (let l of existentes) {
-    const r = l.getBoundingClientRect();
-    const n = novo.getBoundingClientRect();
+  // ------- PERGUNTA -------
+  botoes.forEach((btn, idx) => btn.addEventListener('click', () => responder(idx)));
 
-    const dx = (n.left + n.width/2) - (r.left + r.width/2);
-    const dy = (n.top + n.height/2) - (r.top + r.height/2);
-    const distancia = Math.sqrt(dx*dx + dy*dy);
+  function abrirPergunta(lixo) {
+    lixoSelecionado = lixo;
+    const p = escolherPergunta();
 
-    if (distancia < distanciaMinima) {
-      return false; // está a tocar → inválido
+    perguntaEl.textContent = p.q;
+    respostaCorreta = p.certa;
+
+    botoes.forEach((b, i) => b.textContent = p.opcoes[i]);
+
+    popup.classList.remove('hidden');
+  }
+
+  function responder(opcao) {
+    popup.classList.add('hidden');
+
+    if (opcao !== respostaCorreta) {
+      mostrarErro();
+      return;
     }
-  }
-  return true;
-}
 
+    const rect = lixoSelecionado.getBoundingClientRect();
+    mostrarLixoRemovido(rect.left + rect.width / 2, rect.top + rect.height / 2);
 
+    lixoSelecionado.style.transition = 'transform .6s ease, opacity .6s ease';
+    lixoSelecionado.style.transform = 'scale(0) rotate(360deg)';
+    lixoSelecionado.style.opacity = '0';
 
-function abrirPergunta(lixo) {
-  lixoSelecionado = lixo;
-
-  // 25% de chance — mini-jogo pH
-  if (Math.random() < 0.25) {
-    abrirMiniJogoPH();
-    return;
-  }
-
-  // Pergunta normal
-  const p = perguntas[Math.floor(Math.random() * perguntas.length)];
-  perguntaEl.textContent = p.q;
-  respostaCorreta = p.certa;
-
-  botoes.forEach((b, i) => (b.textContent = p.opcoes[i]));
-
-  popup.classList.remove("hidden");
-}
-
-
-
-
-function mostrarLixoRemovidoFeliz(x, y) {
-  const msg = document.createElement("div");
-  msg.id = "lixo-removido";
-  msg.textContent = "LIXO REMOVIDO!";
-  document.body.appendChild(msg);
-
-  void msg.offsetWidth;
-  msg.style.opacity = 1;
-  msg.style.transform = "translate(-50%, -50%) scale(1.7)";
-
-  let angle = 0;
-  const shake = setInterval(() => {
-    msg.style.transform = `translate(-50%, -50%) rotate(${Math.sin(angle) * 10}deg) scale(1.7)`;
-    angle += 0.5;
-  }, 25);
-
-  for (let i = 0; i < 20; i++) {
-    const part = document.createElement("div");
-    part.classList.add("particle");
-    part.style.left = x + "px";
-    part.style.top = y + "px";
-    document.body.appendChild(part);
-
-    const ang = Math.random() * 2 * Math.PI;
-    const dist = Math.random() * 150 + 50;
+    lixosAtivos = lixosAtivos.filter(l => l !== lixoSelecionado);
 
     setTimeout(() => {
-      part.style.transform = `translate(${Math.cos(ang) * dist}px, ${Math.sin(ang) * dist}px)`;
-      part.style.opacity = 0;
-    }, 50);
-
-    setTimeout(() => part.remove(), 1200);
+      lixoSelecionado.remove();
+      lixoSelecionado = null;
+      atualizarProgresso();
+    }, 620);
   }
 
-  setTimeout(() => {
-    clearInterval(shake);
-    msg.style.opacity = 0;
-    msg.style.transform = "translate(-50%, -100%) scale(1.5)";
-    setTimeout(() => msg.remove(), 400);
-  }, 1200);
-}
+  function mostrarErro() {
+    const overlay = document.createElement('div');
+    overlay.style.position = 'fixed';
+    overlay.style.inset = 0;
+    overlay.style.background = 'rgba(150,0,0,0.18)';
+    overlay.style.zIndex = 13000;
+    document.body.appendChild(overlay);
+    setTimeout(() => overlay.remove(), 700);
+  }
 
-
-function mostrarErroDark() {
-  const overlay = document.createElement("div");
-  overlay.id = "error-overlay";
-  document.body.appendChild(overlay);
-
-  void overlay.offsetWidth;
-  overlay.style.opacity = 1;
-
-  const msg = document.createElement("div");
-  msg.id = "erro-msg";
-  msg.textContent = "ERRO!";
-  document.body.appendChild(msg);
-
-  void msg.offsetWidth;
-  msg.style.opacity = 1;
-
-  let i = 0;
-  const tremor = setInterval(() => {
-    msg.style.transform = `translate(-50%,-50%) rotate(${Math.sin(i) * 25}deg) scale(1.5)`;
-    i += 0.5;
-  }, 25);
-
-  for (let p = 0; p < 30; p++) {
-    const particle = document.createElement("div");
-    particle.classList.add("error-particle");
-    particle.style.left = window.innerWidth / 2 + "px";
-    particle.style.top = window.innerHeight / 2 + "px";
-    document.body.appendChild(particle);
-
-    const ang = Math.random() * 2 * Math.PI;
-    const dist = Math.random() * 200 + 50;
+  function mostrarLixoRemovido(x, y) {
+    const msg = document.createElement('div');
+    msg.className = 'msg-removido';
+    msg.textContent = 'LIXO REMOVIDO!';
+    msg.style.left = x + 'px';
+    msg.style.top = (y - 40) + 'px';
+    document.body.appendChild(msg);
 
     setTimeout(() => {
-      particle.style.transform = `translate(${Math.cos(ang) * dist}px, ${Math.sin(ang) * dist}px)`;
-      particle.style.opacity = 0;
-    }, 50);
-
-    setTimeout(() => particle.remove(), 1000);
+      msg.style.opacity = '0';
+      setTimeout(() => msg.remove(), 500);
+    }, 900);
   }
 
-  setTimeout(() => {
-    clearInterval(tremor);
-    overlay.style.opacity = 0;
-    msg.style.opacity = 0;
-
-    setTimeout(() => {
-      overlay.remove();
-      msg.remove();
-    }, 400);
-  }, 1200);
-}
-
-
-
-
-
-function responder(opcaoEscolhida) {
-  popup.classList.add("hidden");
-
-  if (opcaoEscolhida !== respostaCorreta) {
-    mostrarErroDark();
-    return;
+  // ------- PROGRESSO -------
+  function quantidadeLixoPorNivel(n) {
+    return Math.max(3, Math.floor(6 + Math.pow(n, 1.5)) + (Math.floor(Math.random() * 3) - 1));
   }
 
-  const rect = lixoSelecionado.getBoundingClientRect();
-  mostrarLixoRemovidoFeliz(rect.left + rect.width / 2, rect.top + rect.height / 2);
-
-  lixoSelecionado.style.transition = "0.6s";
-  lixoSelecionado.style.opacity = "0";
-  lixoSelecionado.style.transform = "scale(0) rotate(360deg)";
-
-  const index = lixosAtivos.indexOf(lixoSelecionado);
-  if (index !== -1) lixosAtivos.splice(index, 1);
-
-  setTimeout(() => {
-    lixoSelecionado.remove();
-    atualizarProgresso();
-  }, 600);
-}
-
-
-function atualizarProgresso() {
-  if (lixosAtivos.length === 0) {
-    progresso = 100;
-  } else {
+  function atualizarProgresso() {
     const total = quantidadeLixoPorNivel(nivel);
-    progresso = 100 * (1 - lixosAtivos.length / total);
+    const restante = lixosAtivos.length;
+
+    progresso = Math.round(100 * (1 - restante / total));
+    progresso = Math.min(100, Math.max(0, progresso));
+
+    if (progressCircle) {
+      const offset = circunferencia * (1 - progresso / 100);
+      progressCircle.style.strokeDashoffset = `${offset}`;
+    }
+
+    if (progresso >= 100) subirNivel();
   }
 
-  if (progresso > 100) progresso = 100;
+  function subirNivel() {
+    nivel++;
 
-  const offset = circunferencia * (1 - progresso / 100);
-  progressCircle.style.strokeDashoffset = offset;
-  atualizarPersonagemVisual();
+    if (levelNumber) levelNumber.textContent = `${nivel}`;
 
-  if (progresso >= 100) {
-    subirNivel();
+    const overlay = document.getElementById('level-up-overlay');
+    if (overlay) {
+      overlay.classList.remove('hidden');
+      overlay.style.opacity = '1';
+      setTimeout(() => {
+        overlay.style.opacity = '0';
+        setTimeout(() => overlay.classList.add('hidden'), 400);
+      }, 1400);
+    }
+
+    if (nivel > 5) {
+      window.location.href = '../vitoria.html';
+      return;
+    }
+
+    setTimeout(() => iniciarNivel(), 900);
   }
-}
 
-/*   SUBIR DE NÍVEL*/
-function subirNivel() {
-  nivel++;
-  levelNumber.textContent = nivel;
+  // ------- START DO NÍVEL -------
 
-  animarLevelUpCentral(nivel);
+  function iniciarNivel() {
+    progresso = 0;
 
-  if (nivel > 5) {
-    mostrarFimDeJogo();
-    return;
+    if (progressCircle)
+      progressCircle.style.strokeDashoffset = `${circunferencia}`;
+
+
+    if (player) {
+      player.style.backgroundImage = '../characters/animals/estrela.svg';
+      player.style.backgroundSize = "contain";
+      player.style.backgroundRepeat = "no-repeat";
+      player.style.backgroundPosition = "center";
+    }
+
+    const qtd = quantidadeLixoPorNivel(nivel);
+    criarLixos(qtd);
   }
 
-  setTimeout(() => iniciarNivel(), 1600);
-}
-
-
-function animarLevelUpCentral(nivelAtual) {
-  const overlay = document.getElementById("level-up-overlay");
-  const text = document.getElementById("level-up-text");
-  const waves = document.getElementById("level-up-waves");
-
-  text.textContent = `NÍVEL ${nivelAtual}!`;
-
-  overlay.classList.remove("hidden");
-  overlay.style.opacity = 1;
-
-  text.style.animation = "none";
-  void text.offsetWidth;
-  text.style.animation = "levelUpZoomBounce 1s forwards";
-
-  waves.style.animation = "none";
-  void waves.offsetWidth;
-  waves.style.animation = "wavePulse 1.5s ease-out forwards";
-
-  const cx = window.innerWidth / 2;
-  const cy = window.innerHeight / 2;
-
-  for (let i = 0; i < 40; i++) {
-    const part = document.createElement("div");
-    part.classList.add("level-up-particle");
-    part.style.left = cx + "px";
-    part.style.top = cy + "px";
-    document.body.appendChild(part);
-
-    const ang = Math.random() * 2 * Math.PI;
-    const dist = Math.random() * 250 + 60;
+  // ------- INIT -------
+  function init() {
+    bindSettingsUI();
 
     setTimeout(() => {
-      part.style.transform = `translate(${Math.cos(ang) * dist}px, ${Math.sin(ang) * dist}px)`;
-      part.style.opacity = 0;
-    }, 50);
+      const fala = document.getElementById('fala');
+      if (fala) fala.style.display = 'none';
+    }, 3000);
 
-    setTimeout(() => part.remove(), 1500);
+    iniciarNivel();
   }
 
-  setTimeout(() => {
-    overlay.style.opacity = 0;
-    setTimeout(() => overlay.classList.add("hidden"), 400);
-  }, 1700);
-}
-
-
-function quantidadeLixoPorNivel(nivel) {
-  const base = Math.floor(6 + Math.pow(nivel, 1.5));
-  const variacao = Math.floor(Math.random() * 3) - 1;
-  return base + variacao;
-}
-
-
-function mostrarFimDeJogo() {
-  window.location.href = "../vitoria.html";
-}
-
-
-function iniciarNivel() {
-  progresso = 0;
-  progressCircle.style.strokeDashoffset = circunferencia;
-
-  criarPersonagem(nivel);
-  criarLixos(quantidadeLixoPorNivel(nivel));
-}
-
-
-iniciarNivel();
+  document.addEventListener('DOMContentLoaded', init);
+})();
