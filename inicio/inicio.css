@@ -1,0 +1,123 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Poppins", Arial, sans-serif;
+}
+
+html, body {
+  height: 100%;
+}
+
+body {
+  background: radial-gradient(circle at top, #1f8dff 0%, #0051b8 35%, #003b80 100%);
+  overflow: hidden;
+}
+
+/* container geral */
+.page {
+  position: relative;
+  width: 100%;
+  height: 100vh;
+  color: #ffffff;
+}
+
+/* logo */
+.logo-area {
+  position: absolute;
+  top: 18%;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+
+/* “coral” laranja (simples, só para lembra a imagem) */
+.logo-mark {
+  width: 130px;
+  height: 110px;
+  background: radial-gradient(circle at 30% 20%, #ffd37a 0, #ff9a1a 40%, #ff6a00 100%);
+  border-radius: 60% 40% 55% 45%;
+}
+
+/* texto CORALYN */
+.logo-text {
+  font-size: 64px;
+  font-weight: 800;
+  letter-spacing: 3px;
+  color: #ffffff;
+}
+
+/* conteúdo central */
+.content {
+  position: absolute;
+  top: 58%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  text-align: center;
+}
+
+/* botão laranja grande */
+.btn-main {
+  background-color: #ff7a1a;
+  color: #ffffff;
+  font-size: 28px;
+  font-weight: 700;
+  border: none;
+  border-radius: 999px;
+  padding: 22px 120px;
+  cursor: pointer;
+  box-shadow: 0 16px 28px rgba(0, 0, 0, 0.35);
+}
+
+/* botões azuis por baixo */
+.secondary-buttons {
+  margin-top: 26px;
+  display: flex;
+  justify-content: center;
+  gap: 24px;
+}
+
+.btn-secondary {
+  min-width: 190px;
+  background-color: rgba(0, 0, 0, 0.18);
+  color: #e6f6ff;
+  font-size: 15px;
+  border: none;
+  border-radius: 999px;
+  padding: 12px 28px;
+  cursor: pointer;
+  backdrop-filter: blur(3px);
+}
+
+/* botão ? */
+.help-btn {
+  position: absolute;
+  right: 26px;
+  bottom: 24px;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  border: none;
+  background-color: rgba(0, 0, 0, 0.45);
+  color: #ffffff;
+  font-size: 20px;
+  cursor: pointer;
+}
+
+/* botão das definições */
+.settings-btn {
+  position: absolute;
+  right: 26px;
+  top: 24px;
+  width: 46px;
+  height: 46px;
+  border-radius: 50%;
+  border: none;
+  background-color: rgba(0, 0, 0, 0.35);
+  color: #ffffff;
+  font-size: 24px;
+  cursor: pointer;
+}
+

@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+  <meta charset="UTF-8">
+  <title>Coralyn</title>
+  <link rel="stylesheet" href="inicio.css">
+  
+</head>
+<body>
+  <div class="page">
+    <!-- Ícone de definições no topo direito -->
+    <button class="settings-btn" >⚙</button>
+<script>
+  document.addEventListener("DOMContentLoaded", () => {
+    const btnSettings = document.getElementById("btnSettings");
+    btnSettings.addEventListener("click", () => {
+      // abre a página das configurações
+      window.location.href = "config.html";
+    });
+  });
+</script>
+
+
+    <!-- Logo ao centro -->
+    <header class="logo-area">
+      <!-- se tiveres a imagem do logo, usa <img> -->
+      <!-- <img src="logo-coralyn.png" alt="Coralyn" class="logo-img"> -->
+      <div class="logo-mark"></div>
+      <span class="logo-text">CORALYN</span>
+    </header>
+
+    <!-- Botões centrais -->
+    <main class="content">
+      <button id="btnIniciar" class="btn-main">INICIAR</button>
+
+      <div class="secondary-buttons">
+        <button id="btnComoJogar" class="btn-secondary">
+          Como Jogar
+        </button>
+        <button id="btnSessao" class="btn-secondary">
+          Iniciar Sessão
+        </button>
+      </div>
+    </main>
+
+    <!-- botão ? em baixo à direita -->
+    <button class="help-btn">?</button>
+  </div>
+  <script src="script.js"></script>
+
+</body>
+</html>

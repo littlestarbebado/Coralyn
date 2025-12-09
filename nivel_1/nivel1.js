@@ -337,7 +337,6 @@ function subirNivel() {
 }
 
 
-/*ANIMAÇÃO LEVEL UP*/
 function animarLevelUpCentral(nivelAtual) {
   const overlay = document.getElementById("level-up-overlay");
   const text = document.getElementById("level-up-text");
@@ -384,7 +383,6 @@ function animarLevelUpCentral(nivelAtual) {
 }
 
 
-/*DIFICULDADE POR NÍVEL*/
 function quantidadeLixoPorNivel(nivel) {
   const base = Math.floor(6 + Math.pow(nivel, 1.5));
   const variacao = Math.floor(Math.random() * 3) - 1;
@@ -392,13 +390,11 @@ function quantidadeLixoPorNivel(nivel) {
 }
 
 
-/*FIM DO JOGO*/
 function mostrarFimDeJogo() {
   window.location.href = "../vitoria.html";
 }
 
 
-/*INÍCIO DO NÍVEL*/
 function iniciarNivel() {
   progresso = 0;
   progressCircle.style.strokeDashoffset = circunferencia;
@@ -407,5 +403,5 @@ function iniciarNivel() {
   criarLixos(quantidadeLixoPorNivel(nivel));
 }
 
-/*INICIAR JOGO*/
+
 iniciarNivel();

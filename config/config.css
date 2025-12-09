@@ -1,0 +1,76 @@
+body {
+    margin: 0;
+    background: linear-gradient(#061936, #0e4f5c);
+    height: 100vh;
+    font-family: Arial;
+}
+
+/* escurece fundo */
+.overlay {
+    width: 100%;
+    height: 100%;
+    backdrop-filter: blur(4px);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* caixinha branca */
+.popup {
+    background: #f4fbff;
+    width: 340px;
+    padding: 25px;
+    border-radius: 18px;
+    box-shadow: 0 10px 20px rgba(0,0,0,0.3);
+    text-align: center;
+    position: relative;
+}
+
+.popup h2 {
+    color: #1a3d7c;
+}
+
+/* X para fechar */
+.fechar {
+    position: absolute;
+    top: 12px;
+    right: 16px;
+    font-size: 20px;
+    cursor: pointer;
+    color: gray;
+}
+
+/* opções */
+.opcao {
+    text-align: left;
+    margin: 20px 0;
+    color: #1a3d7c;
+}
+
+/* sliders */
+input[type="range"] {
+    width: 100%;
+}
+
+/* botões */
+.menu {
+    background: #3d7bfd;
+    color: white;
+    border: none;
+    padding: 14px;
+    width: 100%;
+    border-radius: 12px;
+    margin-top: 10px;
+    cursor: pointer;
+}
+
+.sair {
+    background: #f44336;
+    color: white;
+    border: none;
+    padding: 14px;
+    width: 100%;
+    border-radius: 12px;
+    margin-top: 10px;
+    cursor: pointer;
+}
