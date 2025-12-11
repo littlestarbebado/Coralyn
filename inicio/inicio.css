@@ -2,16 +2,24 @@
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-  font-family: "Poppins", Arial, sans-serif;
 }
 
+/* Importa a fonte personalizada */
+@font-face {
+  font-family: 'ThanksgivingJoy';
+  src: url('../assets/fonts/ThanksgivingJoy.ttf') format('truetype');
+}
+
+/* Garantir que a página ocupa 100% */
 html, body {
   height: 100%;
 }
 
+/* Aplica a fonte ao site */
 body {
   background: radial-gradient(circle at top, #1f8dff 0%, #0051b8 35%, #003b80 100%);
-  overflow: hidden;
+  font-family: 'ThanksgivingJoy', 'Poppins', Arial, sans-serif;
+  overflow: hidden;
 }
 
 /* container geral */
@@ -120,4 +128,52 @@ body {
   font-size: 24px;
   cursor: pointer;
 }
+
+/* FOOTER */
+.footer {
+  margin-top: 60px;
+  background: rgba(0, 0, 0, 0.35);
+  backdrop-filter: blur(6px);
+  color: #dff8ff;
+  padding: 32px 24px 18px;
+  font-family: "Poppins", sans-serif;
+}
+
+.footer-content {
+  max-width: 1100px;
+  margin: 0 auto;
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  flex-wrap: wrap;
+  gap: 28px;
+}
+
+/* LOGO */
+.footer-logo {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  font-size: 26px;
+  font-weight: 700;
+  letter-spacing: 2px;
+}
+
+.footer-coral {
+  width: 50px;
+  height: 40px;
+  background: radial-gradient(circle at 30% 20%, #ffd37a, #ff9a1a 40%, #ff6a00 100%);
+  border-radius: 60% 40% 55% 45%;
+}
+
+/* COPYRIGHT */
+.footer-bottom {
+  text-align: center;
+  margin-top: 28px;
+  padding-top: 12px;
+  font-size: 12px;
+  opacity: 0.7;
+  border-top: 1px solid rgba(255, 255, 255, 0.25);
+}
+
 
