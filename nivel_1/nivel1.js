@@ -81,45 +81,60 @@
     return true;
   }
 
+function colide(a, b) {
+  return !(
+    a.right < b.left ||
+    a.left > b.right ||
+    a.bottom < b.top ||
+    a.top > b.bottom
+  );
+}
+
+
   function criarLixos(qtd){
   lixosContainer.innerHTML = '';
   lixosAtivos = [];
   const rects = [];
 
   for (let i = 0; i < qtd; i++) {
+
     const lixo = document.createElement('img');
     lixo.className = 'lixo';
     lixo.style.position = 'absolute';
-    lixo.style.width = '150px';
-    lixo.style.height = '150px';
+    lixo.style.width = '120px';
+    lixo.style.height = '120px';
 
-    // Escolher imagem aleatória de lixo-01.svg a lixo-06.svg
     const n = rnd(1, 6);
-    lixo.src = `../assets/lixo/lixo${n}.svg`;  // <-- AGORA CERTO
-    lixo.alt = "lixo";
+    lixo.src = `../assets/lixo/lixo${n}.svg`;
+    
+    lixo.onload = () => {
+      let tent = 0, colocado = false;
+
+      while (!colocado && tent < 100) {
+        const left = rnd(8, 82);
+        const top = rnd(10, 75);
+
+        lixo.style.left = left + '%';
+        lixo.style.top = top + '%';
+
+        const rect = lixo.getBoundingClientRect();
+        const playerRect = player.getBoundingClientRect();
+
+        if (!colide(rect, playerRect) && posicaoValida(rect, rects, 80)) {
+          rects.push(rect);
+          colocado = true;
+          lixo.addEventListener('click', () => abrirPergunta(lixo));
+          lixosAtivos.push(lixo);
+        }
+        tent++;
+      }
+    };
 
     lixosContainer.appendChild(lixo);
-
-    let tent = 0, colocado = false;
-    while (!colocado && tent < 80) {
-      const left = rnd(6, 84);
-      const top = rnd(8, 78);
-
-      lixo.style.left = left + '%';
-      lixo.style.top = top + '%';
-
-      const rect = lixo.getBoundingClientRect();
-      if (posicaoValida(rect, rects, 70)) {
-        rects.push(rect);
-        colocado = true;
-      }
-      tent++;
-    }
-
-    lixo.addEventListener('click', ()=> abrirPergunta(lixo));
-    lixosAtivos.push(lixo);
   }
 }
+
+
 
 
 
@@ -172,18 +187,28 @@
     setTimeout(() => overlay.remove(), 700);
   }
 
-  function mostrarLixoRemovido(x, y) {
-    const msg = document.createElement('div');
-    msg.className = 'msg-removido';
-    msg.textContent = 'LIXO REMOVIDO!';
-    msg.style.left = x + 'px';
-    msg.style.top = (y - 40) + 'px';
-    document.body.appendChild(msg);
-
-    setTimeout(() => {
-      msg.style.opacity = '0';
-      setTimeout(() => msg.remove(), 500);
-    }, 900);
+      function mostrarLixoRemovido(x, y) {
+    const numParticulas = 12;
+    for (let i = 0; i < numParticulas; i++) {
+      const particula = document.createElement('div');
+      particula.className = 'particle lixo-removido';
+      
+      const angle = (i / numParticulas) * Math.PI * 2;
+      const velocity = 3 + Math.random() * 2;
+      const vx = Math.cos(angle) * velocity;
+      const vy = Math.sin(angle) * velocity;
+      
+      particula.style.left = x + 'px';
+      particula.style.top = y + 'px';
+      document.body.appendChild(particula);
+      
+      setTimeout(() => {
+        particula.style.transform = `translate(${vx * 80}px, ${vy * 80}px)`;
+        particula.style.opacity = '0';
+      }, 10);
+      
+      setTimeout(() => particula.remove(), 800);
+    }
   }
 
   // ------- PROGRESSO -------
@@ -237,9 +262,8 @@
     if (progressCircle)
       progressCircle.style.strokeDashoffset = `${circunferencia}`;
 
-
     if (player) {
-      player.style.backgroundImage = '../characters/animals/estrela.svg';
+      player.style.backgroundImage = "url('../characters/animals/estrela.svg')";
       player.style.backgroundSize = "contain";
       player.style.backgroundRepeat = "no-repeat";
       player.style.backgroundPosition = "center";

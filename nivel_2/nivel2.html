@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+    <meta charset="UTF-8">
+    <title>Nível 2 – Ajustar pH</title>
+    <link rel="stylesheet" href="nivel2.css">
+</head>
+<body>
+
+<div class="container">
+
+    <!-- Título -->
+    <header>
+        <h1>Ajusta o pH da Água</h1>
+    </header>
+
+    <!-- Área do aquário -->
+    <section class="aquario">
+        <div id="agua"></div>
+
+        <!-- Peixes -->
+        <img src="peixe1.png" class="peixe" id="peixe1">
+        <img src="peixe2.png" class="peixe" id="peixe2">
+
+        <!-- Barra vertical do pH -->
+        <div class="ph-meter">
+            <div id="ph-bar"></div>
+        </div>
+
+        <!-- Valor numérico do pH -->
+        <div id="ph-valor">pH: 7</div>
+
+        <!-- Estrela que aparece quando o pH está perfeito -->
+        <div id="estrela" class="hide">⭐</div>
+    </section>
+
+    <!-- Controlos -->
+    <section class="controles">
+        <button id="menosBtn" class="btn">-</button>
+        <span class="texto-controle">Ajustar pH</span>
+        <button id="maisBtn" class="btn">+</button>
+    </section>
+
+    <!-- Botão próximo nível -->
+    <button id="btnProximo" class="proximo hide">Próximo nível →</button>
+</div>
+
+<script src="nivel2.js"></script>
+
+</body>
+</html>
