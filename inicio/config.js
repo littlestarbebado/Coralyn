@@ -36,3 +36,7 @@ document.querySelector(".sair").onclick = function () {
 document.querySelector(".fechar").onclick = function () {
     window.location.href = "index.html";
 };
+
+document.getElementById("menu").addEventListener("click", function() {
+    window.location.href = "inicio.html"
+});
