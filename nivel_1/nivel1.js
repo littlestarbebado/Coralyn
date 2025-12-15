@@ -224,12 +224,15 @@ function colide(a, b) {
     progresso = Math.min(100, Math.max(0, progresso));
 
     if (progressCircle) {
-      const offset = circunferencia * (1 - progresso / 100);
-      progressCircle.style.strokeDashoffset = `${offset}`;
+        const offset = circunferencia * (1 - progresso / 100);
+        progressCircle.style.strokeDashoffset = `${offset}`;
     }
 
+    updateScene(progresso);
+
     if (progresso >= 100) subirNivel();
-  }
+}
+
 
   function subirNivel() {
     nivel++;
@@ -263,7 +266,7 @@ function colide(a, b) {
       progressCircle.style.strokeDashoffset = `${circunferencia}`;
 
     if (player) {
-      player.style.backgroundImage = "url('../characters/animals/estrela.svg')";
+      player.style.backgroundImage = "url('../characters/animals/estrela/estrela-sujo.svg')";
       player.style.backgroundSize = "contain";
       player.style.backgroundRepeat = "no-repeat";
       player.style.backgroundPosition = "center";
@@ -287,3 +290,26 @@ function colide(a, b) {
 
   document.addEventListener('DOMContentLoaded', init);
 })();
+
+function updateScene(progress) {
+  const background = document.getElementById("background");
+  const playerImg = document.getElementById("player");
+
+  let stage = "";
+
+  if (progress < 33) {
+    stage = "sujo";
+  } else if (progress < 66) {
+    stage = "meio";
+  } else {
+    stage = "limpo";
+  }
+
+  // fundo certo
+  background.style.backgroundImage =
+    `url('../assets/fundo/fundo-${stage}.svg')`;
+
+  // personagem certo
+  playerImg.src = `../assets/characters/animals/estrela/estrela-${stage}.svg`;
+}
+
