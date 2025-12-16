@@ -9,6 +9,7 @@
 </head>
 
 <body>
+<div id="background"></div>
 
   <!-- Level up overlay -->
   <div id="level-up-overlay" class="hidden">
@@ -21,32 +22,30 @@
   <!-- Config button -->
   <button id="btn-config" aria-label="Configurações">
     <img src="../assets/settings.png" alt="Configurações">
+</button>
 
-
-    <!-- Botão de Configurações -->
-    <button id="btn-config">
-      <img src="assets/settings.png" alt="Configurações">
-    </button>
-
-    <!-- Popup configurações -->
     <div id="popup-config" class="popup hidden">
-      <div class="popup-config-content">
-        <button id="btn-fechar-config" class="btn-fechar-config">✖</button>
-        <h2>Definições</h2>
-        <div class="config-item">
-          <label for="slider-musica">Música</label>
-          <input type="range" id="slider-musica" min="0" max="100" value="20">
-        </div>
-        <div class="config-item">
-          <label for="slider-efeitos">Efeitos Sonoros</label>
-          <input type="range" id="slider-efeitos" min="0" max="100" value="20">
-        </div>
-        <div class="config-botoes">
-          <button id="btn-sair" class="btn-sair">SAIR</button>
-          <button id="btn-menu" class="btn-menu">MENU</button>
-        </div>
-      </div>
+  <div class="popup-config-content">
+    <button id="btn-fechar-config" class="btn-fechar-config">✖</button>
+    <h2>Definições</h2>
+
+    <div class="config-item">
+      <label for="slider-musica">Música</label>
+      <input type="range" id="slider-musica" min="0" max="100" value="20">
     </div>
+
+    <div class="config-item">
+      <label for="slider-efeitos">Efeitos Sonoros</label>
+      <input type="range" id="slider-efeitos" min="0" max="100" value="20">
+    </div>
+
+    <div class="config-botoes">
+      <button id="btn-sair" class="btn-sair">SAIR</button>
+      <button id="btn-menu" class="btn-menu">MENU</button>
+    </div>
+  </div>
+</div>
+
 
     <!-- Top-left level indicator (SVG progress) -->
     <div id="level-icon">
@@ -65,7 +64,7 @@
       <div id="fala">Socorro! Limpa o lixo à minha volta!</div>
 
       <div class="player">
-        <img src="../assets/characters/animals/estrela.svg" alt="Estrela">
+        <img id="player" src="../assets/characters/animals/estrela/estrela-sujo.svg" />
       </div>
 
       <!-- onde os lixos aparecem -->
