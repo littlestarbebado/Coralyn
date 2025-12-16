@@ -10,8 +10,10 @@ html, body {
 }
 
 body {
-  background: radial-gradient(circle at top, #1f8dff 0%, #0051b8 35%, #003b80 100%);
-  overflow: hidden;
+  background-image: url('../assets/backgrounds/inicio-bg.jpg');
+  background-size: cover;      
+  background-repeat: no-repeat; 
+  background-position: center;  
 }
 
 /* container geral */
@@ -25,7 +27,7 @@ body {
 /* logo */
 .logo-area {
   position: absolute;
-  top: 18%;
+  top: 10%;
   left: 50%;
   transform: translateX(-50%);
   display: flex;
@@ -33,20 +35,9 @@ body {
   gap: 20px;
 }
 
-/* “coral” laranja (simples, só para lembra a imagem) */
-.logo-mark {
-  width: 130px;
-  height: 110px;
-  background: radial-gradient(circle at 30% 20%, #ffd37a 0, #ff9a1a 40%, #ff6a00 100%);
-  border-radius: 60% 40% 55% 45%;
-}
-
-/* texto CORALYN */
-.logo-text {
-  font-size: 64px;
-  font-weight: 800;
-  letter-spacing: 3px;
-  color: #ffffff;
+.logo-img {
+    width: 405px;
+    height: auto;
 }
 
 /* conteúdo central */

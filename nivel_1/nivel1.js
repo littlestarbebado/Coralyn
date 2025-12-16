@@ -135,9 +135,6 @@ function colide(a, b) {
 }
 
 
-
-
-
   // ------- PERGUNTA -------
   botoes.forEach((btn, idx) => btn.addEventListener('click', () => responder(idx)));
 
