@@ -151,6 +151,8 @@ function colide(a, b) {
   }
 
   function responder(opcao) {
+    
+  
     popup.classList.add('hidden');
 
     if (opcao !== respostaCorreta) {
@@ -159,7 +161,8 @@ function colide(a, b) {
     }
 
     const rect = lixoSelecionado.getBoundingClientRect();
-    mostrarLixoRemovido(rect.left + rect.width / 2, rect.top + rect.height / 2);
+mostrarLixoRemovido(rect.left + rect.width / 2, rect.top + rect.height / 2);
+mostrarTextoLixoRemovido();
 
     lixoSelecionado.style.transition = 'transform .6s ease, opacity .6s ease';
     lixoSelecionado.style.transform = 'scale(0) rotate(360deg)';
@@ -174,13 +177,29 @@ function colide(a, b) {
     }, 620);
   }
 
-function mostrarErro() {
+  function mostrarErro() {
+  // Flash vermelho
   const flash = document.createElement('div');
   flash.className = 'erro-flash';
   document.body.appendChild(flash);
 
-  setTimeout(() => flash.remove(), 600);
-}
+  // Mensagem dramática
+  const msg = document.createElement('div');
+  msg.className = 'erro-msg';
+  msg.textContent = "RESPOSTA ERRADA! SEU MERDAS, FILHO DA PUTA, CABRAO, NUNCA VAIS SER NNG NA TUA VIDA, MORRE AGORA";
+  document.body.appendChild(msg);
+
+  // Tremer o ecrã
+  document.body.style.animation = "tremer 2s";
+
+  setTimeout(() => {
+    flash.remove();
+    msg.remove();
+    document.body.style.animation = "";
+  }, 600);
+  
+} 
+
 
 
       function mostrarLixoRemovido(x, y) {
@@ -206,6 +225,19 @@ function mostrarErro() {
       setTimeout(() => particula.remove(), 800);
     }
   }
+
+  function mostrarTextoLixoRemovido() {
+  const msg = document.getElementById("lixo-removido-msg");
+
+  msg.style.opacity = "1";
+  msg.style.transform = "translate(-50%, -50%) scale(1)";
+
+  setTimeout(() => {
+    msg.style.opacity = "0";
+    msg.style.transform = "translate(-50%, -50%) scale(0.6)";
+  }, 600);
+}
+
 
   // ------- PROGRESSO -------
   function quantidadeLixoPorNivel(n) {
@@ -248,7 +280,7 @@ function mostrarErro() {
   // 👉 SE o nível terminou, muda para a próxima página
   setTimeout(() => {
 window.location.href = `../nivel_${nivel}/nivel${nivel}.html`;
-  }, 900);
+   }, 900);
 }
 
   // ------- START DO NÍVEL -------

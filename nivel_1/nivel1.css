@@ -18,6 +18,14 @@ body {
   z-index: -1;
 }
 
+.titulo {
+  margin: 0;
+  padding: 12px;
+  text-align: center;
+  font-size: 32px;
+  background: rgba(255, 255, 255, 0.15);
+  color: white;
+}
 
 .jogo {
   position: relative;
@@ -103,31 +111,7 @@ body {
   }
 }
 
-#lixo-removido {
-  position: fixed;
-  top: 50%;
-  left: 50%;
-  font-size: 48px;
-  font-weight: bold;
-  color: #00ff00;
-  text-shadow: 0 0 10px #00ff00, 0 0 20px #00aa00;
-  transform: translate(-50%, -150%) scale(1);
-  opacity: 0;
-  transition: all 0.3s ease;
-  z-index: 10000;
-}
-.msg-removido {
-  position: fixed;
-  font-size: 48px;
-  font-weight: bold;
-  color: #00ff00;
-  text-shadow: 0 0 10px #00ff00, 0 0 20px #00aa00;
-  transform: translate(-50%, -50%);
-  opacity: 1;
-  transition: opacity 0.5s ease;
-  z-index: 10000;
-  pointer-events: none;
-}
+
 /* Partículas felizes (confetes) */
 .particle {
   position: fixed;
@@ -162,47 +146,7 @@ body {
   pointer-events: none;
 }
 
-#error-overlay {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background: rgba(0, 0, 0, 0.75);
-  pointer-events: none;
-  opacity: 0;
-  transition: opacity 0.2s ease;
-  z-index: 9999;
-}
 
-/* Texto ERRO intenso */
-#erro-msg {
-  position: fixed;
-  top: 50%;
-  left: 50%;
-  font-size: 64px;
-  font-weight: bold;
-  color: #ff0000;
-  text-shadow: 0 0 20px #ff0000, 0 0 40px #990000;
-  transform: translate(-50%, -50%) scale(1);
-  opacity: 0;
-  transition: all 0.2s ease;
-  z-index: 10000;
-}
-
-/* Partículas de fragmento vermelho */
-.error-particle {
-  position: fixed;
-  width: 10px;
-  height: 10px;
-  background: #ff0000;
-  border-radius: 50%;
-  pointer-events: none;
-  opacity: 0.9;
-  transform: translate(0, 0);
-  transition: transform 0.8s ease-out, opacity 0.8s ease-out;
-  z-index: 10001;
-}
 
 /* Popup */
 .popup {
@@ -576,54 +520,66 @@ body {
   transition: transform 1.5s ease-out, opacity 1.5s ease-out;
 }
 
-.lixo-removido {
-  position: fixed;
-  width: 10px;
-  height: 10px;
-  background: radial-gradient(circle, #00ff99 20%, #00cc66 80%);
-  border-radius: 50%;
-  pointer-events: none;
-  opacity: 1;
-  transform: scale(1);
-  transition: transform 0.8s ease-out, opacity 0.8s ease-out;
-  z-index: 10001;
-}
- .error-particle {
-  position: fixed;
-  width: 12px;
-  height: 12px;
-  background: radial-gradient(circle, #ff4444 20%, #cc0000 80%);
-  border-radius: 50%;
-  pointer-events: none;
-  opacity: 1;
-  transform: scale(1);
-  transition: transform 0.8s ease-out, opacity 0.8s ease-out;
-  z-index: 10001;
-}
-@keyframes errorBurst {
-  0% {
-    transform: scale(1);
-    opacity: 1;
-  }
-  100% {
-    transform: scale(3);
-    opacity: 0;
-  }
-}
+/* ====== ERRO (flash vermelho) ====== */
 .erro-flash {
   position: fixed;
   inset: 0;
-  background: rgba(255, 0, 0, 0.25);
-  z-index: 15000;
-  animation: erroFlash 0.6s ease-out forwards;
-  pointer-events: none;
+  background: rgba(255, 0, 0, 0.35);
+  animation: erroFlash 5s ease;
+  z-index: 9999;
 }
 
+/* tremor */
 @keyframes erroFlash {
-  0% {
-    opacity: 1;
-  }
-  100% {
-    opacity: 0;
-  }
+  0% { opacity: 0; }
+  20% { opacity: 1; }
+  100% { opacity: 0; }
+}
+
+.erro-msg {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%) scale(1);
+  font-size: 70px;
+  font-weight: 900;
+  color: #ff0000;
+  text-shadow: 0 0 25px #ff0000, 0 0 50px #8b0000;
+  opacity: 0;
+  animation: erroMensagem 5s ease-out;
+  z-index: 10000;
+}
+
+@keyframes erroMensagem {
+  0% { opacity: 0; transform: translate(-50%, -50%) scale(0.6); }
+  40% { opacity: 1; transform: translate(-50%, -50%) scale(1.1); }
+  100% { opacity: 0; transform: translate(-50%, -50%) scale(1); }
+}
+
+/* ====== PARTÍCULAS DO LIXO REMOVIDO ====== */
+.particle.lixo-removido {
+  position: fixed;
+  width: 14px;
+  height: 14px;
+  background: #4cff79;          /* verde fosforescente */
+  border-radius: 50%;
+  pointer-events: none;
+  opacity: 1;
+  transition: transform 0.7s ease-out, opacity 0.7s ease-out;
+  z-index: 9999;
+}
+
+/* ====== TEXTO "LIXO REMOVIDO!" ====== */
+#lixo-removido-msg {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%) scale(0.6);
+  font-size: 56px;
+  font-weight: 900;
+  color: #4cff79;
+  text-shadow: 0 0 20px #4cff79, 0 0 40px #2fdd57;
+  opacity: 0;
+  transition: opacity .2s linear, transform .3s ease-out;
+  z-index: 10000;
 }
