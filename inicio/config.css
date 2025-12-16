@@ -74,3 +74,14 @@ input[type="range"] {
     margin-top: 10px;
     cursor: pointer;
 }
+
+
+.overlay {
+  position: fixed;
+  inset: 0;
+  backdrop-filter: blur(4px);
+  display: flex;          /* o inline style começa como none, o JS troca para flex */
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+}
