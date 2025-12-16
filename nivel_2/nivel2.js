@@ -135,6 +135,9 @@ function colide(a, b) {
 }
 
 
+
+
+
   // ------- PERGUNTA -------
   botoes.forEach((btn, idx) => btn.addEventListener('click', () => responder(idx)));
 
@@ -174,14 +177,15 @@ function colide(a, b) {
     }, 620);
   }
 
-function mostrarErro() {
-  const flash = document.createElement('div');
-  flash.className = 'erro-flash';
-  document.body.appendChild(flash);
-
-  setTimeout(() => flash.remove(), 600);
-}
-
+  function mostrarErro() {
+    const overlay = document.createElement('div');
+    overlay.style.position = 'fixed';
+    overlay.style.inset = 0;
+    overlay.style.background = 'rgba(150,0,0,0.18)';
+    overlay.style.zIndex = 13000;
+    document.body.appendChild(overlay);
+    setTimeout(() => overlay.remove(), 700);
+  }
 
       function mostrarLixoRemovido(x, y) {
     const numParticulas = 12;
@@ -247,7 +251,7 @@ function mostrarErro() {
 
   // 👉 SE o nível terminou, muda para a próxima página
   setTimeout(() => {
-window.location.href = `../nivel_${nivel}/nivel${nivel}.html`;
+    window.location.href = `nivel${nivel}.html`;
   }, 900);
 }
 
@@ -260,7 +264,7 @@ window.location.href = `../nivel_${nivel}/nivel${nivel}.html`;
       progressCircle.style.strokeDashoffset = `${circunferencia}`;
 
     if (player) {
-      player.style.backgroundImage = "url('../characters/animals/estrela/estrela-sujo.svg')";
+      player.style.backgroundImage = "url('../characters/animals/tubarao/tubarao-sujo.svg')";
       player.style.backgroundSize = "contain";
       player.style.backgroundRepeat = "no-repeat";
       player.style.backgroundPosition = "center";
@@ -304,6 +308,6 @@ function updateScene(progress) {
     `url('../assets/fundo/fundo-${stage}.svg')`;
 
   // personagem certo
-  playerImg.src = `../assets/characters/animals/estrela/estrela-${stage}.svg`;
+  playerImg.src = `../assets/characters/animals/tubararo/tubarao-${stage}.svg`;
 }
 
