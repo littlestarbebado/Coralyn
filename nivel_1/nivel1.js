@@ -311,5 +311,6 @@ function updateScene(progress) {
 
   // personagem certo
   playerImg.src = `../assets/characters/animals/estrela/estrela-${stage}.svg`;
+
 }
 

@@ -1,15 +1,6 @@
-let musica = document.getElementById("musica");
-let efeitos = document.getElementById("efeitos");
 
-let valorMusica = document.getElementById("valorMusica");
-let valorEfeitos = document.getElementById("valorEfeitos");
 
-// carregar valores guardados
-musica.value = localStorage.getItem("musica") || 50;
-efeitos.value = localStorage.getItem("efeitos") || 50;
 
-valorMusica.innerHTML = musica.value + "%";
-valorEfeitos.innerHTML = efeitos.value + "%";
 
 // quando mexer no slider
 musica.oninput = function () {
@@ -40,3 +31,6 @@ document.querySelector(".fechar").onclick = function () {
 document.getElementById("menu").addEventListener("click", function() {
     window.location.href = "inicio.html"
 });
+
+
+

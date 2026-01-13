@@ -52,3 +52,4 @@ document.addEventListener("DOMContentLoaded", () => {
 document.getElementById("btnSettings").addEventListener("click", function() {
     window.location.href = "config.html"
 });
+
