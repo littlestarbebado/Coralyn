@@ -1,65 +1,39 @@
 <!DOCTYPE html>
 <html lang="pt">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Coralyn</title>
-    <link rel="stylesheet" href="inicio.css">
+  <meta charset="UTF-8">
+  <title>Coralyn</title>
+  <link rel="stylesheet" href="inicio.css">
 </head>
 <body>
-    <!-- ÁUDIO - TOCA LOGO QUE PODE -->
-    <audio id="gameMusic" loop preload="auto">
-        <source src="assets/som/your-summer-mood-381481.mp3" type="audio/mp3">
-        Seu navegador não suporta áudio.
-    </audio>
+  
+  <div class="page">
+    <!-- Ícone de definições no topo direito -->
+    <button id="btnSettings" class="settings-btn">
+    <img src="../assets/settings.png" alt="Definições">
+    </button>
 
-    <div class="page">
-        <!-- BOTÃO CONFIGURAÇÕES (LIMPO) -->
-        <button id="btnSettings" class="settings-btn" type="button" aria-label="Definições">⚙</button>
+    <!-- Logo ao centro -->
+    <header class="logo-area">
+    <img src="../assets/logo.svg" alt="Logo Coralyn" class="logo-img">
+    </header>
 
-        <!-- Logo -->
-        <header class="logo-area">
-            <div class="logo-mark"></div>
-            <span class="logo-text">CORALYN</span>
-        </header>
+    <!-- Botões centrais -->
+    <main class="content">
+      <button id="btnIniciar" class="btn-main" type="button">INICIAR</button>
 
-        <!-- Botões centrais -->
-        <main class="content">
-            <button id="btnIniciar" class="btn-main" type="button">INICIAR</button>
-            <div class="secondary-buttons">
-                <button id="btnComoJogar" class="btn-secondary" type="button">Como Jogar</button>
-                <button id="btnSessao" class="btn-secondary" type="button">Iniciar Sessão</button>
-            </div>
-        </main>
+      <div class="secondary-buttons">
+        <button id="btnComoJogar" class="btn-secondary" type="button">
+          Como Jogar
+        </button>
+        <button id="btnSessao" class="btn-secondary" type="button">
+          Iniciar Sessão
+        </button>
+      </div>
+    </main>
+  </div>
 
-        <!-- Botão ? -->
-        <button class="help-btn" type="button" aria-label="Ajuda">?</button>
-    </div>
 
-    <!-- MODAL CONFIGURAÇÕES (LIMPO E FUNCIONAL) -->
-    <div id="modalConfig" class="modal">
-        <div class="modal-content">
-            <button class="modal-close" id="modalClose" aria-label="Fechar">✕</button>
-            <h2>Configurações</h2>
-            
-            <div class="opcao">
-                🎵 Volume da Música
-                <input type="range" id="musica" min="0" max="100" value="50">
-                <span id="valorMusica">50%</span>
-            </div>
-            
-            <div class="opcao">
-                🔊 Volume dos Efeitos
-                <input type="range" id="efeitos" min="0" max="100" value="50">
-                <span id="valorEfeitos">50%</span>
-            </div>
-            
-            <button class="menu">Voltar</button>
-            <button class="sair">Sair</button>
-        </div>
-    </div>
-
-    <!-- SCRIPT NO FINAL (1x só) -->
-    <script src="inicio.js"></script>
+  <script src="inicio.js"></script>
 </body>
 </html>

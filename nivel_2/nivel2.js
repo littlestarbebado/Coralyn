@@ -135,6 +135,9 @@ function colide(a, b) {
 }
 
 
+
+
+
   // ------- PERGUNTA -------
   botoes.forEach((btn, idx) => btn.addEventListener('click', () => responder(idx)));
 
@@ -151,8 +154,6 @@ function colide(a, b) {
   }
 
   function responder(opcao) {
-    
-  
     popup.classList.add('hidden');
 
     if (opcao !== respostaCorreta) {
@@ -161,8 +162,7 @@ function colide(a, b) {
     }
 
     const rect = lixoSelecionado.getBoundingClientRect();
-mostrarLixoRemovido(rect.left + rect.width / 2, rect.top + rect.height / 2);
-mostrarTextoLixoRemovido();
+    mostrarLixoRemovido(rect.left + rect.width / 2, rect.top + rect.height / 2);
 
     lixoSelecionado.style.transition = 'transform .6s ease, opacity .6s ease';
     lixoSelecionado.style.transform = 'scale(0) rotate(360deg)';
@@ -178,29 +178,14 @@ mostrarTextoLixoRemovido();
   }
 
   function mostrarErro() {
-  // Flash vermelho
-  const flash = document.createElement('div');
-  flash.className = 'erro-flash';
-  document.body.appendChild(flash);
-
-  // Mensagem dramática
-  const msg = document.createElement('div');
-  msg.className = 'erro-msg';
-  msg.textContent = "RESPOSTA ERRADA! SEU MERDAS, FILHO DA PUTA, CABRAO, NUNCA VAIS SER NNG NA TUA VIDA, MORRE AGORA";
-  document.body.appendChild(msg);
-
-  // Tremer o ecrã
-  document.body.style.animation = "tremer 2s";
-
-  setTimeout(() => {
-    flash.remove();
-    msg.remove();
-    document.body.style.animation = "";
-  }, 600);
-  
-} 
-
-
+    const overlay = document.createElement('div');
+    overlay.style.position = 'fixed';
+    overlay.style.inset = 0;
+    overlay.style.background = 'rgba(150,0,0,0.18)';
+    overlay.style.zIndex = 13000;
+    document.body.appendChild(overlay);
+    setTimeout(() => overlay.remove(), 700);
+  }
 
       function mostrarLixoRemovido(x, y) {
     const numParticulas = 12;
@@ -225,19 +210,6 @@ mostrarTextoLixoRemovido();
       setTimeout(() => particula.remove(), 800);
     }
   }
-
-  function mostrarTextoLixoRemovido() {
-  const msg = document.getElementById("lixo-removido-msg");
-
-  msg.style.opacity = "1";
-  msg.style.transform = "translate(-50%, -50%) scale(1)";
-
-  setTimeout(() => {
-    msg.style.opacity = "0";
-    msg.style.transform = "translate(-50%, -50%) scale(0.6)";
-  }, 600);
-}
-
 
   // ------- PROGRESSO -------
   function quantidadeLixoPorNivel(n) {
@@ -279,8 +251,8 @@ mostrarTextoLixoRemovido();
 
   // 👉 SE o nível terminou, muda para a próxima página
   setTimeout(() => {
-window.location.href = `../nivel_${nivel}/nivel${nivel}.html`;
-   }, 900);
+    window.location.href = `nivel${nivel}.html`;
+  }, 900);
 }
 
   // ------- START DO NÍVEL -------
@@ -292,7 +264,7 @@ window.location.href = `../nivel_${nivel}/nivel${nivel}.html`;
       progressCircle.style.strokeDashoffset = `${circunferencia}`;
 
     if (player) {
-      player.style.backgroundImage = "url('../characters/animals/estrela/estrela-sujo.svg')";
+      player.style.backgroundImage = "url('../characters/animals/tubarao/tubarao-sujo.svg')";
       player.style.backgroundSize = "contain";
       player.style.backgroundRepeat = "no-repeat";
       player.style.backgroundPosition = "center";
@@ -336,7 +308,6 @@ function updateScene(progress) {
     `url('../assets/fundo/fundo-${stage}.svg')`;
 
   // personagem certo
-  playerImg.src = `../assets/characters/animals/estrela/estrela-${stage}.svg`;
-
+  playerImg.src = `../assets/characters/animals/tubararo/tubarao-${stage}.svg`;
 }
 

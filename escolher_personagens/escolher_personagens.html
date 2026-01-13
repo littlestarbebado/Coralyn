@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+    <meta charset="UTF-8">
+    <title>Escolhe a Personagem</title>
+    <link rel="stylesheet" href="escolher.css">
+</head>
+<body>
+
+    <img src="../assets/logo.svg" class="logo" alt="Logo Coralyn">
+
+    <button class="settings-btn" onclick="abrirConfig()">
+        <img src="../assets/settings.png" alt="Configurações">
+    </button>
+
+    <h1 class="titulo">ESCOLHE A PERSONAGEM</h1>
+
+    <div class="container">
+
+        <div class="card" onclick="escolher('sereia')">
+            <img src="../assets/characters/personagens/Sereia.png" class="char">
+        </div>
+
+        <div class="card" onclick="escolher('mergulhador')">
+            <img src="../assets/characters/personagens/Mergulhador.png" class="char">
+        </div>
+
+    </div>
+
+    <script src="escolher.js"></script>
+</body>
+</html>

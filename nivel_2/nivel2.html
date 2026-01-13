@@ -4,8 +4,9 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>CORALYN - Nível 1</title>
-  <link rel="stylesheet" href="nivel1.css">
+  <title>CORALYN - Nível 2
+  </title>
+  <link rel="stylesheet" href="nivel2.css">
 </head>
 
 <body>
@@ -15,9 +16,36 @@
   <div id="level-up-overlay" class="hidden">
     <div id="level-up-content">
       <div id="level-up-waves"></div>
-      <div id="level-up-text">NÍVEL 1!</div>
+      <div id="level-up-text">NÍVEL 2!</div>
     </div>
   </div>
+
+  <!-- Config button -->
+  <button id="btn-config" aria-label="Configurações">
+    <img src="../assets/settings.png" alt="Configurações">
+</button>
+
+    <div id="popup-config" class="popup hidden">
+  <div class="popup-config-content">
+    <button id="btn-fechar-config" class="btn-fechar-config">✖</button>
+    <h2>Definições</h2>
+
+    <div class="config-item">
+      <label for="slider-musica">Música</label>
+      <input type="range" id="slider-musica" min="0" max="100" value="20">
+    </div>
+
+    <div class="config-item">
+      <label for="slider-efeitos">Efeitos Sonoros</label>
+      <input type="range" id="slider-efeitos" min="0" max="100" value="20">
+    </div>
+
+    <div class="config-botoes">
+      <button id="btn-sair" class="btn-sair">SAIR</button>
+      <button id="btn-menu" class="btn-menu">MENU</button>
+    </div>
+  </div>
+</div>
 
 
     <!-- Top-left level indicator (SVG progress) -->
@@ -28,7 +56,7 @@
           stroke-linecap="round" />
       </svg>
       <div id="level-number-container">
-        <div id="level-number">1</div>
+        <div id="level-number">2</div>
       </div>
     </div>
 
@@ -37,7 +65,7 @@
       <div id="fala">Socorro! Limpa o lixo à minha volta!</div>
 
       <div class="player">
-        <img id="player" src="../assets/characters/animals/estrela/estrela-sujo.svg" />
+        <img id="player" src="../assets/characters/animals/tubarao/tubarao-sujo.svg" />
       </div>
 
       <!-- onde os lixos aparecem -->
@@ -53,9 +81,10 @@
         <button class="opcao" type="button"></button>
       </div>
     </div>
-    <div id="lixo-removido-msg">LIXO REMOVIDO!</div>
 
-    <script src="nivel1.js" defer></script>
+    <script src="nivel2.js" defer></script>
+<div id="error-overlay"></div>
+<div id="erro-msg">ERRO!</div>
 
 </body>
 
