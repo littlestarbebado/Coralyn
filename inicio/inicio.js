@@ -1,54 +1,71 @@
+let musicaFundo;
+
 document.addEventListener("DOMContentLoaded", () => {
 
-    // Botão da engrenagem
-    const btnSettings = document.getElementById("btnSettings");
-    
+  // 🎵 Música de fundo
+  musicaFundo = new Audio("../assets/audio/song.mp3");
+  musicaFundo.loop = true;
+  musicaFundo.volume = 0.3; // 🔊 volume correto
 
-    // Modal
-    const modal = document.getElementById("modalConfig");
-    const closeModal = document.getElementById("closeModal");
+  musicaFundo.play().catch(() => {
+    // autoplay bloqueado (normal)
+  });
 
-    // Sliders
-    const musica = document.getElementById("musica");
-    const efeitos = document.getElementById("efeitos");
-    const valorMusica = document.getElementById("valorMusica");
-    const valorEfeitos = document.getElementById("valorEfeitos");
+  // ▶️ ativar música no primeiro clique
+  document.addEventListener("click", () => {
+    if (musicaFundo.paused) {
+      musicaFundo.play();
+    }
+  }, { once: true });
 
-    // Botões do modal
-    const btnMenu = document.getElementById("btnMenu");
-    const btnSair = document.getElementById("btnSair");
+  // ---------------------------
+  // CONFIGURAÇÕES / MODAL
+  // ---------------------------
 
-    // ABRIR MODAL
-    btnSettings.addEventListener("click", () => {
-        modal.style.display = "flex";
-    });
+  const btnSettings = document.getElementById("btnSettings");
+  const modal = document.getElementById("modalConfig");
+  const closeModal = document.getElementById("closeModal");
 
-    // FECHAR MODAL
-    closeModal.addEventListener("click", () => {
-        modal.style.display = "none";
-    });
+  const musica = document.getElementById("musica");
+  const efeitos = document.getElementById("efeitos");
+  const valorMusica = document.getElementById("valorMusica");
+  const valorEfeitos = document.getElementById("valorEfeitos");
 
-    // BOTÃO MENU
-    btnMenu.addEventListener("click", () => {
-        modal.style.display = "none";
-    });
+  const btnMenu = document.getElementById("btnMenu");
+  const btnSair = document.getElementById("btnSair");
 
-    // BOTÃO SAIR
-    btnSair.addEventListener("click", () => {
-        modal.style.display = "none";
-    });
+  // abrir modal
+  btnSettings.addEventListener("click", () => {
+    modal.style.display = "flex";
+  });
 
-    // SLIDERS
-    musica.addEventListener("input", () => {
-        valorMusica.textContent = musica.value + "%";
-    });
+  // fechar modal
+  closeModal.addEventListener("click", () => {
+    modal.style.display = "none";
+  });
 
-    efeitos.addEventListener("input", () => {
-        valorEfeitos.textContent = efeitos.value + "%";
-    });
+  // sliders
+  musica.addEventListener("input", () => {
+  const volume = musica.value / 100;
+  musicaFundo.volume = volume;
+  localStorage.setItem("volumeMusica", volume);
 });
 
 
-document.getElementById("btnSettings").addEventListener("click", function() {
-    window.location.href = "config.html"
+  efeitos.addEventListener("input", () => {
+    valorEfeitos.textContent = efeitos.value + "%";
+  });
+
+  // botões
+  btnMenu.addEventListener("click", () => {
+    modal.style.display = "none";
+  });
+
+  btnSair.addEventListener("click", () => {
+    musicaFundo.pause();
+    window.close(); // ou outra ação
+  });
+});
+document.getElementById("btn-config").addEventListener("click", () => {
+  window.location.href = "../inicio/config.html";
 });
