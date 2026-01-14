@@ -2,13 +2,14 @@
 document.addEventListener('DOMContentLoaded', () => {
   // CONFIG
   const IDEAL_PH = 8.1;
+  const IDEAL_PH1 = 0;
   const SAFE_DELTA = 0.30;   // +/- zone considered ideal
   const STRESS_THRESHOLD = IDEAL_PH - 1.0; // when below this, stress rises
   const MAX_PH = 13.3;
   const MIN_PH = 0;
 
   // STATE
-  let ph = IDEAL_PH;
+  let ph = IDEAL_PH1;
   let naturalDriftInterval = null;
 
   // SELECTORS
