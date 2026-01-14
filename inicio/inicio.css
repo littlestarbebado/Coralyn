@@ -10,8 +10,10 @@ html, body {
 }
 
 body {
-  background: radial-gradient(circle at top, #1f8dff 0%, #0051b8 35%, #003b80 100%);
-  overflow: hidden;
+  background-image: url('../assets/fundo/fundo-limpo.svg');
+  background-size: cover;      
+  background-repeat: no-repeat; 
+  background-position: center;  
 }
 
 /* container geral */
@@ -19,13 +21,22 @@ body {
   position: relative;
   width: 100%;
   height: 100vh;
-  color: #ffffff;
+  overflow: hidden;
 }
 
+.page::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background-image: url('../assets/fundo/fundo-limpo.svg');
+  filter: blur(6px);        
+  z-index: -1;     
+}
+  
 /* logo */
 .logo-area {
   position: absolute;
-  top: 18%;
+  top: 10%;
   left: 50%;
   transform: translateX(-50%);
   display: flex;
@@ -33,20 +44,9 @@ body {
   gap: 20px;
 }
 
-/* “coral” laranja (simples, só para lembra a imagem) */
-.logo-mark {
-  width: 130px;
-  height: 110px;
-  background: radial-gradient(circle at 30% 20%, #ffd37a 0, #ff9a1a 40%, #ff6a00 100%);
-  border-radius: 60% 40% 55% 45%;
-}
-
-/* texto CORALYN */
-.logo-text {
-  font-size: 64px;
-  font-weight: 800;
-  letter-spacing: 3px;
-  color: #ffffff;
+.logo-img {
+    width: 405px;
+    height: auto;
 }
 
 /* conteúdo central */
@@ -60,7 +60,7 @@ body {
 
 /* botão laranja grande */
 .btn-main {
-  background-color: #ff7a1a;
+  background-color: #F99C1C;
   color: #ffffff;
   font-size: 28px;
   font-weight: 700;
@@ -69,6 +69,11 @@ body {
   padding: 22px 120px;
   cursor: pointer;
   box-shadow: 0 16px 28px rgba(0, 0, 0, 0.35);
+  transition: 0.3s ease;
+}
+
+.btn-main:hover {
+  background: #E75A25;   
 }
 
 /* botões azuis por baixo */
@@ -80,48 +85,32 @@ body {
 }
 
 .btn-secondary {
-  min-width: 190px;
-  background-color: rgba(0, 0, 0, 0.18);
-  color: #e6f6ff;
-  font-size: 15px;
-  border: none;
+  background: rgba(255, 255, 255, 0.2);
+  color: #ffffff;
+  font-weight: 600;
   border-radius: 999px;
-  padding: 12px 28px;
+  padding: 13px 36px;
+  backdrop-filter: blur(5px);
+  border: 1px solid rgba(255, 255, 255, 0.3);
   cursor: pointer;
-  backdrop-filter: blur(3px);
+  transition: 0.3s ease;
 }
 
-/* botão ? */
-.help-btn {
-  position: absolute;
-  right: 26px;
-  bottom: 24px;
-  width: 40px;
-  height: 40px;
-  border-radius: 50%;
-  border: none;
-  background-color: rgba(0, 0, 0, 0.45);
-  color: #ffffff;
-  font-size: 20px;
-  cursor: pointer;
+.btn-secondary:hover {
+  background-color: #10587D;
 }
 
 /* botão das definições */
 .settings-btn {
-  position: absolute;
-  right: 26px;
-  top: 24px;
-  width: 46px;
-  height: 46px;
-  border-radius: 50%;
-  border: none;
-  background-color: rgba(0, 0, 0, 0.35);
-  color: #ffffff;
-  font-size: 24px;
-  cursor: pointer;
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    background: none;
+    border: none;
+    cursor: pointer;
 }
 
-
-
-
-
+.settings-btn img {
+    width: 40px;
+    height: 40px;
+}

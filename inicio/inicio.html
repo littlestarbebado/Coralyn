@@ -9,18 +9,13 @@
   
   <div class="page">
     <!-- Ícone de definições no topo direito -->
-    <button id="btnSettings" class="settings-btn" type="button" aria-label="Definições">⚙
-     <link rel="stylesheet" href="/config/config.css">
-     <script src="inicio.js"></script> 
-     <a href="config.html" target="_blank"></a>
+    <button id="btn-config" class="settings-btn">
+    <img src="../assets/settings.png" alt="Definições">
     </button>
-    
 
     <!-- Logo ao centro -->
     <header class="logo-area">
-     
-      <div class="logo-mark"></div>
-      <span class="logo-text">CORALYN</span>
+    <img src="../assets/logo.svg" alt="Logo Coralyn" class="logo-img">
     </header>
 
     <!-- Botões centrais -->
@@ -36,39 +31,9 @@
         </button>
       </div>
     </main>
-
-    <!-- botão ? em baixo à direita -->
-    <button class="help-btn" type="button" aria-label="Ajuda">?</button>
   </div>
 
- <div id="modalConfig" class="modal" aria-hidden="true" role="dialog" aria-labelledby="modalTitle" tabindex="-1">
-  <div class="modal-dialog" role="document">
-    <button class="modal-close" id="modalClose" aria-label="Fechar">✕</button>
-    <h2 id="modalTitle">Configurações</h2>
-    <div class="overlay">
-    <div class="popup">
 
-        <span class="fechar">✕</span>
-
-        <h2>Configurações</h2>
-
-         <div class="opcao">
-            🎵 Volume da Música
-            <input type="range" id="musica" min="0" max="100" value="50">
-            <span id="valorMusica">50%</span>
-        </div>
-
-        <div class="opcao">
-            🔊 Volume dos Efeitos
-            <input type="range" id="efeitos" min="0" max="100" value="50">
-            <span id="valorEfeitos">50%</span>
-        </div>
-
-        <button class="menu">Menu</button>
-        <button class="sair">Sair</button>
-
-    </div>
-</div>
   <script src="inicio.js"></script>
 </body>
 </html>

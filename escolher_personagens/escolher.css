@@ -1,0 +1,66 @@
+body {
+    margin: 0;
+    font-family: "Baloo 2", Arial, sans-serif;
+    background: linear-gradient(#66b2ff, #005c99);
+    height: 100vh;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.logo {
+    width: 180px;
+    position: absolute;
+    top: 10px;
+    left: 10px;
+}
+
+.settings-btn {
+    position: absolute;
+    top: 15px;
+    right: 15px;
+    background: none;
+    border: none;
+    cursor: pointer;
+}
+
+.settings-btn img {
+    width: 45px;
+}
+
+.titulo {
+    margin-top: 90px;
+    font-size: 28px;
+    color: #000;
+    letter-spacing: 2px;
+    text-shadow: 0 2px 3px rgba(0, 0, 0, 0.2);
+}
+
+.container {
+    margin-top: 40px;
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+}
+
+.card {
+    width: 230px;
+    height: 260px;
+    background: rgba(0, 0, 0, 0.20);
+    border-radius: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    transition: transform .2s, box-shadow .2s;
+}
+
+.card:hover {
+    transform: scale(1.05);
+    box-shadow: 0 0 18px rgba(255, 255, 255, 0.4);
+}
+
+.char {
+    width: 70%;
+}
