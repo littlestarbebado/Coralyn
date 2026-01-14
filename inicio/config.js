@@ -45,14 +45,17 @@ efeitos.addEventListener("input", () => {
 // ----------------------------
 // BOTÕES
 // ----------------------------
-document.querySelector(".menu")?.addEventListener("click", () => {
-  window.location.href = "index.html";
+document.querySelector(".nive")?.addEventListener("click", () => {
+  window.location.href = "../pag_niveis/niveis.html";
 });
 
 document.querySelector(".sair")?.addEventListener("click", () => {
-  alert("Jogo fechado (simulação)");
+  alert("Jogo fechado");
+  window.location.href = "../inicio/inicio.html";
 });
 
 document.querySelector(".fechar")?.addEventListener("click", () => {
-  window.location.href = "index.html";
+window.history.back();
+
+
 });

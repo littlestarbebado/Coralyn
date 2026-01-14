@@ -70,6 +70,29 @@
     btnMenu?.addEventListener('click', () => window.location.href = '../niveis.html');
   }
 
+  
+
+document.querySelector(".menu")?.addEventListener("click", () => {
+  window.location.href = "inicio.html";
+});
+
+document.querySelector(".sair")?.addEventListener("click", () => {
+  alert("Jogo fechado (simulação)");
+  window.location.href = "inicio.html";
+});
+
+document.querySelector(".fechar")?.addEventListener("click", () => {
+  window.location.href = "index.html";
+  window.history.back();
+
+});
+
+
+
+
+
+  
+
   // ------- LIXOS -------
   function posicaoValida(novoRect, existentesRects, minDist = 70) {
     for (const r of existentesRects) {
