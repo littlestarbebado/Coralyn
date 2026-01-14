@@ -245,10 +245,11 @@ function mostrarErro() {
     }, 1400);
   }
 
-  // 👉 SE o nível terminou, muda para a próxima página
+  // SE o nível terminou, muda para a próxima página
   setTimeout(() => {
-window.location.href = `../nivel_${nivel}/nivel${nivel}.html`;
-  }, 900);
+   window.location.href = `../nivel_${nivel}/nivel${nivel}.html`;
+  }, 1200);
+
 }
 
   // ------- START DO NÍVEL -------
@@ -260,7 +261,7 @@ window.location.href = `../nivel_${nivel}/nivel${nivel}.html`;
       progressCircle.style.strokeDashoffset = `${circunferencia}`;
 
     if (player) {
-      player.style.backgroundImage = "url('../characters/animals/estrela/estrela-sujo.svg')";
+      player.style.backgroundImage = "'../characters/animals/estrela/estrela-sujo.svg'";
       player.style.backgroundSize = "contain";
       player.style.backgroundRepeat = "no-repeat";
       player.style.backgroundPosition = "center";
@@ -282,7 +283,8 @@ window.location.href = `../nivel_${nivel}/nivel${nivel}.html`;
     iniciarNivel();
   }
 
-  document.addEventListener('DOMContentLoaded', init);
+   document.addEventListener('DOMContentLoaded', init);
+   
 })();
 
 function updateScene(progress) {
