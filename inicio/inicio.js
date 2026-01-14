@@ -2,6 +2,23 @@ let musicaFundo;
 
 document.addEventListener("DOMContentLoaded", () => {
 
+<<<<<<< HEAD
+  //Botão INICIAR
+  document.getElementById("btnIniciar").addEventListener("click", () => {
+    window.location.href = "../pag_niveis/niveis.html";
+  });
+
+  //Botão INICIAR SESSÃO
+  document.getElementById("btnSessao").addEventListener("click", () => {
+    alert("Login em desenvolvimento");
+  });
+
+  //Botão DEFINIÇÕES
+  document.getElementById("btnSettings").addEventListener("click", () => {
+    window.location.href = "config.html";
+  });
+
+=======
   // 🎵 Música de fundo
   musicaFundo = new Audio("../assets/audio/song.mp3");
   musicaFundo.loop = true;
@@ -65,6 +82,7 @@ document.addEventListener("DOMContentLoaded", () => {
     musicaFundo.pause();
     window.close(); // ou outra ação
   });
+>>>>>>> be9aa341047ee105d9ccb529b556e97f9644695a
 });
 document.getElementById("btn-config").addEventListener("click", () => {
   window.location.href = "../inicio/config.html";

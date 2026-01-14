@@ -1,61 +1,42 @@
-let musicaFundo = new Audio("../assets/audio/song.mp3");
-musicaFundo.loop = true;
+let musica = document.getElementById("musica");
+let efeitos = document.getElementById("efeitos");
 
-const volumeGuardado = localStorage.getItem("volumeMusica");
-musicaFundo.volume = volumeGuardado !== null ? parseFloat(volumeGuardado) : 0.3;
+let valorMusica = document.getElementById("valorMusica");
+let valorEfeitos = document.getElementById("valorEfeitos");
 
-musicaFundo.play().catch(() => {});
+// carregar valores guardados
+musica.value = localStorage.getItem("musica") || 50;
+efeitos.value = localStorage.getItem("efeitos") || 50;
 
-document.addEventListener("click", () => {
-  if (musicaFundo.paused) musicaFundo.play();
-}, { once: true });
+valorMusica.innerHTML = musica.value + "%";
+valorEfeitos.innerHTML = efeitos.value + "%";
 
+// quando mexer no slider
+musica.oninput = function () {
+    valorMusica.innerHTML = musica.value + "%";
+    localStorage.setItem("musica", musica.value);
+};
 
-// ----------------------------
-// SLIDERS
-// ----------------------------
-const musica = document.getElementById("musica");
-const efeitos = document.getElementById("efeitos");
+efeitos.oninput = function () {
+    valorEfeitos.innerHTML = efeitos.value + "%";
+    localStorage.setItem("efeitos", efeitos.value);
+};
 
-const valorMusica = document.getElementById("valorMusica");
-const valorEfeitos = document.getElementById("valorEfeitos");
+// botão menu
+document.querySelector(".menu").onclick = function () {
+    window.location.href = "index.html";
+};
 
-// carregar sliders
-musica.value = Math.round((volumeGuardado !== null ? volumeGuardado : 0.3) * 100);
-efeitos.value = localStorage.getItem("volumeEfeitos") || 50;
+// botão sair
+document.querySelector(".sair").onclick = function () {
+    alert("Jogo fechado (simulação)");
+};
 
-valorMusica.textContent = musica.value + "%";
-valorEfeitos.textContent = efeitos.value + "%";
+// fechar popup
+document.querySelector(".fechar").onclick = function () {
+    window.location.href = "index.html";
+};
 
-//  slider música
-musica.addEventListener("input", () => {
-  const volume = musica.value / 100;
-  musicaFundo.volume = volume;
-  valorMusica.textContent = musica.value + "%";
-  localStorage.setItem("volumeMusica", volume);
-});
-
-// slider efeitos (para futuro)
-efeitos.addEventListener("input", () => {
-  valorEfeitos.textContent = efeitos.value + "%";
-  localStorage.setItem("volumeEfeitos", efeitos.value / 100);
-});
-
-
-// ----------------------------
-// BOTÕES
-// ----------------------------
-document.querySelector(".nive")?.addEventListener("click", () => {
-  window.location.href = "../pag_niveis/niveis.html";
-});
-
-document.querySelector(".sair")?.addEventListener("click", () => {
-  alert("Jogo fechado");
-  window.location.href = "../inicio/inicio.html";
-});
-
-document.querySelector(".fechar")?.addEventListener("click", () => {
-window.history.back();
-
-
+document.getElementById("menu").addEventListener("click", function() {
+    window.location.href = "inicio.html"
 });

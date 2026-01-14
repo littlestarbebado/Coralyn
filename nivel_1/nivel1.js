@@ -337,7 +337,16 @@
     }, 900);
   }
 
+<<<<<<< HEAD
+  // SE o nível terminou, muda para a próxima página
+  setTimeout(() => {
+   window.location.href = `../nivel_${nivel}/nivel${nivel}.html`;
+  }, 1200);
 
+}
+=======
+
+>>>>>>> be9aa341047ee105d9ccb529b556e97f9644695a
 
   // ------- START DO NÍVEL -------
 
@@ -348,7 +357,7 @@
       progressCircle.style.strokeDashoffset = `${circunferencia}`;
 
     if (player) {
-      player.style.backgroundImage = "url('../characters/animals/estrela/estrela-sujo.svg')";
+      player.style.backgroundImage = "'../characters/animals/estrela/estrela-sujo.svg'";
       player.style.backgroundSize = "contain";
       player.style.backgroundRepeat = "no-repeat";
       player.style.backgroundPosition = "center";
@@ -370,7 +379,8 @@
     iniciarNivel();
   }
 
-  document.addEventListener('DOMContentLoaded', init);
+   document.addEventListener('DOMContentLoaded', init);
+   
 })();
 
 function updateScene(progress) {
