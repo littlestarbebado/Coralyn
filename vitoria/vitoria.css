@@ -134,8 +134,4 @@ body {
   }
 }
 
-.btn-voltar {
-  animation: fade-up 0.5s ease-out forwards;
-  animation-delay: 0.8s;
-  opacity: 0;
-}
+

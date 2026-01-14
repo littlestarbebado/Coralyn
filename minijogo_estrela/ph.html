@@ -10,7 +10,11 @@
   <main class="wrap">
     <header class="header">
       <h1>Equilibra o pH para a Estrela</h1>
-      <p class="subtitle">Mantém o pH na zona ideal para salvar a estrela do mar 🌊</p>
+<p class="subtitle">
+  Chegaste ao final do nível!
+  Agora tens de sentir o oceano  
+  e encontrar o equilíbrio certo.
+</p>
     </header>
 
     <section class="game">
@@ -56,7 +60,6 @@
           
           <input id="fineSlider" class="slider" type="range" min="0" max="13.3" step="0.1" value="8.1">
 
-          <div class="hint">Zona ideal: <span id="idealRangeText">8.1 ± 0.3</span></div>
         </div>
       </aside>
     </section>
@@ -67,5 +70,12 @@
   </main>
 
   <script src="ph.js" defer></script>
+
+  <div id="overlay-vitoria" class="overlay-vitoria hidden">
+  <div class="vitoria-card">
+    <h2>NÍVEL CONCLUÍDO</h2>
+  </div>
+</div>
+
 </body>
 </html>

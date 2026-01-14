@@ -1,19 +1,21 @@
 <!DOCTYPE html>
 <html lang="pt">
+
 <head>
   <meta charset="UTF-8">
   <title>Vitória</title>
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="stylesheet" href="vitoria.css">
 </head>
+
 <body>
 
   <div class="vitoria-page">
 
-    <!-- Fundo do jogo -->
+    <!-- Fundo -->
     <div class="fundo"></div>
 
-    <!-- Conteúdo vitória -->
+    <!-- Conteúdo -->
     <div class="conteudo">
 
       <!-- Estrelas -->
@@ -26,22 +28,33 @@
       <!-- Coral -->
       <img class="coral" src="../assets/vitoria/coral.svg" alt="">
 
-      <!-- Badge Vitória -->
+      <!-- Badge -->
       <img class="badge" src="../assets/vitoria/vitoria.svg" alt="Vitória">
 
-      <!-- Botão -->
-      <button class="btn-voltar" onclick="voltarInicio()">
-        VOLTAR AO INÍCIO
-      </button>
+
 
     </div>
   </div>
 
   <script>
-    function voltarInicio() {
-      window.location.href = "../inicio/inicio.html";
+    // 🔓 desbloquear próximo nível
+    const nivelAtual = parseInt(localStorage.getItem("nivelAtual")) || 1;
+    const nivelMaximo = parseInt(localStorage.getItem("nivelMaximo")) || 1;
+
+    const proximoNivel = nivelAtual + 1;
+
+    if (proximoNivel > nivelMaximo) {
+      localStorage.setItem("nivelMaximo", proximoNivel);
+      localStorage.setItem("nivelRecemDesbloqueado", proximoNivel);
     }
+
+    // ⏳ ir automaticamente para níveis
+    setTimeout(() => {
+      window.location.href = "../pag_niveis/niveis.html";
+    }, 5000);
+
   </script>
 
 </body>
+
 </html>

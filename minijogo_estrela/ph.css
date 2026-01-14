@@ -222,3 +222,42 @@ html,body
   color:#cfeff8}
 .thermo-wrap
 {justify-content:space-between}
+
+/* ===== VITÓRIA ===== */
+.overlay-vitoria {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.55);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 999;
+}
+
+.overlay-vitoria.hidden {
+  display: none;
+}
+
+.vitoria-card {
+  background: white;
+  padding: 40px 50px;
+  border-radius: 25px;
+  text-align: center;
+  animation: pop 0.6s ease;
+  box-shadow: 0 20px 40px rgba(0,0,0,.3);
+}
+
+.vitoria-card h2 {
+  margin: 0;
+  color: #1f6f9f;
+}
+
+.vitoria-card p {
+  margin-top: 10px;
+  font-size: 16px;
+}
+
+@keyframes pop {
+  0% { transform: scale(0.6); opacity: 0; }
+  100% { transform: scale(1); opacity: 1; }
+}

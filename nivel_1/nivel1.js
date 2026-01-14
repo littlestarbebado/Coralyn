@@ -1,3 +1,4 @@
+localStorage.setItem("nivelAtual", 1);
 (() => {
   'use strict';
 
