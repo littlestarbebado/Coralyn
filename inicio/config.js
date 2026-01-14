@@ -27,7 +27,7 @@ efeitos.value = localStorage.getItem("volumeEfeitos") || 50;
 valorMusica.textContent = musica.value + "%";
 valorEfeitos.textContent = efeitos.value + "%";
 
-// 🎚 slider música
+//  slider música
 musica.addEventListener("input", () => {
   const volume = musica.value / 100;
   musicaFundo.volume = volume;
@@ -35,7 +35,7 @@ musica.addEventListener("input", () => {
   localStorage.setItem("volumeMusica", volume);
 });
 
-// 🎚 slider efeitos (para futuro)
+// slider efeitos (para futuro)
 efeitos.addEventListener("input", () => {
   valorEfeitos.textContent = efeitos.value + "%";
   localStorage.setItem("volumeEfeitos", efeitos.value / 100);
