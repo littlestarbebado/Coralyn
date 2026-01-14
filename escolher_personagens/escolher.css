@@ -10,24 +10,62 @@ body {
 }
 
 .logo {
-    width: 180px;
+    width: 230px;
     position: absolute;
     top: 10px;
     left: 10px;
 }
 
 .settings-btn {
-    position: absolute;
-    top: 15px;
-    right: 15px;
-    background: none;
-    border: none;
-    cursor: pointer;
+  position: absolute;
+  top: 15px;
+  right: 15px;
+  background: none;
+  border: none;
+  cursor: pointer;
 }
 
 .settings-btn img {
-    width: 45px;
+  width: 80px;
+  height: 80px;
 }
+
+.settings-btn:hover {
+  transform: scale(1.1);
+}
+
+.modal {
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,0.6);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 999;
+}
+
+.modal.hidden {
+  display: none;
+}
+
+.modal-content {
+  background: white;
+  padding: 25px;
+  border-radius: 15px;
+  width: 280px;
+  text-align: center;
+}
+
+#closeModal {
+  position: absolute;
+  top: 10px;
+  right: 15px;
+  background: none;
+  border: none;
+  font-size: 20px;
+  cursor: pointer;
+}
+
 
 .titulo {
     margin-top: 90px;
@@ -40,15 +78,15 @@ body {
 .container {
     margin-top: 40px;
     display: flex;
-    flex-direction: column;
-    gap: 30px;
+    flex-direction: row;
+    gap: 40px;
 }
 
 .card {
-    width: 230px;
-    height: 260px;
+    width: 330px;
+    height: 460px;
     background: rgba(0, 0, 0, 0.20);
-    border-radius: 20px;
+    border-radius: 25px;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -62,5 +100,5 @@ body {
 }
 
 .char {
-    width: 70%;
+    width: 120%;
 }

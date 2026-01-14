@@ -17,12 +17,12 @@ body {
   transition: background-image 0.7s ease-in-out;
   z-index: -1;
 }
+
 #settings-btn {
   position: absolute;
   top: 15px;
   left: 15px;
   width: 100px;
-  /* mesmo tamanho do level-icon */
   height: 100px;
   background: none;
   border: none;
@@ -39,6 +39,7 @@ body {
   height: 80%;
   transition: transform 0.3s ease;
 }
+
 .titulo {
   margin: 0;
   padding: 12px;
