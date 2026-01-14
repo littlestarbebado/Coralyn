@@ -5,6 +5,12 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Menu – Coralyn</title>
   <link rel="stylesheet" href="../pag_niveis/niveis.css">
+
+
+<link rel="stylesheet" href="inicio/config.css">
+
+
+
 </head>
 <body>
 
@@ -31,7 +37,7 @@
 
   <!-- Título -->
   <header>
-    <h1>Menu</h1>
+    <h1>Niveis</h1>
   </header>
 
   <!-- Menu de níveis -->
@@ -52,6 +58,35 @@
     <div class="nivel-number-container"><span>5</span></div>
   </div>
 </div>
+
+
+
+
+
+
+<div class="overlay" id="modalConfig" style="display: none;">
+    <div class="popup">
+        <span class="fechar" id="closeModal">✕</span>
+        <h2>Configurações</h2>
+        <div class="opcao">
+            🎵 Volume da Música
+            <input type="range" id="musica" min="0" max="100" value="50">
+            <span id="valorMusica">50%</span>
+        </div>
+        <div class="opcao">
+            🔊 Volume dos Efeitos
+            <input type="range" id="efeitos" min="0" max="100" value="50">
+            <span id="valorEfeitos">50%</span>
+        </div>
+        <button class="nivel" id="btnNivel">Níveis</button>
+        <button class="sair" id="btnSair">Sair</button>
+    </div>
+</div>
+
+
+
+
+
 
 
 

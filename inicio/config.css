@@ -53,7 +53,7 @@ input[type="range"] {
 }
 
 /* botões */
-.menu {
+.nivel {
     background: #3d7bfd;
     color: white;
     border: none;
@@ -85,3 +85,18 @@ input[type="range"] {
   justify-content: center;
   z-index: 1000;
 }
+
+
+.popup {
+    background: #f4fbff;
+    width: 340px;
+    padding: 25px;
+    border-radius: 18px;
+    text-align: center;
+    position: relative;
+    color: #1a3d7c;
+}
+
+
+
+
