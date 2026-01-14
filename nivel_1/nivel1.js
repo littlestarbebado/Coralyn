@@ -35,19 +35,77 @@
 
   // ------- PERGUNTAS -------
   const perguntas = [
-    { q: "Quanto plástico vai parar ao oceano por ano?", opcoes: ["8 milhões de toneladas", "10 quilos", "100 toneladas"], certa: 0 },
-    { q: "Por que as tartarugas comem plástico?", opcoes: ["Parece medusas", "Cheira bem", "É nutritivo"], certa: 0 },
-    { q: "O que são microplásticos?", opcoes: ["Pequenos pedaços de plástico", "Areia colorida", "Algas tóxicas"], certa: 0 },
-    { q: "Qual é o maior problema do lixo no mar?", opcoes: ["Afeta a vida marinha", "A água fica mais quente", "A água fica mais azul"], certa: 0 },
-    { q: "Peixes podem engolir plástico?", opcoes: ["Sim", "Não", "Só os grandes"], certa: 0 },
-    { q: "Qual destes objetos demora mais a decompor?", opcoes: ["Garrafa de plástico", "Papel", "Comida"], certa: 0 },
-    { q: "O plástico no mar pode entrar na cadeia alimentar humana?", opcoes: ["Sim", "Não", "Só na China"], certa: 0 },
-    { q: "O que é uma 'ilha de lixo'?", opcoes: ["Aglomerado de plástico no mar", "Uma ilha turística", "Um vulcão"], certa: 0 },
-    { q: "Qual animal marinho mais sofre com o plástico?", opcoes: ["Tartarugas", "Golfinhos", "Caranguejos"], certa: 0 },
-    { q: "Qual a forma mais eficaz de reduzir lixo?", opcoes: ["Reciclar e reutilizar", "Deixar no chão", "Partir tudo"], certa: 0 },
-    { q: "O plástico pode libertar toxinas na água?", opcoes: ["Sim", "Não", "Só ao sol"], certa: 0 },
-    { q: "Qual destes NÃO deve ir para o mar?", opcoes: ["Plástico", "Água", "Areia"], certa: 0 }
+    {
+      q: "Sou uma estrela-do-mar. Quanto plástico invade o meu oceano todos os anos?",
+      opcoes: ["Cerca de 8 milhões de toneladas", "Algumas centenas de quilos", "Menos de 1 tonelada"]
+    },
+    {
+      q: "Confundi lixo com comida. Por que isso acontece?",
+      opcoes: ["O plástico parece medusas", "Tem cheiro a algas", "Brilha no fundo do mar"]
+    },
+    {
+      q: "O que são microplásticos que entram no meu corpo?",
+      opcoes: ["Fragmentos minúsculos de plástico", "Areia poluída", "Restos de conchas"]
+    },
+    {
+      q: "Qual é o maior perigo do lixo para animais como eu?",
+      opcoes: [
+        "Ferimentos, sufocamento e intoxicação",
+        "Aumento da temperatura da água",
+        "Perda da cor do oceano"
+      ]
+ 
+    },
+    {
+      q: "Mesmo sem dentes, eu posso ser afetada por plástico?",
+      opcoes: ["Não, só peixes grandes", "Sim, através da cadeia alimentar", "Apenas se morder"]
+
+    },
+    {
+      q: "Qual destes demora mais tempo a desaparecer do meu habitat?",
+      opcoes: [ "Papel molhado", "Restos de comida","Garrafa de plástico"]
+
+    },
+    {
+      q: "O plástico que engulo pode chegar aos humanos?",
+      opcoes: [
+        "Sim, através da cadeia alimentar",
+        "Não, o corpo elimina",
+        "Só em oceanos poluídos"
+      ]
+    },
+    {
+      q: "O que são as chamadas 'ilhas de lixo'?",
+      opcoes: [
+        
+        "Ilhas artificiais",
+        "Plataformas flutuantes",
+        "Grandes zonas oceânicas com plástico acumulado"
+      ]
+    },
+    {
+      q: "Qual animal marinho sofre MAIS com o lixo plástico?",
+      opcoes: ["Caranguejos", "Tartarugas e aves marinhas", "Polvos"]
+    },
+    {
+      q: "Qual atitude humana ajuda verdadeiramente a salvar o meu lar?",
+      opcoes: [
+        
+        "Recolher lixo só na praia",
+        "Usar plástico biodegradável sempre",
+        "Reduzir, reutilizar e reciclar"
+      ]
+    },
+    {
+      q: "O plástico liberta substâncias perigosas na água?",
+      opcoes: ["Não, é inerte","Sim, ao longo do tempo", "Apenas com calor extremo"]
+    },
+    {
+      q: "O que NUNCA deveria estar no oceano onde vivo?",
+      opcoes: ["Sal" , "Plástico descartável", "Areia"]
+    }
   ];
+
 
   // ------- PROGRESS CIRCLE -------
   const raio = 45;
@@ -81,58 +139,58 @@
     return true;
   }
 
-function colide(a, b) {
-  return !(
-    a.right < b.left ||
-    a.left > b.right ||
-    a.bottom < b.top ||
-    a.top > b.bottom
-  );
-}
-
-
-  function criarLixos(qtd){
-  lixosContainer.innerHTML = '';
-  lixosAtivos = [];
-  const rects = [];
-
-  for (let i = 0; i < qtd; i++) {
-
-    const lixo = document.createElement('img');
-    lixo.className = 'lixo';
-    lixo.style.position = 'absolute';
-    lixo.style.width = '120px';
-    lixo.style.height = '120px';
-
-    const n = rnd(1, 6);
-    lixo.src = `../assets/lixo/lixo${n}.svg`;
-    
-    lixo.onload = () => {
-      let tent = 0, colocado = false;
-
-      while (!colocado && tent < 100) {
-        const left = rnd(8, 82);
-        const top = rnd(10, 75);
-
-        lixo.style.left = left + '%';
-        lixo.style.top = top + '%';
-
-        const rect = lixo.getBoundingClientRect();
-        const playerRect = player.getBoundingClientRect();
-
-        if (!colide(rect, playerRect) && posicaoValida(rect, rects, 80)) {
-          rects.push(rect);
-          colocado = true;
-          lixo.addEventListener('click', () => abrirPergunta(lixo));
-          lixosAtivos.push(lixo);
-        }
-        tent++;
-      }
-    };
-
-    lixosContainer.appendChild(lixo);
+  function colide(a, b) {
+    return !(
+      a.right < b.left ||
+      a.left > b.right ||
+      a.bottom < b.top ||
+      a.top > b.bottom
+    );
   }
-}
+
+
+  function criarLixos(qtd) {
+    lixosContainer.innerHTML = '';
+    lixosAtivos = [];
+    const rects = [];
+
+    for (let i = 0; i < qtd; i++) {
+
+      const lixo = document.createElement('img');
+      lixo.className = 'lixo';
+      lixo.style.position = 'absolute';
+      lixo.style.width = '120px';
+      lixo.style.height = '120px';
+
+      const n = rnd(1, 6);
+      lixo.src = `../assets/lixo/lixo${n}.svg`;
+
+      lixo.onload = () => {
+        let tent = 0, colocado = false;
+
+        while (!colocado && tent < 100) {
+          const left = rnd(8, 82);
+          const top = rnd(10, 75);
+
+          lixo.style.left = left + '%';
+          lixo.style.top = top + '%';
+
+          const rect = lixo.getBoundingClientRect();
+          const playerRect = player.getBoundingClientRect();
+
+          if (!colide(rect, playerRect) && posicaoValida(rect, rects, 80)) {
+            rects.push(rect);
+            colocado = true;
+            lixo.addEventListener('click', () => abrirPergunta(lixo));
+            lixosAtivos.push(lixo);
+          }
+          tent++;
+        }
+      };
+
+      lixosContainer.appendChild(lixo);
+    }
+  }
 
 
   // ------- PERGUNTA -------
@@ -151,6 +209,8 @@ function colide(a, b) {
   }
 
   function responder(opcao) {
+
+
     popup.classList.add('hidden');
 
     if (opcao !== respostaCorreta) {
@@ -160,6 +220,7 @@ function colide(a, b) {
 
     const rect = lixoSelecionado.getBoundingClientRect();
     mostrarLixoRemovido(rect.left + rect.width / 2, rect.top + rect.height / 2);
+    mostrarTextoLixoRemovido();
 
     lixoSelecionado.style.transition = 'transform .6s ease, opacity .6s ease';
     lixoSelecionado.style.transform = 'scale(0) rotate(360deg)';
@@ -174,38 +235,67 @@ function colide(a, b) {
     }, 620);
   }
 
-function mostrarErro() {
+  function mostrarErro() {
+  // Flash vermelho
   const flash = document.createElement('div');
   flash.className = 'erro-flash';
   document.body.appendChild(flash);
 
-  setTimeout(() => flash.remove(), 600);
+  // Mensagem dramática
+  const msg = document.createElement('div');
+  msg.className = 'erro-msg';
+  msg.textContent = "RESPOSTA ERRADA!";
+  document.body.appendChild(msg);
+
+  // Tremer o ecrã
+  document.body.classList.add("tremer");
+
+  setTimeout(() => {
+    flash.remove();
+    msg.remove();
+    document.body.classList.remove("tremer");
+  }, 1200); // ⬅ tempo realista
 }
 
 
-      function mostrarLixoRemovido(x, y) {
+
+
+  function mostrarLixoRemovido(x, y) {
     const numParticulas = 12;
     for (let i = 0; i < numParticulas; i++) {
       const particula = document.createElement('div');
       particula.className = 'particle lixo-removido';
-      
+
       const angle = (i / numParticulas) * Math.PI * 2;
       const velocity = 3 + Math.random() * 2;
       const vx = Math.cos(angle) * velocity;
       const vy = Math.sin(angle) * velocity;
-      
+
       particula.style.left = x + 'px';
       particula.style.top = y + 'px';
       document.body.appendChild(particula);
-      
+
       setTimeout(() => {
         particula.style.transform = `translate(${vx * 80}px, ${vy * 80}px)`;
         particula.style.opacity = '0';
       }, 10);
-      
+
       setTimeout(() => particula.remove(), 800);
     }
   }
+
+  function mostrarTextoLixoRemovido() {
+    const msg = document.getElementById("lixo-removido-msg");
+
+    msg.style.opacity = "1";
+    msg.style.transform = "translate(-50%, -50%) scale(1)";
+
+    setTimeout(() => {
+      msg.style.opacity = "0";
+      msg.style.transform = "translate(-50%, -50%) scale(0.6)";
+    }, 600);
+  }
+
 
   // ------- PROGRESSO -------
   function quantidadeLixoPorNivel(n) {
@@ -220,37 +310,43 @@ function mostrarErro() {
     progresso = Math.min(100, Math.max(0, progresso));
 
     if (progressCircle) {
-        const offset = circunferencia * (1 - progresso / 100);
-        progressCircle.style.strokeDashoffset = `${offset}`;
+      const offset = circunferencia * (1 - progresso / 100);
+      progressCircle.style.strokeDashoffset = `${offset}`;
     }
 
     updateScene(progresso);
 
     if (progresso >= 100) subirNivel();
-}
+  }
 
 
   function subirNivel() {
-  nivel++;
+    const nivelConcluido = nivel;
 
-  if (levelNumber) levelNumber.textContent = `${nivel}`;
+    nivel++;
 
-  const overlay = document.getElementById('level-up-overlay');
-  if (overlay) {
-    overlay.classList.remove('hidden');
-    overlay.style.opacity = '1';
+    const nivelMaximo = parseInt(localStorage.getItem("nivelMaximo")) || 1;
+    if (nivel > nivelMaximo) {
+      localStorage.setItem("nivelMaximo", nivel);
+    }
+
+    localStorage.setItem("nivelRecemDesbloqueado", nivel);
+
     setTimeout(() => {
-      overlay.style.opacity = '0';
-      setTimeout(() => overlay.classList.add('hidden'), 400);
-    }, 1400);
+      window.location.href = "../pag_niveis/niveis.html";
+    }, 900);
   }
 
+<<<<<<< HEAD
   // SE o nível terminou, muda para a próxima página
   setTimeout(() => {
    window.location.href = `../nivel_${nivel}/nivel${nivel}.html`;
   }, 1200);
 
 }
+=======
+
+>>>>>>> be9aa341047ee105d9ccb529b556e97f9644695a
 
   // ------- START DO NÍVEL -------
 
@@ -307,5 +403,6 @@ function updateScene(progress) {
 
   // personagem certo
   playerImg.src = `../assets/characters/animals/estrela/estrela-${stage}.svg`;
+
 }
 

@@ -1,38 +1,42 @@
-document.addEventListener("DOMContentLoaded", () => {
+let musica = document.getElementById("musica");
+let efeitos = document.getElementById("efeitos");
 
-  const musica = document.getElementById("musica");
-  const efeitos = document.getElementById("efeitos");
-  const valorMusica = document.getElementById("valorMusica");
-  const valorEfeitos = document.getElementById("valorEfeitos");
-  const fechar = document.querySelector(".fechar");
-  const btnMenu = document.getElementById("menu");
-  const btnSair = document.querySelector(".sair");
+let valorMusica = document.getElementById("valorMusica");
+let valorEfeitos = document.getElementById("valorEfeitos");
 
-  // 🔹 Carregar valores guardados
-  musica.value = localStorage.getItem("volumeMusica") ?? 50;
-  efeitos.value = localStorage.getItem("volumeEfeitos") ?? 50;
+// carregar valores guardados
+musica.value = localStorage.getItem("musica") || 50;
+efeitos.value = localStorage.getItem("efeitos") || 50;
 
-  valorMusica.textContent = musica.value + "%";
-  valorEfeitos.textContent = efeitos.value + "%";
+valorMusica.innerHTML = musica.value + "%";
+valorEfeitos.innerHTML = efeitos.value + "%";
 
-  // 🔹 Guardar alterações
-  musica.addEventListener("input", () => {
-    valorMusica.textContent = musica.value + "%";
-    localStorage.setItem("volumeMusica", musica.value);
-  });
+// quando mexer no slider
+musica.oninput = function () {
+    valorMusica.innerHTML = musica.value + "%";
+    localStorage.setItem("musica", musica.value);
+};
 
-  efeitos.addEventListener("input", () => {
-    valorEfeitos.textContent = efeitos.value + "%";
-    localStorage.setItem("volumeEfeitos", efeitos.value);
-  });
+efeitos.oninput = function () {
+    valorEfeitos.innerHTML = efeitos.value + "%";
+    localStorage.setItem("efeitos", efeitos.value);
+};
 
-  // 🔹 Voltar ao menu inicial
-  function voltarMenu() {
-    window.location.href = "inicio.html";
-  }
+// botão menu
+document.querySelector(".menu").onclick = function () {
+    window.location.href = "index.html";
+};
 
-  fechar.addEventListener("click", voltarMenu);
-  btnMenu.addEventListener("click", voltarMenu);
-  btnSair.addEventListener("click", voltarMenu);
+// botão sair
+document.querySelector(".sair").onclick = function () {
+    alert("Jogo fechado (simulação)");
+};
 
+// fechar popup
+document.querySelector(".fechar").onclick = function () {
+    window.location.href = "index.html";
+};
+
+document.getElementById("menu").addEventListener("click", function() {
+    window.location.href = "inicio.html"
 });

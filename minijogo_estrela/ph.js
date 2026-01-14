@@ -1,185 +1,111 @@
+// ph.js — mini-jogo pH (água, peixes, termómetro, stress, estrela)
+document.addEventListener('DOMContentLoaded', () => {
+  // CONFIG
+  const IDEAL_PH = 8.1;
+  const SAFE_DELTA = 0.30;   // +/- zone considered ideal
+  const STRESS_THRESHOLD = IDEAL_PH - 1.0; // when below this, stress rises
+  const MAX_PH = 13.3;
+  const MIN_PH = 0;
 
-
-(() => {
-  "use strict";
-
-  // CONFIGURAÇÕES DO JOGO
- 
-  const IDEAL_PH = 8.1;        // pH ideal
-  const SAFE_DELTA = 0.30;     // margem aceitável
-  const TIME_TO_SURVIVE = 30;  // tempo necessário para ganhar
-  const HEALTH_DECAY = 6;      // dano por segundo fora da zona segura
-  const ROUND = 2;             // casas decimais
-
-
-  // ESTADO DO JOGO
-
+  // STATE
   let ph = IDEAL_PH;
-  let timeLeft = TIME_TO_SURVIVE;
-  let health = 100;
-  let running = false;
+  let naturalDriftInterval = null;
 
-  let tickInterval = null;
-  let driftInterval = null;
+  // SELECTORS
+  const phNumber = document.getElementById('phNumber');
+  const thermoFill = document.getElementById('thermoFill');
+  const fineSlider = document.getElementById('fineSlider');
+  const acidBtn = document.getElementById('acidBtn');
+  const baseBtn = document.getElementById('baseBtn');
+  const mar = document.getElementById('mar');
+  
+  const idealRangeText = document.getElementById('idealRangeText');
 
-  // -----------------------------
-  // ELEMENTOS HTML
-  // -----------------------------
-  const elPH = document.getElementById("phValue");
-  const elSafe = document.getElementById("safeRange");
-  const elTimer = document.getElementById("timer");
-  const elHealth = document.getElementById("health");
+  // init text
+  idealRangeText.textContent = `${IDEAL_PH.toFixed(1)} ± ${SAFE_DELTA.toFixed(1)}`;
 
-  const btnAcid = document.getElementById("acidBtn");
-  const btnBase = document.getElementById("baseBtn");
-  const slider = document.getElementById("fineSlider");
+  // util
+  function clamp(v, a, b){ return Math.max(a, Math.min(b, v)); }
+  function round1(v){ return Math.round(v*10)/10; }
 
-  const msg = document.getElementById("message");
-  const result = document.getElementById("result");
-  const btnRestart = document.getElementById("restart");
-  const estrela = document.getElementById("estrelaImg");
+  // UI update
+  function updateUI(){
+    phNumber.textContent = round1(ph).toFixed(1);
 
-  // Mostrar zona segura
-  elSafe.textContent = `${IDEAL_PH.toFixed(1)} ± ${SAFE_DELTA.toFixed(2)}`;
+    // THERMO fill percent — map 0..14 to 0..100
+    const percent = ((ph - MIN_PH) / (MAX_PH - MIN_PH)) * 100;
+    thermoFill.style.height = `${clamp(percent,0,100)}%`;
 
+    // thermo color: green if inside safe delta, yellow if near, red otherwise (acidic) / bluish if alkaline
+    const diff = Math.abs(ph - IDEAL_PH);
+    if (diff <= SAFE_DELTA) {
+      thermoFill.style.background = '#2cff8b'; // green
+      estrela.classList.add('visible'); estrela.classList.remove('hidden');
+    } else if (diff <= 0.8) {
+      thermoFill.style.background = '#ffd24d'; // yellow
+      estrela.classList.add('hidden'); estrela.classList.remove('visible');
+    } else {
+      // show red for acid, light blue for strongly basic
+      if (ph < IDEAL_PH) thermoFill.style.background = '#ff6b6b';
+      else thermoFill.style.background = '#ff6b6b';
+      estrela.classList.add('hidden'); estrela.classList.remove('visible');
+    }
 
-  // -----------------------------
-  // FUNÇÕES AUXILIARES
-  // -----------------------------
-  const round = v =>
-    Math.round(v * Math.pow(10, ROUND)) / Math.pow(10, ROUND);
+    // WATER color: acid (reddish), ideal (turquoise), basic (deep blue)
+    if (ph < IDEAL_PH - 0.6) {
+      mar.style.background = 'linear-gradient(180deg,#ff8a8a,#b30000)';
+    } else if (ph > IDEAL_PH + 0.6) {
+      mar.style.background = 'linear-gradient(180deg,#9ad7ff,#004a9f)';
+    } else {
+      mar.style.background = 'linear-gradient(180deg,#4cc0ff,#0060c0)';
+    }
 
-  const isSafe = v =>
-    Math.abs(v - IDEAL_PH) <= SAFE_DELTA;
+    // STRESS: when too acidic, fill increases; otherwise decreases
+    let stressPercent = 0;
+    if (ph < STRESS_THRESHOLD) {
+      // linear from STRESS_THRESHOLD down to 0 -> 0..100%
+      stressPercent = ( (STRESS_THRESHOLD - ph) / (STRESS_THRESHOLD - MIN_PH) ) * 100;
+    } else {
+      stressPercent = 0;
+    }
+    stressFill.style.height = `${clamp(stressPercent,0,100)}%`;
 
-  function updateUI() {
-    elPH.textContent = round(ph).toFixed(ROUND);
-    elTimer.textContent = Math.ceil(Math.max(0, timeLeft));
-    elHealth.value = Math.max(0, Math.min(100, health));
-
-    // Muda cor da estrela (verde => saudável, vermelho => fraca)
-    const hue = Math.round(120 * (health / 100));
-    estrela.style.filter = `hue-rotate(${hue - 120}deg) saturate(${0.6 + health / 200})`;
+    // FISH behaviour: when far from ideal they flee (translate X and reduce opacity)
+   
+    
   }
 
-  // -----------------------------
-  // CONTROLO DE pH
-  // -----------------------------
+  
+
+  // change functions
   function changePH(delta) {
-    ph = Math.min(14, Math.max(0, ph + delta));
-    slider.value = Math.round(ph * 10); // sincroniza slider
+    ph = clamp(Math.round((ph + delta)*10)/10, MIN_PH, MAX_PH);
+    fineSlider.value = ph;
     updateUI();
   }
 
-  function addAcid() {
-    changePH(-0.20);
-    if (!isSafe(ph)) health = Math.max(0, health - 4);
-  }
+  // events
+  acidBtn.addEventListener('click', () => changePH(-0.2));
+  baseBtn.addEventListener('click', () => changePH(0.2));
 
-  function addBase() {
-    changePH(+0.20);
-    if (!isSafe(ph)) health = Math.max(0, health - 4);
-  }
-
-  // Slider de ajuste fino
-  slider.addEventListener("input", () => {
-    ph = slider.value / 10;
+  fineSlider.addEventListener('input', (e) => {
+    ph = clamp(parseFloat(e.target.value), MIN_PH, MAX_PH);
     updateUI();
   });
 
-
-  // -----------------------------
-  // DRIFT NATURAL DO pH
-  // -----------------------------
-  function startDrift() {
-    if (driftInterval) clearInterval(driftInterval);
-
-    driftInterval = setInterval(() => {
-      const drift = (Math.random() - 0.5) * 0.06;  
-      changePH(drift);
-    }, 1200);
-  }
-
-
-  // -----------------------------
-  // LOOP PRINCIPAL DO JOGO
-  // -----------------------------
-  function startTick() {
-    if (tickInterval) clearInterval(tickInterval);
-
-    tickInterval = setInterval(() => {
-      if (isSafe(ph)) {
-        msg.textContent = "Excelente! pH dentro da zona segura!";
-        timeLeft -= 1;
-        health = Math.min(100, health + 2);
-      } else {
-        msg.textContent = "Cuidado! pH fora dos limites!";
-        health -= HEALTH_DECAY;
-        timeLeft -= 0.6;
-      }
-
-      if (timeLeft < 0) timeLeft = 0;
-      if (health < 0) health = 0;
-
+  // Natural slow drift so player must interact
+  function startNaturalDrift(){
+    if (naturalDriftInterval) clearInterval(naturalDriftInterval);
+    naturalDriftInterval = setInterval(() => {
+      const drift = (Math.random() - 0.5) * 0.06;
+      ph = clamp(Math.round((ph + drift)*10)/10, MIN_PH, MAX_PH);
+      fineSlider.value = ph;
       updateUI();
-      checkEnd();
-    }, 1000);
+    }, 1300);
   }
 
-
-  // -----------------------------
-  // VERIFICA FIM DE JOGO
-  // -----------------------------
-  function checkEnd() {
-    if (health <= 0) {
-      finish(false, "A estrela não resistiu...");
-    } else if (timeLeft <= 0) {
-      if (isSafe(ph)) finish(true, "Parabéns! Estrela salva!");
-      else finish(false, "O tempo acabou e o pH estava errado!");
-    }
-  }
-
-  function finish(win, text) {
-    running = false;
-    clearInterval(tickInterval);
-    clearInterval(driftInterval);
-
-    result.textContent = text;
-    result.classList.remove("hidden");
-    result.classList.add(win ? "win" : "lose");
-
-    btnRestart.classList.remove("hidden");
-    msg.textContent = win ? "Vitória!" : "Game Over";
-  }
-
-
-  // -----------------------------
-  // REINICIAR
-  // -----------------------------
-  function restart() {
-    ph = IDEAL_PH;
-    timeLeft = TIME_TO_SURVIVE;
-    health = 100;
-
-    result.classList.add("hidden");
-    result.classList.remove("win", "lose");
-    btnRestart.classList.add("hidden");
-
-    msg.textContent = "Mantém o pH estável até o tempo acabar!";
-    slider.value = Math.round(ph * 10);
-
-    updateUI();
-
-    running = true;
-    startTick();
-    startDrift();
-  }
-
-  // Botões
-  btnAcid.addEventListener("click", addAcid);
-  btnBase.addEventListener("click", addBase);
-  btnRestart.addEventListener("click", restart);
-
-  // Iniciar automaticamente
-  restart();
-})();
+  // initial
+  fineSlider.value = ph;
+  updateUI();
+  startNaturalDrift();
+});

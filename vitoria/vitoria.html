@@ -3,25 +3,25 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Vitória – Coralyn</title>
+  <title>Vitória!</title>
   <link rel="stylesheet" href="vitoria.css">
 </head>
 <body>
+
   <div class="vitoria-container">
+    <img src="img/vitoria.png" alt="Vitória" class="vitoria-img">
 
-    <div class="vitoria-header">
-      <div class="coral"></div>
-      <div class="faixa">
-        <span>VITÓRIA</span>
-      </div>
-    </div>
+    <button class="btn-menu" onclick="voltarMenu()">
+      Voltar aos Níveis
+    </button>
+  </div>
 
-    <!-- Estrelas -->
-    <div class="estrelas">
-      <div class="estrela" id="estrela1">⭐</div>
-      <div class="estrela" id="estrela2">⭐</div>
-      <div class="estrela" id="estrela3">⭐</div>
-    </div>
+  <script>
+    function voltarMenu() {
+      window.location.href = "../pag_niveis/niveis.html";
+    }
+  </script>
+
 
     <!-- Botão -->
     <button id="btn-voltar">VOLTAR AO INÍCIO</button>
