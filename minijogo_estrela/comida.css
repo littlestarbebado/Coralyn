@@ -21,22 +21,85 @@ body {
   transform: translateX(-50%);
 }
 
-.item {
+/* COMIDA */
+.comida {
   position: absolute;
+ 
   width: 80px;
   cursor: pointer;
-  animation: cair 18s linear forwards;
+  animation: cair 15s linear forwards;
 }
 
-.item.removido {
+/* LIXO */
+.lixo {
+  position: absolute;
+
+  width: 80px;
+  cursor: pointer;
+  animation: cair 15s linear forwards;
+}
+
+/* animação ao remover (serve para ambos) */
+.removido {
   transform: scale(0);
   opacity: 0;
+  transition: transform 0.4s, opacity 0.4s;
 }
 
 @keyframes cair {
   from { top: -100px; }
   to { top: 90vh; }
 }
+
+.popup {
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,0.7);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 999;
+}
+
+.popup.hidden {
+  display: none;
+}
+
+.popup-conteudo {
+  background: #003f5c;
+  padding: 30px;
+  border-radius: 16px;
+  text-align: center;
+  color: white;
+  animation: aparecer 0.4s ease;
+}
+
+.popup-conteudo h2 {
+  margin-bottom: 10px;
+}
+
+.popup-conteudo button {
+  margin-top: 15px;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 20px;
+  background: #ff6b6b;
+  color: white;
+  cursor: pointer;
+  font-size: 16px;
+}
+
+@keyframes aparecer {
+  from {
+    transform: scale(0.7);
+    opacity: 0;
+  }
+  to {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+
 
 #hud {
   font-size: 20px;
