@@ -1,4 +1,5 @@
-// pag_niveis/nivel1.js
+localStorage.setItem("nivelAtual", 2);
+
 (() => {
   'use strict';
 
@@ -333,4 +334,16 @@ function updateScene(progress) {
   // personagem certo
   playerImg.src = `../assets/characters/animals/tubararo/tubarao-${stage}.svg`;
 }
+
+// nível atual concluído
+ const nivelAtual = 2;
+
+ // guardar nível atual
+ localStorage.setItem("nivelAtual", nivelAtual);
+
+ // desbloquear próximo nível
+ const nivelMaximo = parseInt(localStorage.getItem("nivelMaximo")) || 1;
+ if (nivelMaximo < nivelAtual + 1) {
+  localStorage.setItem("nivelMaximo", nivelAtual + 1);
+ }
 

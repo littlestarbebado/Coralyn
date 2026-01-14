@@ -1,6 +1,6 @@
 document.addEventListener("DOMContentLoaded", () => {
 
-  // 🔧 BOTÃO CONFIG
+  // BOTÃO CONFIG
   const btnConfig = document.getElementById("btn-config");
   if (btnConfig) {
     btnConfig.addEventListener("click", () => {
@@ -8,17 +8,7 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   }
 
-
-
-
-
-  
-
-
-
-
-
-  // 🔓 NÍVEIS DESBLOQUEADOS
+  // NÍVEIS DESBLOQUEADOS
   const nivelMaximo = parseInt(localStorage.getItem("nivelMaximo")) || 1;
   const nivelAnimar = parseInt(localStorage.getItem("nivelRecemDesbloqueado"));
 
@@ -52,9 +42,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
 });
 
-
-
-// botões
+  // botões
   btnNivel.addEventListener("click", () => {
     window.location.href = "../pag_niveis/niveis.html";
     
@@ -65,3 +53,22 @@ document.addEventListener("DOMContentLoaded", () => {
     window.location.href = "inicio.html";
   });
 
+
+document.addEventListener("DOMContentLoaded", () => {
+  const nivelMaximo = parseInt(localStorage.getItem("nivelMaximo")) || 1;
+
+  document.querySelectorAll(".nivel").forEach(nivelEl => {
+    const nivel = parseInt(nivelEl.dataset.nivel);
+
+    if (nivel <= nivelMaximo) {
+      nivelEl.classList.remove("bloqueado");
+      nivelEl.classList.add("desbloqueado");
+    }
+  });
+});
+
+const nivelAtual = parseInt(localStorage.getItem("nivelAtual")) || 1;
+
+document.getElementById("btnJogar").addEventListener("click", () => {
+  window.location.href = `../nivel_${nivelAtual}/nivel${nivelAtual}.html`;
+});

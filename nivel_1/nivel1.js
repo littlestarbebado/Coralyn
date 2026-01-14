@@ -443,3 +443,15 @@ function updateScene(progress) {
   playerImg.src = `../assets/characters/animals/estrela/estrela-${stage}.svg`;
 
 }
+
+ // nível atual concluído
+ const nivelAtual = 1;
+
+ // guardar nível atual
+ localStorage.setItem("nivelAtual", nivelAtual);
+
+ // desbloquear próximo nível
+ const nivelMaximo = parseInt(localStorage.getItem("nivelMaximo")) || 1;
+ if (nivelMaximo < nivelAtual + 1) {
+  localStorage.setItem("nivelMaximo", nivelAtual + 1);
+ }

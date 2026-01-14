@@ -1,19 +1,23 @@
-function escolher(personagem) {
-    localStorage.setItem("personagemEscolhido", personagem);
-
-    window.location.href = "../pag_niveis/nivel1/nivel1.html";
-}
-
-function abrirConfig() {
-    window.location.href = "../config/config.html";
-}
-
 document.addEventListener("DOMContentLoaded", () => {
 
+    // escolher personagem
+  document.querySelectorAll(".card").forEach(card => {
+    card.addEventListener("click", () => {
+      const personagem = card.dataset.personagem;
+
+      localStorage.setItem("personagemEscolhido", personagem);
+
+      // ir para níveis
+      window.location.href = "../pag_niveis/niveis.html";
+    });
+  });
+
+  localStorage.getItem("personagemEscolhido");
+
+  //modal de definições
   const btnSettings = document.getElementById("btnSettings");
   const modal = document.getElementById("modalConfig");
   const closeModal = document.getElementById("closeModal");
-
   const musica = document.getElementById("musica");
   const valorMusica = document.getElementById("valorMusica");
 
