@@ -8,6 +8,16 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   }
 
+
+
+
+
+  
+
+
+
+
+
   // 🔓 NÍVEIS DESBLOQUEADOS
   const nivelMaximo = parseInt(localStorage.getItem("nivelMaximo")) || 1;
   const nivelAnimar = parseInt(localStorage.getItem("nivelRecemDesbloqueado"));
@@ -41,3 +51,17 @@ document.addEventListener("DOMContentLoaded", () => {
   });
 
 });
+
+
+
+// botões
+  btnNivel.addEventListener("click", () => {
+    window.location.href = "../pag_niveis/niveis.html";
+    
+  });
+
+  btnSair.addEventListener("click", () => {
+    musicaFundo.pause();
+    window.location.href = "inicio.html";
+  });
+

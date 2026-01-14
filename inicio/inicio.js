@@ -30,7 +30,7 @@ document.addEventListener("DOMContentLoaded", () => {
   const valorMusica = document.getElementById("valorMusica");
   const valorEfeitos = document.getElementById("valorEfeitos");
 
-  const btnMenu = document.getElementById("btnMenu");
+  const btnNivel = document.getElementById("btnNivel");
   const btnSair = document.getElementById("btnSair");
 
   // abrir modal
@@ -47,6 +47,7 @@ document.addEventListener("DOMContentLoaded", () => {
   musica.addEventListener("input", () => {
   const volume = musica.value / 100;
   musicaFundo.volume = volume;
+  valorMusica.textContent = musica.value + "%";
   localStorage.setItem("volumeMusica", volume);
 });
 
@@ -56,15 +57,13 @@ document.addEventListener("DOMContentLoaded", () => {
   });
 
   // botões
-  btnMenu.addEventListener("click", () => {
-    modal.style.display = "none";
+  btnNivel.addEventListener("click", () => {
+    window.location.href = "../pag_niveis/niveis.html";
+    
   });
 
   btnSair.addEventListener("click", () => {
     musicaFundo.pause();
-    window.close(); // ou outra ação
+    window.location.href = "inicio.html";
   });
-});
-document.getElementById("btn-config").addEventListener("click", () => {
-  window.location.href = "../inicio/config.html";
 });

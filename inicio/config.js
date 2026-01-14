@@ -45,7 +45,7 @@ efeitos.addEventListener("input", () => {
 
 // BOTÕES
 
-document.querySelector(".nive")?.addEventListener("click", () => {
+document.querySelector(".nivel")?.addEventListener("click", () => {
   window.location.href = "../pag_niveis/niveis.html";
 });
 
@@ -58,4 +58,22 @@ document.querySelector(".fechar")?.addEventListener("click", () => {
 window.history.back();
 
 
+});
+
+
+
+
+
+const modal = document.querySelector(".overlay");
+const btnAbrir = document.getElementById("btnSettings");
+const btnFechar = document.querySelector(".fechar");
+
+// Abrir o popup (sem mudar de página!)
+btnAbrir.addEventListener("click", () => {
+    modal.style.display = "flex";
+});
+
+// Fechar o popup
+btnFechar.addEventListener("click", () => {
+    modal.style.display = "none";
 });
