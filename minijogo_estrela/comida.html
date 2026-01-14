@@ -3,24 +3,43 @@
 <head>
   <meta charset="UTF-8">
   <title>Alimenta a Estrela</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" href="comida.css">
 </head>
 <body>
 
-<h1>Alimenta a estrela ⭐</h1>
-<p>Evita o lixo e dá-lhe comida!</p>
+  <h1>Alimenta a estrela ⭐</h1>
+  <p>Evita o lixo e dá-lhe comida!</p>
 
-<div id="hud">
-  ❤️ Vida: <span id="vida">3</span>
-  ⭐ Pontos: <span id="pontos">0</span>
+  <!-- HUD -->
+  <div id="hud">
+    ❤️ Vida: <span id="vida">3</span>
+    ⭐ Pontos: <span id="pontos">0</span>
+  </div>
+
+  <!-- Área do jogo -->
+  <div id="jogo">
+    <img
+      id="estrela"
+      src="../assets/characters/animals/estrela/estrela-sujo.svg"
+      alt="Estrela-do-mar"
+    >
+  </div>
+
+
+  <!-- Resultado -->
+  <div id="resultado" class="hidden"></div>
+
+  <div id="popup-fim" class="popup hidden">
+  <div class="popup-conteudo">
+    <h2>💔 Falhaste o jogo</h2>
+    <p>A estrela ficou doente.</p>
+    <button onclick="location.reload()">Tentar novamente</button>
+  </div>
 </div>
 
-<div id="jogo">
-  <img id="estrela" src="../assets/characters/animals/estrela/estrela-sujo.svg">
-</div>
 
-<div id="resultado" class="hidden"></div>
-
-<script src="comida.js"></script>
+  <!-- Script do jogo -->
+  <script src="comida.js"></script>
 </body>
 </html>
