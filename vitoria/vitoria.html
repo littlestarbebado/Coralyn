@@ -2,32 +2,46 @@
 <html lang="pt">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Vitória!</title>
+  <title>Vitória</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="stylesheet" href="vitoria.css">
 </head>
 <body>
 
-  <div class="vitoria-container">
-    <img src="img/vitoria.png" alt="Vitória" class="vitoria-img">
+  <div class="vitoria-page">
 
-    <button class="btn-menu" onclick="voltarMenu()">
-      Voltar aos Níveis
-    </button>
+    <!-- Fundo do jogo -->
+    <div class="fundo"></div>
+
+    <!-- Conteúdo vitória -->
+    <div class="conteudo">
+
+      <!-- Estrelas -->
+      <div class="estrelas">
+        <img src="../assets/vitoria/estrela-01.svg" alt="">
+        <img src="../assets/vitoria/estrela-02.svg" alt="">
+        <img src="../assets/vitoria/estrela-03.svg" alt="">
+      </div>
+
+      <!-- Coral -->
+      <img class="coral" src="../assets/vitoria/coral.svg" alt="">
+
+      <!-- Badge Vitória -->
+      <img class="badge" src="../assets/vitoria/vitoria.svg" alt="Vitória">
+
+      <!-- Botão -->
+      <button class="btn-voltar" onclick="voltarInicio()">
+        VOLTAR AO INÍCIO
+      </button>
+
+    </div>
   </div>
 
   <script>
-    function voltarMenu() {
-      window.location.href = "../pag_niveis/niveis.html";
+    function voltarInicio() {
+      window.location.href = "../inicio/inicio.html";
     }
   </script>
 
-
-    <!-- Botão -->
-    <button id="btn-voltar">VOLTAR AO INÍCIO</button>
-
-  </div>
-
-  <script src="vitoria.js"></script>
 </body>
 </html>

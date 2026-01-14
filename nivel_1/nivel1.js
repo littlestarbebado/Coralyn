@@ -1,4 +1,3 @@
-// pag_niveis/nivel1.js
 (() => {
   'use strict';
 
@@ -35,76 +34,116 @@
 
   // ------- PERGUNTAS -------
   const perguntas = [
-    {
-      q: "Sou uma estrela-do-mar. Quanto plástico invade o meu oceano todos os anos?",
-      opcoes: ["Cerca de 8 milhões de toneladas", "Algumas centenas de quilos", "Menos de 1 tonelada"]
-    },
-    {
-      q: "Confundi lixo com comida. Por que isso acontece?",
-      opcoes: ["O plástico parece medusas", "Tem cheiro a algas", "Brilha no fundo do mar"]
-    },
-    {
-      q: "O que são microplásticos que entram no meu corpo?",
-      opcoes: ["Fragmentos minúsculos de plástico", "Areia poluída", "Restos de conchas"]
-    },
-    {
-      q: "Qual é o maior perigo do lixo para animais como eu?",
-      opcoes: [
-        "Ferimentos, sufocamento e intoxicação",
-        "Aumento da temperatura da água",
-        "Perda da cor do oceano"
-      ]
- 
-    },
-    {
-      q: "Mesmo sem dentes, eu posso ser afetada por plástico?",
-      opcoes: ["Não, só peixes grandes", "Sim, através da cadeia alimentar", "Apenas se morder"]
+  {
+    q: "Sou uma estrela-do-mar. Quanto plástico invade o meu oceano todos os anos?",
+    opcoes: [
+      "Algumas centenas de quilos",
+      "Cerca de 8 milhões de toneladas",
+      "Menos de 1 tonelada"
+    ],
+    certa: 1 // ⬅ correta NÃO é 0
+  },
+  {
+    q: "Confundi lixo com comida. Por que isso acontece?",
+    opcoes: [
+      "Brilha no fundo do mar",
+      "Tem cheiro a algas",
+      "O plástico parece medusas"
+    ],
+    certa: 2
+  },
+  {
+    q: "O que são microplásticos que entram no meu corpo?",
+    opcoes: [
+      "Areia poluída",
+      "Fragmentos minúsculos de plástico",
+      "Restos de conchas"
+    ],
+    certa: 1
+  },
+  {
+    q: "Qual é o maior perigo do lixo para animais como eu?",
+    opcoes: [
+      "Perda da cor do oceano",
+      "Aumento da temperatura da água",
+      "Ferimentos, sufocamento e intoxicação"
+    ],
+    certa: 2
+  },
+  {
+    q: "Mesmo sem dentes, eu posso ser afetada por plástico?",
+    opcoes: [
+      "Sim, através da cadeia alimentar",
+      "Não, só peixes grandes",
+      "Apenas se morder"
+    ],
+    certa: 0
+  },
+  {
+    q: "Qual destes demora mais tempo a desaparecer do meu habitat?",
+    opcoes: [
+      "Restos de comida",
+      "Papel molhado",
+      "Garrafa de plástico"
+    ],
+    certa: 2
+  },
+  {
+    q: "O plástico que engulo pode chegar aos humanos?",
+    opcoes: [
+      "Não, o corpo elimina",
+      "Só em oceanos poluídos",
+      "Sim, através da cadeia alimentar"
+    ],
+    certa: 2
+  },
+  {
+    q: "O que são as chamadas 'ilhas de lixo'?",
+    opcoes: [
+      "Grandes zonas oceânicas com plástico acumulado",
+      "Ilhas artificiais",
+      "Plataformas flutuantes"
+    ],
+    certa: 0
+  },
+  {
+    q: "Qual animal marinho sofre MAIS com o lixo plástico?",
+    opcoes: [
+      "Polvos",
+      "Caranguejos",
+      "Tartarugas e aves marinhas"
+    ],
+    certa: 2
+  },
+  {
+    q: "Qual atitude humana ajuda verdadeiramente a salvar o meu lar?",
+    opcoes: [
+      "Reduzir, reutilizar e reciclar",
+      "Recolher lixo só na praia",
+      "Usar plástico biodegradável sempre"
+    ],
+    certa: 0
+  },
+  {
+    q: "O plástico liberta substâncias perigosas na água?",
+    opcoes: [
+      "Apenas com calor extremo",
+      "Não, é inerte",
+      "Sim, ao longo do tempo"
+    ],
+    certa: 2
+  },
+  {
+    q: "O que NUNCA deveria estar no oceano onde vivo?",
+    opcoes: [
+      "Plástico descartável",
+      "Sal",
+      "Areia"
+    ],
+    certa: 0
+  }
+];
 
-    },
-    {
-      q: "Qual destes demora mais tempo a desaparecer do meu habitat?",
-      opcoes: [ "Papel molhado", "Restos de comida","Garrafa de plástico"]
-
-    },
-    {
-      q: "O plástico que engulo pode chegar aos humanos?",
-      opcoes: [
-        "Sim, através da cadeia alimentar",
-        "Não, o corpo elimina",
-        "Só em oceanos poluídos"
-      ]
-    },
-    {
-      q: "O que são as chamadas 'ilhas de lixo'?",
-      opcoes: [
-        
-        "Ilhas artificiais",
-        "Plataformas flutuantes",
-        "Grandes zonas oceânicas com plástico acumulado"
-      ]
-    },
-    {
-      q: "Qual animal marinho sofre MAIS com o lixo plástico?",
-      opcoes: ["Caranguejos", "Tartarugas e aves marinhas", "Polvos"]
-    },
-    {
-      q: "Qual atitude humana ajuda verdadeiramente a salvar o meu lar?",
-      opcoes: [
-        
-        "Recolher lixo só na praia",
-        "Usar plástico biodegradável sempre",
-        "Reduzir, reutilizar e reciclar"
-      ]
-    },
-    {
-      q: "O plástico liberta substâncias perigosas na água?",
-      opcoes: ["Não, é inerte","Sim, ao longo do tempo", "Apenas com calor extremo"]
-    },
-    {
-      q: "O que NUNCA deveria estar no oceano onde vivo?",
-      opcoes: ["Sal" , "Plástico descartável", "Areia"]
-    }
-  ];
 
 
   // ------- PROGRESS CIRCLE -------
@@ -229,10 +268,18 @@
     lixosAtivos = lixosAtivos.filter(l => l !== lixoSelecionado);
 
     setTimeout(() => {
-      lixoSelecionado.remove();
-      lixoSelecionado = null;
-      atualizarProgresso();
-    }, 620);
+  lixoSelecionado.remove();
+  lixoSelecionado = null;
+
+  if (lixosAtivos.length === 0) {
+    setTimeout(() => {
+      window.location.href = "../minijogo_estrela/ph.html"; 
+    }, 600);
+    return;
+  }
+
+  atualizarProgresso();
+}, 620);
   }
 
   function mostrarErro() {
@@ -337,16 +384,7 @@
     }, 900);
   }
 
-<<<<<<< HEAD
-  // SE o nível terminou, muda para a próxima página
-  setTimeout(() => {
-   window.location.href = `../nivel_${nivel}/nivel${nivel}.html`;
-  }, 1200);
 
-}
-=======
-
->>>>>>> be9aa341047ee105d9ccb529b556e97f9644695a
 
   // ------- START DO NÍVEL -------
 
@@ -357,7 +395,7 @@
       progressCircle.style.strokeDashoffset = `${circunferencia}`;
 
     if (player) {
-      player.style.backgroundImage = "'../characters/animals/estrela/estrela-sujo.svg'";
+      player.style.backgroundImage = "url('../characters/animals/estrela/estrela-sujo.svg')";
       player.style.backgroundSize = "contain";
       player.style.backgroundRepeat = "no-repeat";
       player.style.backgroundPosition = "center";
@@ -379,8 +417,7 @@
     iniciarNivel();
   }
 
-   document.addEventListener('DOMContentLoaded', init);
-   
+  document.addEventListener('DOMContentLoaded', init);
 })();
 
 function updateScene(progress) {
@@ -405,4 +442,3 @@ function updateScene(progress) {
   playerImg.src = `../assets/characters/animals/estrela/estrela-${stage}.svg`;
 
 }
-
