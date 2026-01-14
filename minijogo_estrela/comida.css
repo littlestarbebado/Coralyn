@@ -1,0 +1,53 @@
+body {
+  margin: 0;
+  background: linear-gradient(#003f5c, #001f3f);
+  color: white;
+  font-family: Arial;
+  text-align: center;
+  overflow: hidden;
+}
+
+#jogo {
+  position: relative;
+  width: 100vw;
+  height: 80vh;
+}
+
+#estrela {
+  position: absolute;
+  bottom: 20px;
+  left: 50%;
+  width: 180px;
+  transform: translateX(-50%);
+}
+
+.item {
+  position: absolute;
+  width: 80px;
+  cursor: pointer;
+  animation: cair 18s linear forwards;
+}
+
+.item.removido {
+  transform: scale(0);
+  opacity: 0;
+}
+
+@keyframes cair {
+  from { top: -100px; }
+  to { top: 90vh; }
+}
+
+#hud {
+  font-size: 20px;
+  margin-bottom: 10px;
+}
+
+.hidden {
+  display: none;
+}
+
+#resultado {
+  font-size: 48px;
+  margin-top: 40px;
+}
