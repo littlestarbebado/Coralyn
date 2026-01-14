@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Mini‑jogo pH — Coralyn</title>
+  <link rel="stylesheet" href="ph.css">
+</head>
+<body>
+  <main class="wrap">
+    <header class="header">
+      <h1>Equilibra o pH para a Estrela</h1>
+      <p class="subtitle">Mantém o pH na zona ideal para salvar a estrela do mar 🌊</p>
+    </header>
+
+    <section class="game">
+      <div id="mar" class="mar" aria-hidden="false">
+       
+        <img src="../assets/characters/animals/estrela/estrela-limpo.svg" alt="estrela" class="estrela">
+       
+        <!-- bolhas decorativas -->
+        <div class="bolha b1"></div>
+        <div class="bolha b2"></div>
+        <div class="bolha b3"></div>
+        <div class="bolha b4"></div>
+        <div class="bolha b5"></div>
+        <div class="bolha b6"></div>
+        <div class="bolha b7"></div>
+      </div>
+   
+
+      <aside class="hud">
+        <div class="ph-display">
+          <div class="label">pH atual</div>
+          <div id="phNumber" class="ph-number">8.1</div>
+        </div>
+
+        <div class="thermo-wrap">
+          <div class="thermo" role="img" aria-label="Nivel de pH">
+            <div id="thermoFill" class="thermo-fill"></div>
+          </div>
+
+          
+        </div>
+
+      
+    
+
+        <div class="controls">
+          <div class="buttons">
+            <button id="acidBtn" class="btn acid" title="Acidificar (diminuir pH)">Adicionar Ácido</button>
+            <button id="baseBtn" class="btn base" title="Alcalinizar (aumentar pH)">Adicionar Base</button>
+          </div>
+
+         
+          
+          <input id="fineSlider" class="slider" type="range" min="0" max="14" step="0.1" value="8.1">
+
+          <div class="hint">Zona ideal: <span id="idealRangeText">8.1 ± 0.3</span></div>
+        </div>
+      </aside>
+    </section>
+
+    <footer class="footer">
+      <small>Coralyn — Aprende e salva o oceano 🌍</small>
+    </footer>
+  </main>
+
+  <script src="ph.js" defer></script>
+</body>
+</html>
