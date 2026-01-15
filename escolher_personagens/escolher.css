@@ -92,4 +92,96 @@ body {
   text-align: center;
 }
 
+.settings-btn {
+  position: absolute;
+  top: 15px;
+  right: 15px;
+  background: none;
+  border: none;
+  cursor: pointer;
+}
 
+.settings-btn img {
+  width: 80px;
+  height: 80px;
+}
+
+.settings-btn:hover {
+  transform: scale(1.1);
+}
+
+.overlay {
+    position: fixed;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.7); /* Fundo escurecido */
+    backdrop-filter: blur(10px);
+    display: none; /* Começa escondido */
+    align-items: center;
+    justify-content: center;
+    z-index: 9999;
+}
+
+.popup {
+    background: #f4fbff;
+    width: 340px;
+    padding: 25px;
+    border-radius: 18px;
+    text-align: center;
+    position: relative;
+    color: #1a3d7c;
+}
+
+.popup h2 {
+    color: #1a3d7c;
+    margin-bottom: 20px;
+}
+
+.opcao {
+    text-align: left;
+    margin: 20px 0;
+    color: #1a3d7c;
+    font-size: 16px;
+}
+
+input[type="range"] {
+    width: 100%;
+    margin-top: 8px;
+}
+
+.nivel {
+    background: #3d7bfd;
+    color: white;
+    border: none;
+    padding: 14px;
+    width: 100%;
+    border-radius: 12px;
+    margin-top: 15px;
+    cursor: pointer;
+    font-weight: bold;
+}
+
+/* Botão Sair (Vermelho) */
+.sair {
+    background: #f44336;
+    color: white;
+    border: none;
+    padding: 14px;
+    width: 100%;
+    border-radius: 12px;
+    margin-top: 10px;
+    cursor: pointer;
+    font-weight: bold;
+}
+
+.fechar {
+    position: absolute;
+    top: 12px;
+    right: 16px;
+    font-size: 22px;
+    cursor: pointer;
+    color: #888;
+}
+
+.fechar:hover {
+    color: #333;
+}

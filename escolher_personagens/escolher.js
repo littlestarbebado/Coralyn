@@ -51,5 +51,15 @@ document.addEventListener("DOMContentLoaded", () => {
     window.location.href = "../inicio/inicio.html";
   });
 
+
+  
+
+
+
+
+
+
+  
+
 });
 
