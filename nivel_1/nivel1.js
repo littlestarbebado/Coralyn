@@ -8,7 +8,7 @@ localStorage.setItem("nivelAtual", 1);
   const botoes = Array.from(document.querySelectorAll('.opcao'));
   const lixosContainer = document.getElementById('lixos');
 
-  const btnConfig = document.getElementById('btn-config');
+  const btnConfig = document.getElementById('settings-btn');
   const popupConfig = document.getElementById('popup-config');
   const btnFecharConfig = document.getElementById('btn-fechar-config');
   const btnSair = document.getElementById('btn-sair');

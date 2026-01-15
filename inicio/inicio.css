@@ -84,39 +84,33 @@ body {
   gap: 24px;
 }
 
-.btn-secondary {
-  background: rgba(255, 255, 255, 0.2);
-  color: #ffffff;
-  font-weight: 600;
-  border-radius: 999px;
-  padding: 13px 36px;
-  backdrop-filter: blur(5px);
-  border: 1px solid rgba(255, 255, 255, 0.3);
-  cursor: pointer;
-  transition: 0.3s ease;
-}
 
-.btn-secondary:hover {
-  background-color: #10587D;
-}
 
 /* botão das definições */
-.settings-btn {
+#settings-btn {
   position: absolute;
   top: 15px;
-  right: 15px;
+  left: 15px;
+  width: 100px;
+  height: 100px;
   background: none;
   border: none;
   cursor: pointer;
+  z-index: 10000;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
-.settings-btn img {
-  width: 80px;
-  height: 80px;
+#settings-btn img {
+  width: 80%;
+  height: 80%;
+  transition: transform 0.3s ease;
 }
 
-.settings-btn:hover {
-  transform: scale(1.1);
+#settings-btn:hover img {
+  transform: rotate(45deg);
 }
 
 .overlay {

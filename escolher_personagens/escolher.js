@@ -1,65 +1,60 @@
 document.addEventListener("DOMContentLoaded", () => {
 
-    // escolher personagem
+  // ===== ESCOLHER PERSONAGEM =====
   document.querySelectorAll(".card").forEach(card => {
     card.addEventListener("click", () => {
+
       const personagem = card.dataset.personagem;
 
-      localStorage.setItem("personagemEscolhido", personagem);
+      if (!personagem) {
+        console.error("Personagem não definida no data-personagem");
+        return;
+      }
 
-      // ir para níveis
+      // guardar escolha
+      localStorage.setItem("personagemEscolhido", personagem);
+      console.log("Personagem guardada:", personagem);
+
+      // ir para a página de níveis
       window.location.href = "../pag_niveis/niveis.html";
     });
   });
 
-  localStorage.getItem("personagemEscolhido");
+  // ===== MODAL DE DEFINIÇÕES =====
 
-  //modal de definições
-  const btnSettings = document.getElementById("btnSettings");
+  const btnSettings = document.getElementById("settings-btn");
   const modal = document.getElementById("modalConfig");
   const closeModal = document.getElementById("closeModal");
-  const musica = document.getElementById("musica");
-  const valorMusica = document.getElementById("valorMusica");
 
+  const btnNivel = document.getElementById("btnNivel");
   const btnSair = document.getElementById("btnSair");
+  const btnIniciar = document.getElementById("btnIniciar");
+  const btnSessao = document.getElementById("btnSessao");
 
-  // abrir definições
+  // ABRIR MODAL
   btnSettings.addEventListener("click", () => {
-    modal.classList.remove("hidden");
+    modal.style.display = "flex";
   });
 
-  // fechar definições
+  // FECHAR MODAL
   closeModal.addEventListener("click", () => {
-    modal.classList.add("hidden");
+    modal.style.display = "none";
   });
 
-  // fechar clicando fora
-  modal.addEventListener("click", (e) => {
-    if (e.target === modal) {
-      modal.classList.add("hidden");
-    }
+  // BOTÕES
+  btnNivel.addEventListener("click", () => {
+    window.location.href = "../pag_niveis/niveis.html";
   });
 
-  // slider música (guardar valor)
-  musica.addEventListener("input", () => {
-    valorMusica.textContent = musica.value + "%";
-    localStorage.setItem("volumeMusica", musica.value);
+  btnIniciar.addEventListener("click", () => {
+    window.location.href = "../escolher_personagens/escolher_personagens.html";
   });
 
-  // sair para início
+
+
   btnSair.addEventListener("click", () => {
-    window.location.href = "../inicio/inicio.html";
+    window.location.href = "inicio.html";
   });
-
-
-  
-
-
-
-
-
-
-  
 
 });
 

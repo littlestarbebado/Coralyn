@@ -6,42 +6,40 @@
     <link rel="stylesheet" href="escolher.css">
 </head>
 <body>
+  <div id="background"></div>
+<button id="settings-btn">
+  <img src="../assets/settings.png" alt="Definições">
+</button>
 
     <img src="../assets/logo.svg" class="logo" alt="Logo Coralyn">
 
-    <button id="btnSettings" class="settings-btn">
-    <img src="../assets/settings.png" alt="Definições">
-    </button>
+    
 
-   <div id="modalConfig" class="modal hidden">
-    <div class="modal-content">
-      <button id="closeModal">✖</button>
-
-      <h2>Definições</h2>
-
-      <label>Música</label>
-      <input type="range" id="musica" min="0" max="100" value="30">
-      <span id="valorMusica">30%</span>
-
-      <br><br>
-
-      <button id="btnSair">Sair</button>
-    </div>
-   </div>
-
-    <h1 class="titulo">ESCOLHE A PERSONAGEM</h1>
+    <header>
+    <h1>Escolhe o teu personagem</h1>
+  </header>
 
     <div class="container">
 
-        <div class="card" onclick="escolher('sereia')">
-            <img src="../assets/characters/personagens/Sereia.png" class="char">
-        </div>
+  <div class="card" data-personagem="sereia">
+    <img src="../assets/characters/personagens/Sereia.png" class="char" alt >
+  </div>
 
-        <div class="card" onclick="escolher('mergulhador')">
-            <img src="../assets/characters/personagens/Mergulhador.png" class="char">
-        </div>
+  <div class="card" data-personagem="mergulhador">
+    <img src="../assets/characters/personagens/Mergulhador.png" class="char">
+  </div>
 
-    </div>
+</div>
+<div class="overlay" id="modalConfig" style="display: none;">
+  <div class="popup">
+    <span class="fechar" id="closeModal">✕</span>
+
+    <h2>Configurações</h2>
+
+    <button class="nivel" id="btnNivel">Níveis</button>
+    <button class="sair" id="btnSair">Sair</button>
+  </div>
+</div>
 
     <script src="escolher.js"></script>
 </body>

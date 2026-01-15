@@ -1,28 +1,27 @@
 <!DOCTYPE html>
 <html lang="pt">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Menu – Coralyn</title>
+    <link rel="stylesheet" href="../global.css">
+
   <link rel="stylesheet" href="../pag_niveis/niveis.css">
 
-
-<link rel="stylesheet" href="inicio/config.css">
-
-
-
 </head>
-<body>
 
-  <button id="btn-config">
-  <img src="../assets/settings.png" alt="Configurações">
+<body>
+  <button id="settings-btn">
+    <img src="../assets/settings.png" alt="Definições">
   </button>
-  
+
+
   <button id="btnIniciar">Iniciar</button>
   <!-- Fundo -->
-    <img src="../assets/fundo/aguafundo.svg" alt="Água de fundo" class="aguafundo">
-    <img src="../assets/fundo/rochedo.svg" alt="Rochedo" class="rochedo">
- 
+  <img src="../assets/fundo/aguafundo.svg" alt="Água de fundo" class="aguafundo">
+  <img src="../assets/fundo/rochedo.svg" alt="Rochedo" class="rochedo">
+
 
   <!-- Peixes animados -->
 
@@ -40,48 +39,45 @@
   </header>
 
   <!-- Menu de níveis -->
-<div class="menu-niveis">
-  <div class="nivel desbloqueado" data-nivel="1">
-    <div class="nivel-number-container"><span>1</span></div>
-  </div>
-  <div class="nivel bloqueado" data-nivel="2">
-    <div class="nivel-number-container"><span>2</span></div>
-  </div>
-  <div class="nivel bloqueado" data-nivel="3">
-    <div class="nivel-number-container"><span>3</span></div>
-  </div>
-  <div class="nivel bloqueado" data-nivel="4">
-    <div class="nivel-number-container"><span>4</span></div>
-  </div>
-  <div class="nivel bloqueado" data-nivel="5">
-    <div class="nivel-number-container"><span>5</span></div>
-  </div>
-</div>
-
-
-
-
-
-
-<div class="overlay" id="modalConfig" style="display: none;">
-    <div class="popup">
-        <span class="fechar" id="closeModal">✕</span>
-        <h2>Configurações</h2>
-        <div class="opcao">
-            🎵 Volume da Música
-            <input type="range" id="musica" min="0" max="100" value="50">
-            <span id="valorMusica">50%</span>
-        </div>
-        <div class="opcao">
-            🔊 Volume dos Efeitos
-            <input type="range" id="efeitos" min="0" max="100" value="50">
-            <span id="valorEfeitos">50%</span>
-        </div>
-        <button class="nivel" id="btnNivel">Níveis</button>
-        <button class="sair" id="btnSair">Sair</button>
+  <div class="menu-niveis">
+    <div class="nivel desbloqueado" data-nivel="1">
+      <div class="nivel-number-container"><span>1</span></div>
     </div>
-</div>
+    <div class="nivel bloqueado" data-nivel="2">
+      <div class="nivel-number-container"><span>2</span></div>
+    </div>
+    <div class="nivel bloqueado" data-nivel="3">
+      <div class="nivel-number-container"><span>3</span></div>
+    </div>
+    <div class="nivel bloqueado" data-nivel="4">
+      <div class="nivel-number-container"><span>4</span></div>
+    </div>
+    <div class="nivel bloqueado" data-nivel="5">
+      <div class="nivel-number-container"><span>5</span></div>
+    </div>
+  </div>
+
+
+
+
+
+
+  <div class="overlay" id="modalConfig" style="display: none;">
+    <div class="popup">
+      <span class="fechar" id="closeModal">✕</span>
+
+      <h2>Configurações</h2>
+
+      <button class="nivel-btn" id="btnNivel">Níveis</button>
+      <button class="sair" id="btnSair">Sair</button>
+    </div>
+  </div>
+
+  <div id="personagem-preview">
+    <img id="personagem-img" src="" alt="Personagem escolhida">
+  </div>
 
   <script src="../pag_niveis/niveis.js"></script>
 </body>
+
 </html>

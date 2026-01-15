@@ -9,22 +9,25 @@
   
   <div class="page">
     <!-- Ícone de definições no topo direito -->
-    <button id="btnSettings" class="settings-btn">
-    <img src="../assets/settings.png" alt="Definições">
-    </button>
+<button id="settings-btn">
+  <img src="../assets/settings.png" alt="Definições">
+</button>
+
 
     <!-- Logo -->
     <header class="logo-area">
     <img src="../assets/logo.svg" alt="Logo Coralyn" class="logo-img">
     </header>
 
+ <!-- Logo ao centro -->
+    <header class="logo-area">
+    <img src="../assets/logo.svg" alt="Logo Coralyn" class="logo-img">
+    </header>
 
     <main class="content">
       <button id="btnIniciar" class="btn-main" type="button">INICIAR</button>
 
-      <div class="secondary-buttons">
-        <button id="btnSessao" class="btn-secondary" type="button">Iniciar Sessão</button>
-      </div>
+
     </main>
   </div>
 
@@ -33,16 +36,6 @@
     <div class="popup">
         <span class="fechar" id="closeModal">✕</span>
         <h2>Configurações</h2>
-        <div class="opcao">
-            🎵 Volume da Música
-            <input type="range" id="musica" min="0" max="100" value="50">
-            <span id="valorMusica">50%</span>
-        </div>
-        <div class="opcao">
-            🔊 Volume dos Efeitos
-            <input type="range" id="efeitos" min="0" max="100" value="50">
-            <span id="valorEfeitos">50%</span>
-        </div>
         <button class="nivel" id="btnNivel">Níveis</button>
         <button class="sair" id="btnSair">Sair</button>
     </div>

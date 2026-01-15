@@ -1,37 +1,63 @@
 document.addEventListener("DOMContentLoaded", () => {
 
-  // BOTÃO CONFIG
-  const btnConfig = document.getElementById("btn-config");
-  if (btnConfig) {
-    btnConfig.addEventListener("click", () => {
-      window.location.href = "../inicio/config.html";
-    });
-    
-  }
 
-  // NÍVEIS DESBLOQUEADOS
+
+  // ELEMENTOS
+  const btnSettings = document.getElementById("settings-btn");
+  const modal = document.getElementById("modalConfig");
+  const closeModal = document.getElementById("closeModal");
+
+  const btnNivel = document.getElementById("btnNivel");
+  const btnSair = document.getElementById("btnSair");
+  const btnIniciar = document.getElementById("btnIniciar");
+  const btnSessao = document.getElementById("btnSessao");
+
+  // ABRIR MODAL
+  btnSettings.addEventListener("click", () => {
+    modal.style.display = "flex";
+  });
+
+  // FECHAR MODAL
+  closeModal.addEventListener("click", () => {
+    modal.style.display = "none";
+  });
+
+  // BOTÕES
+  btnNivel.addEventListener("click", () => {
+    window.location.href = "../pag_niveis/niveis.html";
+  });
+
+  btnIniciar.addEventListener("click", () => {
+    window.location.href = "../escolher_personagens/escolher_personagens.html";
+  });
+
+
+
+  btnSair.addEventListener("click", () => {
+    window.location.href = "inicio.html";
+  });
+
+  /* =========================
+     NÍVEIS DESBLOQUEADOS
+  ========================= */
   const nivelMaximo = parseInt(localStorage.getItem("nivelMaximo")) || 1;
   const nivelAnimar = parseInt(localStorage.getItem("nivelRecemDesbloqueado"));
 
   document.querySelectorAll(".nivel").forEach(nivelEl => {
     const nivel = parseInt(nivelEl.dataset.nivel);
 
-    // desbloquear níveis
     if (nivel <= nivelMaximo) {
       nivelEl.classList.remove("bloqueado");
       nivelEl.classList.add("desbloqueado");
     }
 
-    // animação do nível recém‑desbloqueado
     if (nivel === nivelAnimar) {
       nivelEl.classList.add("animar-desbloqueio");
-
       setTimeout(() => {
         localStorage.removeItem("nivelRecemDesbloqueado");
       }, 1000);
     }
 
-    // clique no nível
     nivelEl.addEventListener("click", () => {
       if (nivelEl.classList.contains("desbloqueado")) {
         window.location.href = `../nivel_${nivel}/nivel${nivel}.html`;
@@ -41,64 +67,26 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   });
 
+  /* =========================
+     PERSONAGEM ESCOLHIDA
+  ========================= */
+  const personagem = localStorage.getItem("personagemEscolhido");
+  const img = document.getElementById("personagem-img");
+
+  if (img && personagem) {
+    const personagens = {
+      sereia: "../assets/characters/personagens/Sereia.png",
+      mergulhador: "../assets/characters/personagens/Mergulhador.png"
+    };
+
+    img.src = personagens[personagem] || personagens.sereia;
+
+    // animação flutuar + hover
+    img.classList.add("flutuar");
+
+    img.addEventListener("mouseleave", () => {
+      img.style.transform = "";
+    });
+  }
+
 });
-
-  // botões
-  btnNivel.addEventListener("click", () => {
-    window.location.href = "../pag_niveis/niveis.html";
-    
-  });
-
-  btnSair.addEventListener("click", () => {
-    musicaFundo.pause();
-    window.location.href = "inicio.html";
-  });
-
-
-document.addEventListener("DOMContentLoaded", () => {
-  const nivelMaximo = parseInt(localStorage.getItem("nivelMaximo")) || 1;
-
-  document.querySelectorAll(".nivel").forEach(nivelEl => {
-    const nivel = parseInt(nivelEl.dataset.nivel);
-
-    if (nivel <= nivelMaximo) {
-      nivelEl.classList.remove("bloqueado");
-      nivelEl.classList.add("desbloqueado");
-    }
-  });
-});
-
-const nivelAtual = parseInt(localStorage.getItem("nivelAtual")) || 1;
-
-document.getElementById("btnJogar").addEventListener("click", () => {
-  window.location.href = `../nivel_${nivelAtual}/nivel${nivelAtual}.html`;
-});
-
-
-
-
-
-  const musica = document.getElementById("musica");
-  const efeitos = document.getElementById("efeitos");
-  const valorMusica = document.getElementById("valorMusica");
-  const valorEfeitos = document.getElementById("valorEfeitos");
-    // botões
-  btnNivel.addEventListener("click", () => {
-    window.location.href = "../pag_niveis/niveis.html";
-    
-  });
-
-  const btnIniciar = document.getElementById("btnIniciar");
-  btnIniciar.addEventListener("click", () => {
-   window.location.href = "../pag_niveis/niveis.html";
-  });
-
-  const btnSessao = document.getElementById("btnSessao");
-  btnSessao.addEventListener("click", () => {
-   window.location.href = "../escolher_personagens/escolher_personagens.html";
-  });
-
-  btnSair.addEventListener("click", () => {
-    musicaFundo.pause();
-    window.location.href = "inicio.html";
-  });

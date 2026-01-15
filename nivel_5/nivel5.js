@@ -1,4 +1,4 @@
-localStorage.setItem("nivelAtual", 4);
+localStorage.setItem("nivelAtual", 5);
 (() => {
   'use strict';
 
@@ -27,123 +27,133 @@ localStorage.setItem("nivelAtual", 4);
   if (!popup) console.warn('popup não encontrado');
 
   // GAME STATE
-  let nivel = 4;
+  let nivel = 5;
   let progresso = 0;
   let lixosAtivos = [];
   let lixoSelecionado = null;
   let respostaCorreta = 0;
 
   // ------- PERGUNTAS -------
-  const perguntas = [
+const perguntas = [
   {
-    q: "Sou uma tartaruga-marinha. Porque confundo sacos de plástico com comida?",
+    q: "Sou um polvo. Sabias que o plástico pode afetar a minha inteligência? Como?",
     opcoes: [
-      "Porque brilham no fundo do mar",
-      "Porque se parecem com medusas",
-      "Porque têm cheiro a peixe"
+      "Interferindo no meu sistema nervoso",
+      "Mudando a cor da minha pele",
+      "Reduzindo o número de braços"
+    ],
+    certa: 0
+  },
+  {
+    q: "Microplásticos já foram encontrados em qual destas partes do meu corpo?",
+    opcoes: [
+      "Apenas nos tentáculos",
+      "No sistema digestivo e nos tecidos",
+      "Só na superfície da pele"
     ],
     certa: 1
   },
   {
-    q: "O que pode acontecer se eu engolir plástico?",
+    q: "Porque o polvo é especialmente vulnerável ao lixo escondido em fendas?",
     opcoes: [
-      "Nada, o corpo elimina",
-      "Posso ficar doente ou morrer",
-      "O plástico dissolve-se"
+      "Porque caça em tocas e buracos",
+      "Porque vive apenas à superfície",
+      "Porque não consegue ver bem"
+    ],
+    certa: 0
+  },
+  {
+    q: "O que acontece quando um polvo usa lixo como abrigo?",
+    opcoes: [
+      "Pode ficar preso ou ferido",
+      "Fica mais protegido de predadores",
+      "Nada acontece"
+    ],
+    certa: 0
+  },
+  {
+    q: "Qual destes objetos representa MAIOR perigo para mim no fundo do mar?",
+    opcoes: [
+      "Garrafas de vidro",
+      "Redes de pesca abandonadas",
+      "Conchas naturais"
     ],
     certa: 1
   },
   {
-    q: "Quanto tempo pode um saco de plástico permanecer no oceano?",
+    q: "Por que os polvos são considerados indicadores da saúde do oceano?",
     opcoes: [
-      "Alguns dias",
-      "Alguns anos",
-      "Centenas de anos"
+      "Porque vivem pouco tempo",
+      "Porque acumulam toxinas rapidamente",
+      "Porque só comem algas"
+    ],
+    certa: 1
+  },
+  {
+    q: "Mesmo que eu não engula plástico diretamente, posso ser afetado porque…",
+    opcoes: [
+      "O plástico dissolve-se na água",
+      "As minhas presas já o ingeriram",
+      "O plástico desaparece sozinho"
+    ],
+    certa: 1
+  },
+  {
+    q: "Qual destas afirmações é VERDADEIRA?",
+    opcoes: [
+      "O plástico no oceano é reciclado naturalmente",
+      "O plástico apenas afeta animais grandes",
+      "O plástico fragmenta-se mas nunca desaparece"
     ],
     certa: 2
   },
   {
-    q: "As redes de pesca abandonadas são perigosas porque…",
+    q: "Porque redes fantasmas são especialmente perigosas para polvos?",
     opcoes: [
-      "Continuam a capturar animais durante muito tempo",
-      "Afundam rapidamente",
-      "São feitas de materiais naturais"
-    ],
-    certa: 0
-  },
-  {
-    q: "O que são microplásticos?",
-    opcoes: [
-      "Plásticos biodegradáveis",
-      "Fragmentos muito pequenos de plástico",
-      "Algas artificiais"
+      "Porque são coloridas",
+      "Porque continuam a capturar animais sem controlo",
+      "Porque afundam lentamente"
     ],
     certa: 1
   },
   {
-    q: "Mesmo que eu não coma plástico diretamente, posso ser afetada porque…",
+    q: "Qual destas ações humanas teria MAIOR impacto imediato na minha sobrevivência?",
     opcoes: [
-      "O plástico entra na cadeia alimentar",
-      "A água limpa o plástico",
-      "Os peixes evitam plástico"
+      "Reduzir plástico descartável",
+      "Criar mais aquários",
+      "Pescar mais profundamente"
     ],
     certa: 0
   },
   {
-    q: "Porque é que o lixo no oceano também afeta os humanos?",
+    q: "O plástico que me afeta hoje pode impactar futuras gerações porque…",
     opcoes: [
-      "Porque o oceano é separado dos humanos",
-      "Porque partilhamos alimentos e água",
-      "Porque o lixo desaparece com o tempo"
+      "O oceano se renova rapidamente",
+      "O plástico permanece durante séculos",
+      "Os polvos não vivem muito"
     ],
     certa: 1
   },
   {
-    q: "Qual destes objetos é MAIS perigoso para mim?",
+    q: "Se o oceano continuar a poluir-se, o que pode acontecer comigo?",
     opcoes: [
-      "Saco de plástico",
-      "Concha natural",
-      "Pedra pequena"
-    ],
-    certa: 0
-  },
-  {
-    q: "O que posso sofrer ao ficar presa em lixo marinho?",
-    opcoes: [
-      "Apenas cansaço",
-      "Ferimentos e dificuldade em nadar",
-      "Nada, consigo libertar-me sempre"
+      "Nada, eu adapto-me sempre",
+      "Perda de habitat e sobrevivência",
+      "Apenas mudança de cor"
     ],
     certa: 1
   },
   {
-    q: "Qual destas ações humanas ajuda realmente a proteger-me?",
+    q: "Qual destas frases resume melhor o problema do lixo no oceano?",
     opcoes: [
-      "Reduzir o uso de plástico descartável",
-      "Deitar lixo longe da praia",
-      "Usar mais sacos de plástico"
-    ],
-    certa: 0
-  },
-  {
-    q: "O plástico no oceano desaparece naturalmente?",
-    opcoes: [
-      "Sim, em poucos anos",
-      "Não, apenas se fragmenta em pedaços menores",
-      "Sim, com a luz do sol"
+      "É um problema apenas visual",
+      "Afeta todo o ecossistema marinho",
+      "Afeta só zonas costeiras"
     ],
     certa: 1
-  },
-  {
-    q: "Porque proteger as tartarugas é importante?",
-    opcoes: [
-      "Porque fazem parte do equilíbrio do oceano",
-      "Porque vivem pouco tempo",
-      "Porque não afeta outros animais"
-    ],
-    certa: 0
   }
 ];
+
 
 
 
@@ -399,7 +409,7 @@ function subirNivel() {
       progressCircle.style.strokeDashoffset = `${circunferencia}`;
 
     if (player) {
-      player.style.backgroundImage = "url('../characters/animals/tartaruga/tartaruga-sujo.svg')";
+      player.style.backgroundImage = "url('../characters/animals/polvo/polvo-sujo.svg')";
       player.style.backgroundSize = "contain";
       player.style.backgroundRepeat = "no-repeat";
       player.style.backgroundPosition = "center";
@@ -443,7 +453,7 @@ function updateScene(progress) {
     `url('../assets/fundo/fundo-${stage}.svg')`;
 
   // personagem certo
-  playerImg.src = `../assets/characters/animals/tartaruga/tartaruga-${stage}.svg`;
+  playerImg.src = `../assets/characters/animals/polvo/polvo-${stage}.svg`;
 
 }
 

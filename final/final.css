@@ -1,0 +1,62 @@
+body {
+  margin: 0;
+  font-family: "Poppins", Arial, sans-serif;
+  overflow: hidden;
+}
+
+#background {
+  position: fixed;
+  inset: 0;
+  background: url('../assets/fundo/fundo-limpo.svg') center/cover no-repeat;
+  z-index: -1;
+}
+
+.final-container {
+  text-align: center;
+  padding-top: 60px;
+  color: white;
+}
+
+h1 {
+  font-size: 64px;
+  text-shadow: 0 0 20px rgba(0,0,0,.4);
+}
+
+.final-text {
+  font-size: 24px;
+  max-width: 700px;
+  margin: 20px auto;
+}
+
+.personagens {
+  display: flex;
+  justify-content: center;
+  gap: 30px;
+  margin: 40px 0;
+}
+
+.personagens img {
+  width: 140px;
+  animation: flutuar 3s ease-in-out infinite;
+}
+
+@keyframes flutuar {
+  0%,100% { transform: translateY(0); }
+  50% { transform: translateY(-15px); }
+}
+
+.botoes-finais button {
+  margin: 10px;
+  padding: 14px 36px;
+  border-radius: 999px;
+  border: none;
+  font-size: 20px;
+  font-weight: bold;
+  cursor: pointer;
+  background: #00bcd4;
+  color: white;
+}
+
+.botoes-finais button:hover {
+  background: #0097a7;
+}
