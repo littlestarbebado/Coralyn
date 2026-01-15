@@ -1,17 +1,53 @@
+/* Fonte personalizada */
+@font-face {
+  font-family: "ThanksgivingJoy";
+  src: url("../assets/fonts/ThanksgivingJoy.ttf") format("truetype");
+  font-weight: normal;
+  font-style: normal;
+}
+
 /* Reset */
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-  font-family: 'Arial', sans-serif;
 }
 
-body, html {
+/* Base */
+html,
+body {
   width: 100%;
   height: 100%;
   overflow: hidden;
   position: relative;
+
+  font-family: "ThanksgivingJoy", Arial, sans-serif;
+  font-size: 16px;
+  /* base saudável */
 }
+
+/* ---------- TÍTULO ---------- */
+header {
+  position: absolute;
+  top: 20px;
+  width: 100%;
+  text-align: center;
+  z-index: 10;
+}
+
+header h1 {
+  font-size: 64px;
+  /* GRANDE e legível */
+  color: #004080;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+}
+
+/* ---------- BOTÕES ---------- */
+button {
+  font-size: 28px;
+}
+
+/* ---------- BOTÃO CONFIG ---------- */
 #btn-config {
   position: absolute;
   top: 15px;
@@ -22,10 +58,10 @@ body, html {
   border: none;
   cursor: pointer;
   z-index: 10000;
+
   display: flex;
   justify-content: center;
   align-items: center;
-  padding: 0;
 }
 
 #btn-config img {
@@ -38,13 +74,10 @@ body, html {
   transform: rotate(45deg);
 }
 
-/* Fundo */
+/* ---------- FUNDO ---------- */
 .fundo {
   position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
+  inset: 0;
   z-index: 0;
 }
 
@@ -53,9 +86,6 @@ body, html {
   width: 100%;
   height: 100%;
   object-fit: cover;
-  top: 0;
-  left: 0;
-  z-index: 0;
 }
 
 .rochedo {
@@ -63,51 +93,56 @@ body, html {
   left: 0;
   bottom: 0;
   height: 100%;
-  z-index: 1;
+  z-index: 2;
 }
 
-/* Título */
-header {
-  position: absolute;
-  top: 20px;
-  width: 100%;
-  text-align: center;
-  z-index: 10;
-}
-
-header h1 {
-  font-size: 36px;
-  color: #004080;
-  text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
-}
-
-/* Menu de níveis */
-/* Menu de níveis */
+/* ---------- MENU DE NÍVEIS ---------- */
 .menu-niveis {
   position: absolute;
   right: 75px;
-  top: 30px;
-  display: flex;
-  flex-direction: column;
-  gap: 85px;
+  top: 0;
+  height: 100%;
+  width: 120px;
   z-index: 10;
 }
 
-/* Cada nível */
 .nivel {
+  position: absolute;
+  left: 50%;
   width: 90px;
   height: 90px;
   border-radius: 50%;
+
+  transform: translate(-50%, -50%);
   display: flex;
   justify-content: center;
   align-items: center;
-  font-weight: bold;
-  font-size: 24px;
-  cursor: pointer;
-  transition: transform 0.2s, box-shadow 0.3s;
+
+  transition: transform 0.25s ease, box-shadow 0.3s ease;
 }
 
-/* Nível desbloqueado */
+/* posições verticais */
+.nivel[data-nivel="1"] {
+  top: 10%;
+}
+
+.nivel[data-nivel="2"] {
+  top: 30%;
+}
+
+.nivel[data-nivel="3"] {
+  top: 50%;
+}
+
+.nivel[data-nivel="4"] {
+  top: 70%;
+}
+
+.nivel[data-nivel="5"] {
+  top: 90%;
+}
+
+/* ---------- ESTADOS ---------- */
 .nivel.desbloqueado {
   background: #ffd700;
   color: #004080;
@@ -115,23 +150,20 @@ header h1 {
 }
 
 .nivel.desbloqueado:hover {
-  transform: scale(1.1);
+  transform: translate(-50%, -50%) scale(1.1);
   box-shadow: 0 0 20px gold;
 }
 
-/* Nível bloqueado */
 .nivel.bloqueado {
   background: #ccc;
   color: #666;
   cursor: not-allowed;
-  box-shadow: none;
 }
 
-/* Número do nível dentro do círculo */
+/* ---------- NÚMERO ---------- */
 .nivel-number-container {
   width: 70px;
   height: 70px;
-  background: inherit;
   border-radius: 50%;
   display: flex;
   justify-content: center;
@@ -139,51 +171,82 @@ header h1 {
 }
 
 .nivel-number-container span {
-  font-size: 28px;
+  font-size: 42px;
+  /* maior e bonito */
   font-weight: bold;
-  color: inherit;
 }
 
-
+/* ---------- PEIXES ---------- */
 .peixe {
   position: absolute;
   left: -100px;
   width: 100px;
-  z-index: 5;
+  z-index: 1;
   animation-timing-function: linear;
   animation-iteration-count: infinite;
 }
 
-/* Peixes individuais com duração e delay */
-.peixe1 { top: 100px; animation: nadar-dx 12s linear infinite 0s; }
-.peixe2 { top: 180px; animation: nadar-sx 15s linear infinite 2s; }
-.peixe3 { top: 250px; animation: nadar-sx 10s linear infinite 1s; }
-.peixe4 { top: 320px; animation: nadar-sx 18s linear infinite 3s; }
-.peixe5 { top: 400px; animation: nadar-dx 14s linear infinite 0.5s; }
-.peixe6 { top: 470px; animation: nadar-sx 16s linear infinite 2.5s; }
-
-/* Da esquerda para a direita */
-@keyframes nadar-dx {
-  0%   { left: -100px; }
-  100% { left: 100%; }
+.peixe1 {
+  top: 100px;
+  animation: nadar-dx 12s linear infinite;
 }
 
-/* Da direita para a esquerda */
+.peixe2 {
+  top: 180px;
+  animation: nadar-sx 15s linear infinite 2s;
+}
+
+.peixe3 {
+  top: 250px;
+  animation: nadar-sx 10s linear infinite 1s;
+}
+
+.peixe4 {
+  top: 320px;
+  animation: nadar-sx 18s linear infinite 3s;
+}
+
+.peixe5 {
+  top: 400px;
+  animation: nadar-dx 14s linear infinite 0.5s;
+}
+
+.peixe6 {
+  top: 470px;
+  animation: nadar-sx 16s linear infinite 2.5s;
+}
+
+/* ---------- ANIMAÇÕES ---------- */
+@keyframes nadar-dx {
+  from {
+    left: -100px;
+  }
+
+  to {
+    left: 100%;
+  }
+}
+
 @keyframes nadar-sx {
-  0%   { left: 100%; }
-  100% { left: -100px; }
+  from {
+    left: 100%;
+  }
+
+  to {
+    left: -100px;
+  }
 }
 
 @keyframes desbloquearNivel {
   0% {
     transform: scale(0.3) rotate(-20deg);
     opacity: 0;
-    box-shadow: 0 0 0 rgba(255,255,255,0);
   }
+
   60% {
     transform: scale(1.15) rotate(5deg);
-    box-shadow: 0 0 25px rgba(255,255,255,0.8);
   }
+
   100% {
     transform: scale(1) rotate(0);
     opacity: 1;
@@ -192,14 +255,4 @@ header h1 {
 
 .nivel.animar-desbloqueio {
   animation: desbloquearNivel 0.9s ease-out;
-  z-index: 10;
 }
-
-
-
-
-
-
-
-
-
