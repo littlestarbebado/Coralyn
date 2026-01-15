@@ -72,7 +72,7 @@
     top: 55%;
     left: 50%;
     transform: translate(-50%, -50%);
-    width: 500px;
+    width: 450px;
     pointer-events: none;
     animation: floatUpDown 2s ease-in-out infinite;
     z-index: 10; 
@@ -214,7 +214,7 @@
  /* ================= BALÃO DE FALA ================= */
 #fala {
   position: absolute;
-  top: 38%;                 /* posição em frente à personagem */
+  top: 40%;                 /* posição em frente à personagem */
   left: 50%;
   transform: translate(-50%, -100%);
   background: white;

@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>CORALYN - Nível 3</title>
+  <link rel="stylesheet" href="nivel3.css">
+</head>
+
+<body>
+  <div id="background"></div>
+
+  <!-- Level up overlay -->
+  <div id="level-up-overlay" class="hidden">
+    <div id="level-up-content">
+      <div id="level-up-waves"></div>
+      <div id="level-up-text">NÍVEL 3!</div>
+    </div>
+  </div>
+
+  <!-- Indicador de nível -->
+  <div id="level-icon">
+    <svg width="100" height="100" viewBox="0 0 100 100">
+      <circle cx="50" cy="50" r="45" stroke="#1f6f9f" stroke-width="2" fill="none" />
+      <circle id="progress" cx="50" cy="50" r="45"
+        stroke="#ff9800" stroke-width="8" fill="none"
+        stroke-linecap="round" />
+    </svg>
+    <div id="level-number-container">
+      <div id="level-number">3</div>
+    </div>
+  </div>
+
+  <!-- Jogo -->
+  <div class="jogo">
+
+    <!-- Balão de fala -->
+    <div id="fala">
+      Olá… eu sou uma alforreca.
+      Ajudas-me a limpar a água?
+    </div>
+
+    <!-- Personagem -->
+    <div class="player">
+      <img id="player"
+        src="../assets/characters/animals/alforreca/alforreca-sujo.svg" />
+    </div>
+
+    <!-- Lixos -->
+    <div id="lixos"></div>
+  </div>
+
+  <!-- Popup de perguntas -->
+  <div id="popup" class="popup hidden">
+    <div class="popup-content">
+      <p id="pergunta">Pergunta...</p>
+      <button class="opcao"></button>
+      <button class="opcao"></button>
+      <button class="opcao"></button>
+    </div>
+  </div>
+
+  <div id="lixo-removido-msg">LIXO REMOVIDO!</div>
+
+  <script src="nivel3.js" defer></script>
+</body>
+</html>

@@ -1,4 +1,3 @@
-let musicaFundo = new Audio("../assets/audio/song.mp3");
 musicaFundo.loop = true;
 
 const volumeGuardado = localStorage.getItem("volumeMusica");

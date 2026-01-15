@@ -1,4 +1,4 @@
-localStorage.setItem("nivelAtual", 2);
+localStorage.setItem("nivelAtual", 3);
 (() => {
   'use strict';
 
@@ -27,7 +27,7 @@ localStorage.setItem("nivelAtual", 2);
   if (!popup) console.warn('popup não encontrado');
 
   // GAME STATE
-  let nivel = 2;
+  let nivel = 3;
   let progresso = 0;
   let lixosAtivos = [];
   let lixoSelecionado = null;
@@ -36,96 +36,124 @@ localStorage.setItem("nivelAtual", 2);
   // ------- PERGUNTAS -------
   const perguntas = [
   {
-    q: "Sou um tubarão. Porque é que o plástico é perigoso mesmo para mim?",
+    q: "Sou uma alforreca. Sabias que muitos animais confundem plástico com comida? Porquê?",
     opcoes: [
-      "Porque me corta os dentes",
-      "Porque pode ser confundido com presas",
-      "Porque muda o sabor da água"
+      "Porque o plástico se move como presas vivas",
+      "Porque o plástico é transparente como medusas",
+      "Porque o plástico tem sabor a sal"
     ],
     certa: 1
   },
   {
-    q: "O que acontece quando engulo um peixe que já comeu plástico?",
+    q: "Quanto tempo pode uma garrafa de plástico permanecer no oceano?",
     opcoes: [
-      "Nada, o meu corpo filtra tudo",
-      "O plástico pode acumular-se no meu corpo",
-      "Fico imediatamente doente"
+      "Cerca de 10 anos",
+      "Mais de 400 anos",
+      "Menos de 1 ano"
     ],
     certa: 1
   },
   {
-    q: "As redes de pesca abandonadas são perigosas porque…",
+    q: "O que acontece quando microplásticos entram no meu corpo?",
     opcoes: [
-      "Continuam a capturar animais durante anos",
-      "Enferrujam rapidamente",
-      "Só afetam peixes pequenos"
+      "São sempre eliminados",
+      "Podem acumular-se e causar danos",
+      "Transformam-se em areia"
+    ],
+    certa: 1
+  },
+  {
+    q: "Por que as alforrecas são especialmente vulneráveis ao lixo plástico?",
+    opcoes: [
+      "Porque nadam devagar e têm corpo frágil",
+      "Porque vivem só à superfície",
+      "Porque comem apenas plantas"
     ],
     certa: 0
   },
   {
-    q: "Qual destes materiais é MAIS comum no lixo marinho?",
+    q: "Redes de pesca abandonadas no oceano são perigosas porque…",
     opcoes: [
-      "Vidro",
-      "Metal",
-      "Plástico"
+      "Ficam invisíveis na água",
+      "Continuam a prender animais durante anos",
+      "Atraem tubarões"
     ],
-    certa: 2
+    certa: 1
   },
   {
-    q: "Porque é que o lixo no oceano afeta toda a cadeia alimentar?",
+    q: "Qual destes materiais é o MAIS perigoso para mim?",
     opcoes: [
-      "Porque os predadores comem as presas contaminadas",
-      "Porque só afeta animais grandes",
-      "Porque se dissolve rapidamente"
+      "Plástico fino e transparente",
+      "Madeira natural",
+      "Pedras pequenas"
     ],
     certa: 0
+  },
+  {
+    q: "O lixo no oceano pode afetar os humanos de que forma?",
+    opcoes: [
+      "Apenas visualmente",
+      "Através da cadeia alimentar",
+      "Não afeta os humanos"
+    ],
+    certa: 1
   },
   {
     q: "O que são microplásticos?",
     opcoes: [
-      "Plásticos usados apenas em fábricas",
-      "Plásticos grandes cortados por humanos",
-      "Fragmentos muito pequenos de plástico"
-    ],
-    certa: 2
-  },
-  {
-    q: "Qual é uma consequência REAL do lixo para os tubarões?",
-    opcoes: [
-      "Mudança de cor da pele",
-      "Ferimentos e problemas internos",
-      "Perda da visão imediata"
+      "Plásticos biodegradáveis",
+      "Fragmentos muito pequenos de plástico",
+      "Algas artificiais"
     ],
     certa: 1
   },
   {
-    q: "Qual destas ações humanas ajuda mais a proteger o oceano?",
+    q: "Mesmo longe da costa, o lixo pode chegar até mim porque…",
     opcoes: [
-      "Usar plástico apenas no verão",
-      "Reduzir o uso de plásticos descartáveis",
-      "Deitar lixo longe da costa"
+      "Os animais transportam",
+      "As correntes oceânicas espalham",
+      "O plástico afunda imediatamente"
     ],
     certa: 1
   },
   {
-    q: "Porque é errado dizer que o oceano é grande demais para ser poluído?",
+    q: "Qual destas ações humanas ajuda mais a proteger o meu habitat?",
     opcoes: [
-      "Porque as correntes espalham o lixo por todo o planeta",
-      "Porque o lixo afunda sempre",
-      "Porque os animais evitam zonas sujas"
+      "Usar plástico apenas uma vez",
+      "Reduzir o uso de plástico descartável",
+      "Deitar lixo longe da praia"
+    ],
+    certa: 1
+  },
+  {
+    q: "O plástico no oceano desaparece naturalmente?",
+    opcoes: [
+      "Sim, em poucos anos",
+      "Não, apenas se fragmenta",
+      "Sim, com a luz do sol"
+    ],
+    certa: 1
+  },
+  {
+    q: "O que NUNCA deveria estar no oceano?",
+    opcoes: [
+      "Plástico descartável",
+      "Sal marinho",
+      "Areia"
     ],
     certa: 0
   },
   {
-    q: "O plástico no oceano pode desaparecer sozinho?",
+    q: "Porque limpar o oceano é importante mesmo para animais simples como eu?",
     opcoes: [
-      "Sim, em poucos meses",
-      "Não, pode durar centenas de anos",
-      "Sim, se estiver no fundo do mar"
+      "Porque todos fazemos parte do mesmo ecossistema",
+      "Porque só afeta peixes grandes",
+      "Porque o lixo só faz mal aos humanos"
     ],
-    certa: 1
+    certa: 0
   }
 ];
+
 
 
 
@@ -256,11 +284,10 @@ localStorage.setItem("nivelAtual", 2);
   lixoSelecionado = null;
 
   if (lixosAtivos.length === 0) {
-    setTimeout(() => {
-      window.location.href = "../minijogo_estrela/comida.html"; 
-    }, 600);
-    return;
-  }
+  atualizarProgresso(); 
+  return;
+}
+
 
   atualizarProgresso();
 }, 620);
@@ -351,22 +378,24 @@ localStorage.setItem("nivelAtual", 2);
   }
 
 
-  function subirNivel() {
-    const nivelConcluido = nivel;
+function subirNivel() {
 
-    nivel++;
+  // guarda progresso
+  localStorage.setItem("nivelAtual", nivel);
 
-    const nivelMaximo = parseInt(localStorage.getItem("nivelMaximo")) || 1;
-    if (nivel > nivelMaximo) {
-      localStorage.setItem("nivelMaximo", nivel);
-    }
-
-    localStorage.setItem("nivelRecemDesbloqueado", nivel);
-
-    setTimeout(() => {
-      window.location.href = "../pag_niveis/niveis.html";
-    }, 900);
+  const nivelMaximo = parseInt(localStorage.getItem("nivelMaximo")) || 1;
+  if (nivel + 1 > nivelMaximo) {
+    localStorage.setItem("nivelMaximo", nivel + 1);
   }
+
+  // marca nível recém-desbloqueado
+  localStorage.setItem("nivelRecemDesbloqueado", nivel + 1);
+
+  // 👉 VAI PARA A VITÓRIA
+  setTimeout(() => {
+    window.location.href = "../vitoria/vitoria.html";
+  }, 800);
+}
 
 
 
@@ -379,7 +408,7 @@ localStorage.setItem("nivelAtual", 2);
       progressCircle.style.strokeDashoffset = `${circunferencia}`;
 
     if (player) {
-      player.style.backgroundImage = "url('../characters/animals/tubarao/tubarao-sujo.svg')";
+      player.style.backgroundImage = "url('../characters/animals/alforreca/alforreca-sujo.svg')";
       player.style.backgroundSize = "contain";
       player.style.backgroundRepeat = "no-repeat";
       player.style.backgroundPosition = "center";
@@ -423,18 +452,7 @@ function updateScene(progress) {
     `url('../assets/fundo/fundo-${stage}.svg')`;
 
   // personagem certo
-  playerImg.src = `../assets/characters/animals/tubarao/tubarao-${stage}.svg`;
+  playerImg.src = `../assets/characters/animals/alforreca/alforreca-${stage}.svg`;
 
 }
 
- // nível atual concluído
- const nivelAtual = 2;
-
- // guardar nível atual
- localStorage.setItem("nivelAtual", nivelAtual);
-
- // desbloquear próximo nível
- const nivelMaximo = parseInt(localStorage.getItem("nivelMaximo")) || 1;
- if (nivelMaximo < nivelAtual + 1) {
-  localStorage.setItem("nivelMaximo", nivelAtual + 1);
- }
