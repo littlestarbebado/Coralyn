@@ -21,8 +21,6 @@ localStorage.setItem("nivelAtual", 1);
   const player = document.querySelector('.player');
 
   if (!player) console.warn("⚠ .player não encontrado no HTML!");
-
-  // quick safety checks
   if (!lixosContainer) { console.error('#lixos não encontrado'); return; }
   if (!popup) console.warn('popup não encontrado');
 
@@ -42,7 +40,7 @@ localStorage.setItem("nivelAtual", 1);
       "Cerca de 8 milhões de toneladas",
       "Menos de 1 tonelada"
     ],
-    certa: 1 // ⬅ correta NÃO é 0
+    certa: 1 
   },
   {
     q: "Confundi lixo com comida. Por que isso acontece?",
@@ -284,25 +282,22 @@ localStorage.setItem("nivelAtual", 1);
   }
 
   function mostrarErro() {
-  // Flash vermelho
   const flash = document.createElement('div');
   flash.className = 'erro-flash';
   document.body.appendChild(flash);
 
-  // Mensagem dramática
   const msg = document.createElement('div');
   msg.className = 'erro-msg';
   msg.textContent = "RESPOSTA ERRADA!";
   document.body.appendChild(msg);
 
-  // Tremer o ecrã
   document.body.classList.add("tremer");
 
   setTimeout(() => {
     flash.remove();
     msg.remove();
     document.body.classList.remove("tremer");
-  }, 1200); // ⬅ tempo realista
+  }, 1200); 
 }
 
 
@@ -435,16 +430,13 @@ function updateScene(progress) {
     stage = "limpo";
   }
 
-  // fundo certo
   background.style.backgroundImage =
     `url('../assets/fundo/fundo-${stage}.svg')`;
 
-  // personagem certo
   playerImg.src = `../assets/characters/animals/estrela/estrela-${stage}.svg`;
 
 }
 
- // nível atual concluído
  const nivelAtual = 1;
 
  // guardar nível atual

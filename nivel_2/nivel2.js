@@ -17,12 +17,10 @@ localStorage.setItem("nivelAtual", 2);
   const progressCircle = document.getElementById('progress');
   const levelNumber = document.getElementById('level-number');
 
-  // ESTE É O TEU PLAYER (não existia #player-img)
   const player = document.querySelector('.player');
 
   if (!player) console.warn("⚠ .player não encontrado no HTML!");
 
-  // quick safety checks
   if (!lixosContainer) { console.error('#lixos não encontrado'); return; }
   if (!popup) console.warn('popup não encontrado');
 
@@ -35,97 +33,97 @@ localStorage.setItem("nivelAtual", 2);
 
   // ------- PERGUNTAS -------
   const perguntas = [
-  {
-    q: "Sou um tubarão. Porque é que o plástico é perigoso mesmo para mim?",
-    opcoes: [
-      "Porque me corta os dentes",
-      "Porque pode ser confundido com presas",
-      "Porque muda o sabor da água"
-    ],
-    certa: 1
-  },
-  {
-    q: "O que acontece quando engulo um peixe que já comeu plástico?",
-    opcoes: [
-      "Nada, o meu corpo filtra tudo",
-      "O plástico pode acumular-se no meu corpo",
-      "Fico imediatamente doente"
-    ],
-    certa: 1
-  },
-  {
-    q: "As redes de pesca abandonadas são perigosas porque…",
-    opcoes: [
-      "Continuam a capturar animais durante anos",
-      "Enferrujam rapidamente",
-      "Só afetam peixes pequenos"
-    ],
-    certa: 0
-  },
-  {
-    q: "Qual destes materiais é MAIS comum no lixo marinho?",
-    opcoes: [
-      "Vidro",
-      "Metal",
-      "Plástico"
-    ],
-    certa: 2
-  },
-  {
-    q: "Porque é que o lixo no oceano afeta toda a cadeia alimentar?",
-    opcoes: [
-      "Porque os predadores comem as presas contaminadas",
-      "Porque só afeta animais grandes",
-      "Porque se dissolve rapidamente"
-    ],
-    certa: 0
-  },
-  {
-    q: "O que são microplásticos?",
-    opcoes: [
-      "Plásticos usados apenas em fábricas",
-      "Plásticos grandes cortados por humanos",
-      "Fragmentos muito pequenos de plástico"
-    ],
-    certa: 2
-  },
-  {
-    q: "Qual é uma consequência REAL do lixo para os tubarões?",
-    opcoes: [
-      "Mudança de cor da pele",
-      "Ferimentos e problemas internos",
-      "Perda da visão imediata"
-    ],
-    certa: 1
-  },
-  {
-    q: "Qual destas ações humanas ajuda mais a proteger o oceano?",
-    opcoes: [
-      "Usar plástico apenas no verão",
-      "Reduzir o uso de plásticos descartáveis",
-      "Deitar lixo longe da costa"
-    ],
-    certa: 1
-  },
-  {
-    q: "Porque é errado dizer que o oceano é grande demais para ser poluído?",
-    opcoes: [
-      "Porque as correntes espalham o lixo por todo o planeta",
-      "Porque o lixo afunda sempre",
-      "Porque os animais evitam zonas sujas"
-    ],
-    certa: 0
-  },
-  {
-    q: "O plástico no oceano pode desaparecer sozinho?",
-    opcoes: [
-      "Sim, em poucos meses",
-      "Não, pode durar centenas de anos",
-      "Sim, se estiver no fundo do mar"
-    ],
-    certa: 1
-  }
-];
+    {
+      q: "Sou um tubarão. Porque é que o plástico é perigoso mesmo para mim?",
+      opcoes: [
+        "Porque me corta os dentes",
+        "Porque pode ser confundido com presas",
+        "Porque muda o sabor da água"
+      ],
+      certa: 1
+    },
+    {
+      q: "O que acontece quando engulo um peixe que já comeu plástico?",
+      opcoes: [
+        "Nada, o meu corpo filtra tudo",
+        "O plástico pode acumular-se no meu corpo",
+        "Fico imediatamente doente"
+      ],
+      certa: 1
+    },
+    {
+      q: "As redes de pesca abandonadas são perigosas porque…",
+      opcoes: [
+        "Continuam a capturar animais durante anos",
+        "Enferrujam rapidamente",
+        "Só afetam peixes pequenos"
+      ],
+      certa: 0
+    },
+    {
+      q: "Qual destes materiais é MAIS comum no lixo marinho?",
+      opcoes: [
+        "Vidro",
+        "Metal",
+        "Plástico"
+      ],
+      certa: 2
+    },
+    {
+      q: "Porque é que o lixo no oceano afeta toda a cadeia alimentar?",
+      opcoes: [
+        "Porque os predadores comem as presas contaminadas",
+        "Porque só afeta animais grandes",
+        "Porque se dissolve rapidamente"
+      ],
+      certa: 0
+    },
+    {
+      q: "O que são microplásticos?",
+      opcoes: [
+        "Plásticos usados apenas em fábricas",
+        "Plásticos grandes cortados por humanos",
+        "Fragmentos muito pequenos de plástico"
+      ],
+      certa: 2
+    },
+    {
+      q: "Qual é uma consequência REAL do lixo para os tubarões?",
+      opcoes: [
+        "Mudança de cor da pele",
+        "Ferimentos e problemas internos",
+        "Perda da visão imediata"
+      ],
+      certa: 1
+    },
+    {
+      q: "Qual destas ações humanas ajuda mais a proteger o oceano?",
+      opcoes: [
+        "Usar plástico apenas no verão",
+        "Reduzir o uso de plásticos descartáveis",
+        "Deitar lixo longe da costa"
+      ],
+      certa: 1
+    },
+    {
+      q: "Porque é errado dizer que o oceano é grande demais para ser poluído?",
+      opcoes: [
+        "Porque as correntes espalham o lixo por todo o planeta",
+        "Porque o lixo afunda sempre",
+        "Porque os animais evitam zonas sujas"
+      ],
+      certa: 0
+    },
+    {
+      q: "O plástico no oceano pode desaparecer sozinho?",
+      opcoes: [
+        "Sim, em poucos meses",
+        "Não, pode durar centenas de anos",
+        "Sim, se estiver no fundo do mar"
+      ],
+      certa: 1
+    }
+  ];
 
 
 
@@ -252,41 +250,38 @@ localStorage.setItem("nivelAtual", 2);
     lixosAtivos = lixosAtivos.filter(l => l !== lixoSelecionado);
 
     setTimeout(() => {
-  lixoSelecionado.remove();
-  lixoSelecionado = null;
+      lixoSelecionado.remove();
+      lixoSelecionado = null;
 
-  if (lixosAtivos.length === 0) {
-    setTimeout(() => {
-      window.location.href = "../minijogo_estrela/comida.html"; 
-    }, 600);
-    return;
-  }
+      if (lixosAtivos.length === 0) {
+        setTimeout(() => {
+          window.location.href = "../minijogo_estrela/comida.html";
+        }, 600);
+        return;
+      }
 
-  atualizarProgresso();
-}, 620);
+      atualizarProgresso();
+    }, 620);
   }
 
   function mostrarErro() {
-  // Flash vermelho
-  const flash = document.createElement('div');
-  flash.className = 'erro-flash';
-  document.body.appendChild(flash);
+    const flash = document.createElement('div');
+    flash.className = 'erro-flash';
+    document.body.appendChild(flash);
 
-  // Mensagem dramática
-  const msg = document.createElement('div');
-  msg.className = 'erro-msg';
-  msg.textContent = "RESPOSTA ERRADA!";
-  document.body.appendChild(msg);
+    const msg = document.createElement('div');
+    msg.className = 'erro-msg';
+    msg.textContent = "RESPOSTA ERRADA!";
+    document.body.appendChild(msg);
 
-  // Tremer o ecrã
-  document.body.classList.add("tremer");
+    document.body.classList.add("tremer");
 
-  setTimeout(() => {
-    flash.remove();
-    msg.remove();
-    document.body.classList.remove("tremer");
-  }, 1200); // ⬅ tempo realista
-}
+    setTimeout(() => {
+      flash.remove();
+      msg.remove();
+      document.body.classList.remove("tremer");
+    }, 1200);
+  }
 
 
 
@@ -418,23 +413,21 @@ function updateScene(progress) {
     stage = "limpo";
   }
 
-  // fundo certo
   background.style.backgroundImage =
     `url('../assets/fundo/fundo-${stage}.svg')`;
 
-  // personagem certo
   playerImg.src = `../assets/characters/animals/tubarao/tubarao-${stage}.svg`;
 
 }
 
- // nível atual concluído
- const nivelAtual = 2;
+// nível atual concluído
+const nivelAtual = 2;
 
- // guardar nível atual
- localStorage.setItem("nivelAtual", nivelAtual);
+// guardar nível atual
+localStorage.setItem("nivelAtual", nivelAtual);
 
- // desbloquear próximo nível
- const nivelMaximo = parseInt(localStorage.getItem("nivelMaximo")) || 1;
- if (nivelMaximo < nivelAtual + 1) {
+// desbloquear próximo nível
+const nivelMaximo = parseInt(localStorage.getItem("nivelMaximo")) || 1;
+if (nivelMaximo < nivelAtual + 1) {
   localStorage.setItem("nivelMaximo", nivelAtual + 1);
- }
+}
