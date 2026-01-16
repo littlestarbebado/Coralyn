@@ -305,7 +305,7 @@ localStorage.setItem("nivelAtual", 1);
   }, 1200); 
 
 
-
+  }
 
   function mostrarLixoRemovido(x, y) {
     const numParticulas = 12;
