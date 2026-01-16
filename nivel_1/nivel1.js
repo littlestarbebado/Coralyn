@@ -33,115 +33,115 @@ localStorage.setItem("nivelAtual", 1);
 
   // ------- PERGUNTAS -------
   const perguntas = [
-  {
-    q: "Sou uma estrela-do-mar. Quanto plástico invade o meu oceano todos os anos?",
-    opcoes: [
-      "Algumas centenas de quilos",
-      "Cerca de 8 milhões de toneladas",
-      "Menos de 1 tonelada"
-    ],
-    certa: 1 
-  },
-  {
-    q: "Confundi lixo com comida. Por que isso acontece?",
-    opcoes: [
-      "Brilha no fundo do mar",
-      "Tem cheiro a algas",
-      "O plástico parece medusas"
-    ],
-    certa: 2
-  },
-  {
-    q: "O que são microplásticos que entram no meu corpo?",
-    opcoes: [
-      "Areia poluída",
-      "Fragmentos minúsculos de plástico",
-      "Restos de conchas"
-    ],
-    certa: 1
-  },
-  {
-    q: "Qual é o maior perigo do lixo para animais como eu?",
-    opcoes: [
-      "Perda da cor do oceano",
-      "Aumento da temperatura da água",
-      "Ferimentos, sufocamento e intoxicação"
-    ],
-    certa: 2
-  },
-  {
-    q: "Mesmo sem dentes, eu posso ser afetada por plástico?",
-    opcoes: [
-      "Sim, através da cadeia alimentar",
-      "Não, só peixes grandes",
-      "Apenas se morder"
-    ],
-    certa: 0
-  },
-  {
-    q: "Qual destes demora mais tempo a desaparecer do meu habitat?",
-    opcoes: [
-      "Restos de comida",
-      "Papel molhado",
-      "Garrafa de plástico"
-    ],
-    certa: 2
-  },
-  {
-    q: "O plástico que engulo pode chegar aos humanos?",
-    opcoes: [
-      "Não, o corpo elimina",
-      "Só em oceanos poluídos",
-      "Sim, através da cadeia alimentar"
-    ],
-    certa: 2
-  },
-  {
-    q: "O que são as chamadas 'ilhas de lixo'?",
-    opcoes: [
-      "Grandes zonas oceânicas com plástico acumulado",
-      "Ilhas artificiais",
-      "Plataformas flutuantes"
-    ],
-    certa: 0
-  },
-  {
-    q: "Qual animal marinho sofre MAIS com o lixo plástico?",
-    opcoes: [
-      "Polvos",
-      "Caranguejos",
-      "Tartarugas e aves marinhas"
-    ],
-    certa: 2
-  },
-  {
-    q: "Qual atitude humana ajuda verdadeiramente a salvar o meu lar?",
-    opcoes: [
-      "Reduzir, reutilizar e reciclar",
-      "Recolher lixo só na praia",
-      "Usar plástico biodegradável sempre"
-    ],
-    certa: 0
-  },
-  {
-    q: "O plástico liberta substâncias perigosas na água?",
-    opcoes: [
-      "Apenas com calor extremo",
-      "Não, é inerte",
-      "Sim, ao longo do tempo"
-    ],
-    certa: 2
-  },
-  {
-    q: "O que NUNCA deveria estar no oceano onde vivo?",
-    opcoes: [
-      "Plástico descartável",
-      "Sal",
-      "Areia"
-    ],
-    certa: 0
-  }
-];
+    {
+      q: "Sou uma estrela-do-mar. Quanto plástico invade o meu oceano todos os anos?",
+      opcoes: [
+        "Algumas centenas de quilos",
+        "Cerca de 8 milhões de toneladas",
+        "Menos de 1 tonelada"
+      ],
+      certa: 1
+    },
+    {
+      q: "Confundi lixo com comida. Por que isso acontece?",
+      opcoes: [
+        "Brilha no fundo do mar",
+        "Tem cheiro a algas",
+        "O plástico parece medusas"
+      ],
+      certa: 2
+    },
+    {
+      q: "O que são microplásticos que entram no meu corpo?",
+      opcoes: [
+        "Areia poluída",
+        "Fragmentos minúsculos de plástico",
+        "Restos de conchas"
+      ],
+      certa: 1
+    },
+    {
+      q: "Qual é o maior perigo do lixo para animais como eu?",
+      opcoes: [
+        "Perda da cor do oceano",
+        "Aumento da temperatura da água",
+        "Ferimentos, sufocamento e intoxicação"
+      ],
+      certa: 2
+    },
+    {
+      q: "Mesmo sem dentes, eu posso ser afetada por plástico?",
+      opcoes: [
+        "Sim, através da cadeia alimentar",
+        "Não, só peixes grandes",
+        "Apenas se morder"
+      ],
+      certa: 0
+    },
+    {
+      q: "Qual destes demora mais tempo a desaparecer do meu habitat?",
+      opcoes: [
+        "Restos de comida",
+        "Papel molhado",
+        "Garrafa de plástico"
+      ],
+      certa: 2
+    },
+    {
+      q: "O plástico que engulo pode chegar aos humanos?",
+      opcoes: [
+        "Não, o corpo elimina",
+        "Só em oceanos poluídos",
+        "Sim, através da cadeia alimentar"
+      ],
+      certa: 2
+    },
+    {
+      q: "O que são as chamadas 'ilhas de lixo'?",
+      opcoes: [
+        "Grandes zonas oceânicas com plástico acumulado",
+        "Ilhas artificiais",
+        "Plataformas flutuantes"
+      ],
+      certa: 0
+    },
+    {
+      q: "Qual animal marinho sofre MAIS com o lixo plástico?",
+      opcoes: [
+        "Polvos",
+        "Caranguejos",
+        "Tartarugas e aves marinhas"
+      ],
+      certa: 2
+    },
+    {
+      q: "Qual atitude humana ajuda verdadeiramente a salvar o meu lar?",
+      opcoes: [
+        "Reduzir, reutilizar e reciclar",
+        "Recolher lixo só na praia",
+        "Usar plástico biodegradável sempre"
+      ],
+      certa: 0
+    },
+    {
+      q: "O plástico liberta substâncias perigosas na água?",
+      opcoes: [
+        "Apenas com calor extremo",
+        "Não, é inerte",
+        "Sim, ao longo do tempo"
+      ],
+      certa: 2
+    },
+    {
+      q: "O que NUNCA deveria estar no oceano onde vivo?",
+      opcoes: [
+        "Plástico descartável",
+        "Sal",
+        "Areia"
+      ],
+      certa: 0
+    }
+  ];
 
 
 
@@ -267,38 +267,38 @@ localStorage.setItem("nivelAtual", 1);
     lixosAtivos = lixosAtivos.filter(l => l !== lixoSelecionado);
 
     setTimeout(() => {
-  lixoSelecionado.remove();
-  lixoSelecionado = null;
+      lixoSelecionado.remove();
+      lixoSelecionado = null;
 
-  if (lixosAtivos.length === 0) {
-    setTimeout(() => {
-      window.location.href = "../minijogo_estrela/ph.html"; 
-    }, 600);
-    return;
-  }
+      if (lixosAtivos.length === 0) {
+        setTimeout(() => {
+          window.location.href = "../minijogo_estrela/ph.html";
+        }, 600);
+        return;
+      }
 
-  atualizarProgresso();
-}, 620);
+      atualizarProgresso();
+    }, 620);
   }
 
   function mostrarErro() {
-  const flash = document.createElement('div');
-  flash.className = 'erro-flash';
-  document.body.appendChild(flash);
+    const flash = document.createElement('div');
+    flash.className = 'erro-flash';
+    document.body.appendChild(flash);
 
-  const msg = document.createElement('div');
-  msg.className = 'erro-msg';
-  msg.textContent = "RESPOSTA ERRADA!";
-  document.body.appendChild(msg);
+    const msg = document.createElement('div');
+    msg.className = 'erro-msg';
+    msg.textContent = "RESPOSTA ERRADA!";
+    document.body.appendChild(msg);
 
-  document.body.classList.add("tremer");
+    document.body.classList.add("tremer");
 
-  setTimeout(() => {
-    flash.remove();
-    msg.remove();
-    document.body.classList.remove("tremer");
-  }, 1200); 
-}
+    setTimeout(() => {
+      flash.remove();
+      msg.remove();
+      document.body.classList.remove("tremer");
+    }, 1200);
+  }
 
 
 
@@ -437,13 +437,13 @@ function updateScene(progress) {
 
 }
 
- const nivelAtual = 1;
+const nivelAtual = 1;
 
- // guardar nível atual
- localStorage.setItem("nivelAtual", nivelAtual);
+// guardar nível atual
+localStorage.setItem("nivelAtual", nivelAtual);
 
- // desbloquear próximo nível
- const nivelMaximo = parseInt(localStorage.getItem("nivelMaximo")) || 1;
- if (nivelMaximo < nivelAtual + 1) {
+// desbloquear próximo nível
+const nivelMaximo = parseInt(localStorage.getItem("nivelMaximo")) || 1;
+if (nivelMaximo < nivelAtual + 1) {
   localStorage.setItem("nivelMaximo", nivelAtual + 1);
- }
+}
