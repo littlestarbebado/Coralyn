@@ -1,7 +1,5 @@
 document.addEventListener("DOMContentLoaded", () => {
 
-
-
   // ELEMENTOS
   const btnSettings = document.getElementById("settings-btn");
   const modal = document.getElementById("modalConfig");

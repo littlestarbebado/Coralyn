@@ -33,20 +33,19 @@ document.addEventListener('DOMContentLoaded', () => {
 
     const diff = Math.abs(ph - IDEAL_PH);
 
-    // ⭐ estrela SEMPRE visível
     estrela.style.opacity = '1';
 
-    // 🌡️ cores do termómetro (verde / vermelho)
+    // cores do termómetro 
     if (diff <= SAFE_DELTA) {
-      thermoFill.style.background = '#2cff8b'; // verde
+      thermoFill.style.background = '#2cff8b';
     } else {
-      thermoFill.style.background = '#ff6b6b'; // vermelho
+      thermoFill.style.background = '#ff6b6b'; 
     }
 
     verificarVitoria(diff);
   }
 
-  // 🏁 CONDIÇÃO DE VITÓRIA (invisível)
+  // CONDIÇÃO DE VITÓRIA 
   function verificarVitoria(diff) {
     if (nivelConcluido) return;
 
@@ -99,7 +98,6 @@ function concluirNivel() {
     updateUI();
   });
 
-  // 🌊 drift natural (desafio suave)
   setInterval(() => {
     const drift = (Math.random() - 0.5) * 0.06;
     ph = clamp(round1(ph + drift), MIN_PH, MAX_PH);

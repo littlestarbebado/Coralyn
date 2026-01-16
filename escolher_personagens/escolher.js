@@ -1,6 +1,6 @@
 document.addEventListener("DOMContentLoaded", () => {
 
-  // ===== ESCOLHER PERSONAGEM =====
+  //ESCOLHER PERSONAGEM 
   document.querySelectorAll(".card").forEach(card => {
     card.addEventListener("click", () => {
 
@@ -20,7 +20,7 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   });
 
-  // ===== MODAL DE DEFINIÇÕES =====
+  //MODAL DE DEFINIÇÕES 
 
   const btnSettings = document.getElementById("settings-btn");
   const modal = document.getElementById("modalConfig");

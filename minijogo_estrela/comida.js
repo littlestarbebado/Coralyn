@@ -6,9 +6,9 @@ const resultado = document.getElementById("resultado");
 let vida = 3;
 let pontos = 0;
 let intervalo;
-let jogoAtivo = true; // 🔴 controla se o jogo ainda está a correr
+let jogoAtivo = true; // controla se o jogo ainda está a correr
 
-// 🔧 AQUI colocas os caminhos das TUAS imagens
+
 const itens = [
   { tipo: "comida", src: "../assets/comida/alga.svg" },
  
@@ -20,7 +20,7 @@ const itens = [
 ];
 
 function criarItem() {
-  if (!jogoAtivo) return; // 🔴 não cria mais itens se o jogo acabou
+  if (!jogoAtivo) return; // não cria mais itens se o jogo acabou
 
   const itemData = itens[Math.floor(Math.random() * itens.length)];
   const item = document.createElement("img");
@@ -38,7 +38,7 @@ function criarItem() {
     } else {
       vida--;
 
-      // 🔴 impede a vida de ficar negativa
+      // impede a vida de ficar negativa
       if (vida < 0) vida = 0;
 
       vidaEl.textContent = vida;
@@ -56,7 +56,7 @@ function criarItem() {
 
 function verificarFim() {
   if (vida === 0) {
-    fim(false); // 🔴 perdeu assim que chega a 0
+    fim(false); // perdeu assim que chega a 0
   }
 
   if (pontos >= 8) {
@@ -73,7 +73,7 @@ function fim(vitoria) {
     return;
   }
 
-  // vitória (se quiseres usar depois)
+  // vitória 
   resultado.classList.remove("hidden");
   resultado.textContent = "⭐ Estrela bem alimentada!";
 }

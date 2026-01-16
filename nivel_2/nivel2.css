@@ -211,10 +211,10 @@
     background: #335ac7;
   }
 
- /* ================= BALÃO DE FALA ================= */
+ /*  BALÃO DE FALA */
 #fala {
   position: absolute;
-  top: 38%;                 /* posição em frente à personagem */
+  top: 38%;                
   left: 50%;
   transform: translate(-50%, -100%);
   background: white;
