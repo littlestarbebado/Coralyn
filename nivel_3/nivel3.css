@@ -86,7 +86,7 @@
     display: block;
   }
 
-  /* Lixos (quadrados com brilho) */
+  /* Lixos */
   .lixo {
     position: absolute;
     cursor: pointer;
@@ -110,7 +110,7 @@
     }
   }
 
-  /* Lixo desaparecendo com efeito voando */
+  /* Lixo desaparecendo com efeito voar*/
   .lixo-voando {
     animation: voarLixo 0.7s forwards;
   }
@@ -133,7 +133,7 @@
   }
 
 
-  /* Partículas felizes (confetes) */
+  /* Confetis */
   .particle {
     position: fixed;
     width: 8px;
@@ -211,10 +211,10 @@
     background: #335ac7;
   }
 
- /* ================= BALÃO DE FALA ================= */
+ /* BALÃO DE FALA */
 #fala {
   position: absolute;
-  top: 30%;                 /* posição em frente à personagem */
+  top: 30%;              
   left: 50%;
   transform: translate(-50%, -100%);
   background: white;
@@ -308,13 +308,12 @@
     transition: stroke-dashoffset 0.5s ease;
   }
 
-  /* Botão de configurações (tamanho igual ao level-icon) */
+  /* Botão de configurações */
   #btn-config {
     position: absolute;
     top: 15px;
     right: 15px;
     width: 100px;
-    /* mesmo tamanho do level-icon */
     height: 100px;
     background: none;
     border: none;
@@ -379,23 +378,19 @@
 
   .btn-sair {
     background-color: #800020;
-    /* vermelho escuro/bordô */
   }
 
   .btn-menu {
     background-color: #004c66;
-    /* azul petróleo */
   }
 
   .btn-sair:hover {
     background-color: #b3002c;
-    /* vermelho mais intenso */
     transform: scale(1.1);
   }
 
   .btn-menu:hover {
     background-color: #006080;
-    /* azul mais intenso */
     transform: scale(1.1);
   }
 
@@ -637,7 +632,7 @@
     animation: tremer 0.35s infinite;
   }
 
-  /* ====== PARTÍCULAS DO LIXO REMOVIDO ====== */
+  /*PARTÍCULAS DO LIXO REMOVIDO */
   .particle.lixo-removido {
     position: fixed;
     width: 14px;
@@ -650,7 +645,7 @@
     z-index: 9999;
   }
 
-  /* ====== TEXTO "LIXO REMOVIDO!" ====== */
+  /*TEXTO "LIXO REMOVIDO!" */
   #lixo-removido-msg {
     position: fixed;
     top: 50%;

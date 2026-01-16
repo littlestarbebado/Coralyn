@@ -216,14 +216,13 @@ html,body
   color:#d8f8ff;
   margin-top:6px}
 
-/* pequenos ajustes visuais */
 .label
 {font-size:13px;
   color:#cfeff8}
 .thermo-wrap
 {justify-content:space-between}
 
-/* ===== VITÓRIA ===== */
+/*VITÓRIA */
 .overlay-vitoria {
   position: fixed;
   inset: 0;

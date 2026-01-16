@@ -75,7 +75,7 @@ function fim(vitoria) {
 
   // vitória 
   resultado.classList.remove("hidden");
-  resultado.textContent = "⭐ Estrela bem alimentada!";
+  resultado.textContent = "Estrela bem alimentada!";
 }
 
 // começa o jogo

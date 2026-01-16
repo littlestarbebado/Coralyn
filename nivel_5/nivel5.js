@@ -17,7 +17,6 @@ localStorage.setItem("nivelAtual", 5);
   const progressCircle = document.getElementById('progress');
   const levelNumber = document.getElementById('level-number');
 
-  // ESTE É O TEU PLAYER (não existia #player-img)
   const player = document.querySelector('.player');
 
   if (!player) console.warn("⚠ .player não encontrado no HTML!");
@@ -33,7 +32,7 @@ localStorage.setItem("nivelAtual", 5);
   let lixoSelecionado = null;
   let respostaCorreta = 0;
 
-  // ------- PERGUNTAS -------
+  // PERGUNTAS 
 const perguntas = [
   {
     q: "Sou um polvo. Sabias que o plástico pode afetar a minha inteligência? Como?",
@@ -159,7 +158,7 @@ const perguntas = [
 
 
 
-  // ------- PROGRESS CIRCLE -------
+  //  PROGRESS CIRCLE 
   const raio = 45;
   const circunferencia = 2 * Math.PI * raio;
   if (progressCircle) {
@@ -171,7 +170,7 @@ const perguntas = [
   function rnd(min, max) { return Math.floor(Math.random() * (max - min + 1)) + min; }
   function escolherPergunta() { return perguntas[Math.floor(Math.random() * perguntas.length)]; }
 
-  // ------- SETTINGS POPUP -------
+  // SETTINGS POPUP 
   function bindSettingsUI() {
     btnConfig?.addEventListener('click', () => popupConfig.classList.remove('hidden'));
     btnFecharConfig?.addEventListener('click', () => popupConfig.classList.add('hidden'));
@@ -180,7 +179,7 @@ const perguntas = [
     btnMenu?.addEventListener('click', () => window.location.href = '../niveis.html');
   }
 
-  // ------- LIXOS -------
+  //LIXOS 
   function posicaoValida(novoRect, existentesRects, minDist = 70) {
     for (const r of existentesRects) {
       const dx = (novoRect.left + novoRect.width / 2) - (r.left + r.width / 2);
@@ -245,7 +244,7 @@ const perguntas = [
   }
 
 
-  // ------- PERGUNTA -------
+  //  PERGUNTA 
   botoes.forEach((btn, idx) => btn.addEventListener('click', () => responder(idx)));
 
   function abrirPergunta(lixo) {
@@ -356,7 +355,7 @@ const perguntas = [
   }
 
 
-  // ------- PROGRESSO -------
+  // PROGRESSO 
   function quantidadeLixoPorNivel(n) {
     return Math.max(3, Math.floor(6 + Math.pow(n, 1.5)) + (Math.floor(Math.random() * 3) - 1));
   }
@@ -400,7 +399,7 @@ function subirNivel() {
 
 
 
-  // ------- START DO NÍVEL -------
+  //  START DO NÍVEL 
 
   function iniciarNivel() {
     progresso = 0;
@@ -448,11 +447,10 @@ function updateScene(progress) {
     stage = "limpo";
   }
 
-  // fundo certo
+ 
   background.style.backgroundImage =
     `url('../assets/fundo/fundo-${stage}.svg')`;
 
-  // personagem certo
   playerImg.src = `../assets/characters/animals/polvo/polvo-${stage}.svg`;
 
 }

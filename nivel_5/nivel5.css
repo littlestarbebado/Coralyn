@@ -86,7 +86,7 @@
     display: block;
   }
 
-  /* Lixos (quadrados com brilho) */
+  /* Lixos */
   .lixo {
     position: absolute;
     cursor: pointer;
@@ -110,7 +110,7 @@
     }
   }
 
-  /* Lixo desaparecendo com efeito voando */
+  /* Lixo desaparecendo com efeito voar */
   .lixo-voando {
     animation: voarLixo 0.7s forwards;
   }
@@ -133,7 +133,7 @@
   }
 
 
-  /* Partículas felizes (confetes) */
+  /* Confetis */
   .particle {
     position: fixed;
     width: 8px;
@@ -211,10 +211,10 @@
     background: #335ac7;
   }
 
- /* ================= BALÃO DE FALA ================= */
+ /*  BALÃO DE FALA  */
 #fala {
   position: absolute;
-  top: 40%;                 /* posição em frente à personagem */
+  top: 40%;                 
   left: 50%;
   transform: translate(-50%, -100%);
   background: white;
@@ -308,13 +308,12 @@
     transition: stroke-dashoffset 0.5s ease;
   }
 
-  /* Botão de configurações (tamanho igual ao level-icon) */
+  /* Botão de configurações */
   #btn-config {
     position: absolute;
     top: 15px;
     right: 15px;
     width: 100px;
-    /* mesmo tamanho do level-icon */
     height: 100px;
     background: none;
     border: none;
@@ -338,8 +337,6 @@
 
 
   /* Pop-up Definições */
-
-
   .config-item {
     display: flex;
     flex-direction: column;
@@ -355,7 +352,6 @@
   .config-item input[type="range"] {
     width: 80%;
     accent-color: #0077c2;
-    /* ponto/indicador azul */
   }
 
   /* Botões */
@@ -379,23 +375,19 @@
 
   .btn-sair {
     background-color: #800020;
-    /* vermelho escuro/bordô */
   }
 
   .btn-menu {
     background-color: #004c66;
-    /* azul petróleo */
   }
 
   .btn-sair:hover {
     background-color: #b3002c;
-    /* vermelho mais intenso */
     transform: scale(1.1);
   }
 
   .btn-menu:hover {
     background-color: #006080;
-    /* azul mais intenso */
     transform: scale(1.1);
   }
 
@@ -414,7 +406,6 @@
 
   #btn-fechar-config:hover {
     color: red;
-    /* muda a cor para vermelho */
     font-size: 24px;
     /* aumenta o tamanho */
   }
@@ -460,7 +451,6 @@
     height: 100%;
     pointer-events: none;
     z-index: 10000;
-    /* acima do jogo, abaixo do popup */
   }
 
   /* Overlay central de nível */
@@ -558,7 +548,7 @@
     }
   }
 
-  /* Partículas aquáticas (bolhas felizes) */
+  /* Bolhas*/
   .level-up-particle {
     position: fixed;
     width: 10px;
@@ -571,7 +561,7 @@
     transition: transform 1.5s ease-out, opacity 1.5s ease-out;
   }
 
-  /* FLASH VERMELHO */
+  /* FLASH  */
   .erro-flash {
     position: fixed;
     inset: 0;
@@ -637,12 +627,12 @@
     animation: tremer 0.35s infinite;
   }
 
-  /* ====== PARTÍCULAS DO LIXO REMOVIDO ====== */
+  /*  PARTÍCULAS DO LIXO REMOVIDO */
   .particle.lixo-removido {
     position: fixed;
     width: 14px;
     height: 14px;
-    background: #4cff79;          /* verde fosforescente */
+    background: #4cff79;         
     border-radius: 50%;
     pointer-events: none;
     opacity: 1;
@@ -650,7 +640,7 @@
     z-index: 9999;
   }
 
-  /* ====== TEXTO "LIXO REMOVIDO!" ====== */
+  /*TEXTO "LIXO REMOVIDO!" */
   #lixo-removido-msg {
     position: fixed;
     top: 50%;

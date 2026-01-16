@@ -35,9 +35,7 @@ document.addEventListener("DOMContentLoaded", () => {
     window.location.href = "inicio.html";
   });
 
-  /* =========================
-     NÍVEIS DESBLOQUEADOS
-  ========================= */
+  /* NÍVEIS DESBLOQUEADOS */
   const nivelMaximo = parseInt(localStorage.getItem("nivelMaximo")) || 1;
   const nivelAnimar = parseInt(localStorage.getItem("nivelRecemDesbloqueado"));
 
@@ -65,9 +63,7 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   });
 
-  /* =========================
-     PERSONAGEM ESCOLHIDA
-  ========================= */
+  /* PERSONAGEM ESCOLHIDA */
   const personagem = localStorage.getItem("personagemEscolhido");
   const img = document.getElementById("personagem-img");
 

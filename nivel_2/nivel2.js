@@ -17,7 +17,7 @@ localStorage.setItem("nivelAtual", 2);
   const progressCircle = document.getElementById('progress');
   const levelNumber = document.getElementById('level-number');
 
-  // ESTE É O TEU PLAYER (não existia #player-img)
+
   const player = document.querySelector('.player');
 
   if (!player) console.warn("⚠ .player não encontrado no HTML!");
@@ -33,7 +33,7 @@ localStorage.setItem("nivelAtual", 2);
   let lixoSelecionado = null;
   let respostaCorreta = 0;
 
-  // ------- PERGUNTAS -------
+  //  PERGUNTAS 
   const perguntas = [
   {
     q: "Sou um tubarão. Porque é que o plástico é perigoso mesmo para mim?",
@@ -130,7 +130,7 @@ localStorage.setItem("nivelAtual", 2);
 
 
 
-  // ------- PROGRESS CIRCLE -------
+  //  PROGRESS CIRCLE 
   const raio = 45;
   const circunferencia = 2 * Math.PI * raio;
   if (progressCircle) {
@@ -142,7 +142,7 @@ localStorage.setItem("nivelAtual", 2);
   function rnd(min, max) { return Math.floor(Math.random() * (max - min + 1)) + min; }
   function escolherPergunta() { return perguntas[Math.floor(Math.random() * perguntas.length)]; }
 
-  // ------- SETTINGS POPUP -------
+  //  SETTINGS POPUP 
   function bindSettingsUI() {
     btnConfig?.addEventListener('click', () => popupConfig.classList.remove('hidden'));
     btnFecharConfig?.addEventListener('click', () => popupConfig.classList.add('hidden'));
@@ -151,7 +151,7 @@ localStorage.setItem("nivelAtual", 2);
     btnMenu?.addEventListener('click', () => window.location.href = '../niveis.html');
   }
 
-  // ------- LIXOS -------
+  // LIXOS
   function posicaoValida(novoRect, existentesRects, minDist = 70) {
     for (const r of existentesRects) {
       const dx = (novoRect.left + novoRect.width / 2) - (r.left + r.width / 2);
@@ -216,7 +216,7 @@ localStorage.setItem("nivelAtual", 2);
   }
 
 
-  // ------- PERGUNTA -------
+  // PERGUNTA
   botoes.forEach((btn, idx) => btn.addEventListener('click', () => responder(idx)));
 
   function abrirPergunta(lixo) {
@@ -328,7 +328,7 @@ localStorage.setItem("nivelAtual", 2);
   }
 
 
-  // ------- PROGRESSO -------
+  //  PROGRESSO 
   function quantidadeLixoPorNivel(n) {
     return Math.max(3, Math.floor(6 + Math.pow(n, 1.5)) + (Math.floor(Math.random() * 3) - 1));
   }
@@ -370,7 +370,7 @@ localStorage.setItem("nivelAtual", 2);
 
 
 
-  // ------- START DO NÍVEL -------
+  //START DO NÍVEL 
 
   function iniciarNivel() {
     progresso = 0;
@@ -389,7 +389,7 @@ localStorage.setItem("nivelAtual", 2);
     criarLixos(qtd);
   }
 
-  // ------- INIT -------
+  //INIT 
   function init() {
     bindSettingsUI();
 
@@ -418,11 +418,9 @@ function updateScene(progress) {
     stage = "limpo";
   }
 
-  // fundo certo
   background.style.backgroundImage =
     `url('../assets/fundo/fundo-${stage}.svg')`;
 
-  // personagem certo
   playerImg.src = `../assets/characters/animals/tubarao/tubarao-${stage}.svg`;
 
 }

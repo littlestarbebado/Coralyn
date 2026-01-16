@@ -25,7 +25,7 @@ body {
   /* base saudável */
 }
 
-/* ---------- TÍTULO ---------- */
+/* TÍTULO  */
 header {
   position: absolute;
   top: 20px;
@@ -41,12 +41,12 @@ header h1 {
   text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
 }
 
-/* ---------- BOTÕES ---------- */
+/*  BOTÕES  */
 button {
   font-size: 28px;
 }
 
-/* ---------- BOTÃO CONFIG ---------- */
+/* BOTÃO CONFIG  */
 #settings-btn {
   position: absolute;
   top: 15px;
@@ -73,7 +73,7 @@ button {
   transform: rotate(45deg);
 }
 
-/* ---------- FUNDO ---------- */
+/*  FUNDO */
 .fundo {
   position: absolute;
   inset: 0;
@@ -95,7 +95,7 @@ button {
   z-index: 2;
 }
 
-/* ---------- MENU DE NÍVEIS ---------- */
+/*  MENU DE NÍVEIS */
 .menu-niveis {
   position: absolute;
   right: 75px;
@@ -120,7 +120,7 @@ button {
   transition: transform 0.25s ease, box-shadow 0.3s ease;
 }
 
-/* posições verticais */
+
 .nivel[data-nivel="1"] {
   top: 10%;
 }
@@ -141,7 +141,7 @@ button {
   top: 90%;
 }
 
-/* ---------- ESTADOS ---------- */
+/*  ESTADOS */
 .nivel.desbloqueado {
   background: #ffd700;
   color: #004080;
@@ -159,7 +159,7 @@ button {
   cursor: not-allowed;
 }
 
-/* ---------- NÚMERO ---------- */
+/* NÚMERO */
 .nivel-number-container {
   width: 70px;
   height: 70px;
@@ -171,11 +171,10 @@ button {
 
 .nivel-number-container span {
   font-size: 42px;
-  /* maior e bonito */
   font-weight: bold;
 }
 
-/* ---------- PEIXES ---------- */
+/* PEIXES  */
 .peixe {
   position: absolute;
   left: -100px;
@@ -215,7 +214,7 @@ button {
   animation: nadar-sx 16s linear infinite 2.5s;
 }
 
-/* ---------- ANIMAÇÕES ---------- */
+/*  ANIMAÇÕES */
 @keyframes nadar-dx {
   from {
     left: -100px;
@@ -256,7 +255,7 @@ button {
   animation: desbloquearNivel 0.9s ease-out;
 }
 
-/* ================= PERSONAGEM NO CANTO ================= */
+/* PERSONAGEM NO CANTO  */
 
 #personagem-preview {
   position: fixed;

@@ -39,7 +39,6 @@ body {
   animation: cair 15s linear forwards;
 }
 
-/* animação ao remover (serve para ambos) */
 .removido {
   transform: scale(0);
   opacity: 0;

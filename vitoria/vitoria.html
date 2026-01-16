@@ -37,7 +37,7 @@
   </div>
 
   <script>
-    // 🔓 desbloquear próximo nível
+    // desbloquear próximo nível
     const nivelAtual = parseInt(localStorage.getItem("nivelAtual")) || 1;
     const nivelMaximo = parseInt(localStorage.getItem("nivelMaximo")) || 1;
 
@@ -48,7 +48,7 @@
       localStorage.setItem("nivelRecemDesbloqueado", proximoNivel);
     }
 
-    // ⏳ ir automaticamente para níveis
+    // ir automaticamente para níveis
     setTimeout(() => {
       window.location.href = "../pag_niveis/niveis.html";
     }, 5000);
