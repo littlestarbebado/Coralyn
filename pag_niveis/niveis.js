@@ -32,7 +32,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
 
   btnSair.addEventListener("click", () => {
-    window.location.href = "inicio.html";
+    window.location.href = "../inicio/inicio.html";
   });
 
   /* NÍVEIS DESBLOQUEADOS */

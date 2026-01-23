@@ -18,7 +18,27 @@
     z-index: -1;
   }
 
- 
+  #settings-btn {
+    position: absolute;
+    top: 15px;
+    left: 15px;
+    width: 100px;
+    height: 100px;
+    background: none;
+    border: none;
+    cursor: pointer;
+    z-index: 10000;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 0;
+  }
+
+  #settings-btn img {
+    width: 80%;
+    height: 80%;
+    transition: transform 0.3s ease;
+  }
 
   .titulo {
     margin: 0;
@@ -52,7 +72,7 @@
     top: 55%;
     left: 50%;
     transform: translate(-50%, -50%);
-    width: 300px;
+    width: 350px;
     pointer-events: none;
     animation: floatUpDown 2s ease-in-out infinite;
     z-index: 10; 
@@ -113,7 +133,7 @@
   }
 
 
-  /* confetis */
+  /* Confetis */
   .particle {
     position: fixed;
     width: 8px;
@@ -191,10 +211,10 @@
     background: #335ac7;
   }
 
- /* BALÃO DE FALA */
+ /*  BALÃO DE FALA */
 #fala {
   position: absolute;
-  top: 40%;                 
+  top: 38%;                
   left: 50%;
   transform: translate(-50%, -100%);
   background: white;
@@ -212,7 +232,7 @@
     falaFlutuar 2.5s ease-in-out infinite 0.6s;
 }
 
-
+/* Pontinha do balão */
 #fala::after {
   content: "";
   position: absolute;
@@ -288,106 +308,141 @@
     transition: stroke-dashoffset 0.5s ease;
   }
 
-  #settings-btn {
-  position: absolute;
-  top: 15px;
-  right: 15px;
-  width: 100px;
-  height: 100px;
-  background: none;
-  border: none;
-  cursor: pointer;
-  z-index: 10000;
-
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-
-#settings-btn img {
-  height: 80%;
-  transition: transform 0.3s ease;
-}
-
-#settings-btn:hover img {
-  transform: rotate(45deg);
-}
-
-.overlay {
-    position: fixed;
-    inset: 0;
-    background: rgba(0, 0, 0, 0.7); /* Fundo escurecido */
-    backdrop-filter: blur(10px);
-    display: none; /* Começa escondido */
-    align-items: center;
-    justify-content: center;
-    z-index: 9999;
-}
-
-.popup {
-    background: #f4fbff;
-    width: 340px;
-    padding: 25px;
-    border-radius: 18px;
-    text-align: center;
-    position: relative;
-    color: #1a3d7c;
-}
-
-.popup h2 {
-    color: #1a3d7c;
-    margin-bottom: 20px;
-}
-
-.opcao {
-    text-align: left;
-    margin: 20px 0;
-    color: #1a3d7c;
-    font-size: 16px;
-}
-
-input[type="range"] {
-    width: 100%;
-    margin-top: 8px;
-}
-
-.nivel {
-    background: #3d7bfd;
-    color: white;
-    border: none;
-    padding: 14px;
-    width: 100%;
-    border-radius: 12px;
-    margin-top: 15px;
-    cursor: pointer;
-    font-weight: bold;
-}
-
-/* Botão Sair (Vermelho) */
-.sair {
-    background: #f44336;
-    color: white;
-    border: none;
-    padding: 14px;
-    width: 100%;
-    border-radius: 12px;
-    margin-top: 10px;
-    cursor: pointer;
-    font-weight: bold;
-}
-
-.fechar {
+  /* Botão de configurações */
+  #btn-config {
     position: absolute;
-    top: 12px;
-    right: 16px;
-    font-size: 22px;
+    top: 15px;
+    right: 15px;
+    width: 100px;
+    height: 100px;
+    background: none;
+    border: none;
     cursor: pointer;
-    color: #888;
-}
+    z-index: 10000;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 0;
+  }
 
-.fechar:hover {
+  #btn-config img {
+    width: 80%;
+    height: 80%;
+    transition: transform 0.3s ease;
+  }
+
+  #btn-config:hover img {
+    transform: rotate(45deg);
+  }
+
+
+  /* Pop-up Definições */
+
+  .config-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .config-item label {
+    margin-bottom: 5px;
+    font-weight: bold;
     color: #333;
-}
+  }
+
+  .config-item input[type="range"] {
+    width: 80%;
+    accent-color: #0077c2;
+    /* ponto/indicador azul */
+  }
+
+  /* Botões */
+  .config-botoes {
+    display: flex;
+    justify-content: space-between;
+    gap: 15px;
+  }
+
+  .btn-sair,
+  .btn-menu {
+    flex: 1;
+    padding: 10px;
+    border: none;
+    border-radius: 12px;
+    color: white;
+    font-weight: bold;
+    cursor: pointer;
+    transition: all 0.2s ease;
+  }
+
+  .btn-sair {
+    background-color: #800020;
+  }
+
+  .btn-menu {
+    background-color: #004c66;
+  }
+
+  .btn-sair:hover {
+    background-color: #b3002c;
+    transform: scale(1.1);
+  }
+
+  .btn-menu:hover {
+    background-color: #006080;
+    transform: scale(1.1);
+  }
+
+  /* Botão fechar X */
+  #btn-fechar-config {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    border: none;
+    background: none;
+    font-size: 20px;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    color: #333;
+  }
+
+  #btn-fechar-config:hover {
+    color: red;
+    font-size: 24px;
+  }
+
+
+  /* Pop-up Definições */
+  #popup-config {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.45);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 9999;
+  }
+
+  #popup-config.hidden {
+    display: none;
+  }
+
+  .popup-config-content {
+    background: #fff;
+    padding: 25px;
+    border-radius: 20px;
+    width: 300px;
+    text-align: center;
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.3);
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    position: relative;
+    z-index: 10000;
+  }
 
   #lixo-overlay {
     position: fixed;
@@ -508,7 +563,7 @@ input[type="range"] {
     transition: transform 1.5s ease-out, opacity 1.5s ease-out;
   }
 
-  /* FLASH VERMELHO */
+  /* FLASH */
   .erro-flash {
     position: fixed;
     inset: 0;
@@ -574,12 +629,12 @@ input[type="range"] {
     animation: tremer 0.35s infinite;
   }
 
-  /* LIXO REMOVIDO */
+  /* PARTÍCULAS DO LIXO REMOVIDO */
   .particle.lixo-removido {
     position: fixed;
     width: 14px;
     height: 14px;
-    background: #4cff79;         
+    background: #4cff79;          
     border-radius: 50%;
     pointer-events: none;
     opacity: 1;
@@ -587,7 +642,7 @@ input[type="range"] {
     z-index: 9999;
   }
 
-  /* TEXTO "LIXO REMOVIDO!"*/
+  /*TEXTO "LIXO REMOVIDO!" */
   #lixo-removido-msg {
     position: fixed;
     top: 50%;

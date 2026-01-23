@@ -8,7 +8,7 @@ localStorage.setItem("nivelAtual", 1);
   const botoes = Array.from(document.querySelectorAll('.opcao'));
   const lixosContainer = document.getElementById('lixos');
 
-  const btnConfig = document.getElementById('settings-btn');
+  const btnConfig = document.getElementById('btn-config');
   const popupConfig = document.getElementById('popup-config');
   const btnFecharConfig = document.getElementById('btn-fechar-config');
   const btnSair = document.getElementById('btn-sair');
@@ -17,7 +17,7 @@ localStorage.setItem("nivelAtual", 1);
   const progressCircle = document.getElementById('progress');
   const levelNumber = document.getElementById('level-number');
 
-  // ESTE É O TEU PLAYER (não existia #player-img)
+
   const player = document.querySelector('.player');
 
   if (!player) console.warn("⚠ .player não encontrado no HTML!");
@@ -33,8 +33,8 @@ localStorage.setItem("nivelAtual", 1);
   let lixoSelecionado = null;
   let respostaCorreta = 0;
 
-  // PERGUNTAS 
-  const perguntas = [
+  //  PERGUNTAS 
+ const perguntas = [
   {
     q: "Sou uma estrela-do-mar. Quanto plástico invade o meu oceano todos os anos?",
     opcoes: [
@@ -147,7 +147,8 @@ localStorage.setItem("nivelAtual", 1);
 
 
 
-  // PROGRESS CIRCLE 
+
+  //  PROGRESS CIRCLE 
   const raio = 45;
   const circunferencia = 2 * Math.PI * raio;
   if (progressCircle) {
@@ -159,7 +160,7 @@ localStorage.setItem("nivelAtual", 1);
   function rnd(min, max) { return Math.floor(Math.random() * (max - min + 1)) + min; }
   function escolherPergunta() { return perguntas[Math.floor(Math.random() * perguntas.length)]; }
 
-  // SETTINGS POPUP 
+  //  SETTINGS POPUP 
   function bindSettingsUI() {
     btnConfig?.addEventListener('click', () => popupConfig.classList.remove('hidden'));
     btnFecharConfig?.addEventListener('click', () => popupConfig.classList.add('hidden'));
@@ -168,7 +169,7 @@ localStorage.setItem("nivelAtual", 1);
     btnMenu?.addEventListener('click', () => window.location.href = '../niveis.html');
   }
 
-  //LIXOS 
+  // LIXOS
   function posicaoValida(novoRect, existentesRects, minDist = 70) {
     for (const r of existentesRects) {
       const dx = (novoRect.left + novoRect.width / 2) - (r.left + r.width / 2);
@@ -233,7 +234,7 @@ localStorage.setItem("nivelAtual", 1);
   }
 
 
-  //PERGUNTA 
+  // PERGUNTA
   botoes.forEach((btn, idx) => btn.addEventListener('click', () => responder(idx)));
 
   function abrirPergunta(lixo) {
@@ -274,7 +275,7 @@ localStorage.setItem("nivelAtual", 1);
 
   if (lixosAtivos.length === 0) {
     setTimeout(() => {
-      window.location.href = "../minijogo_estrela/ph.html"; 
+      window.location.href = "../minijogo_estrela/comida.html"; 
     }, 600);
     return;
   }
@@ -302,10 +303,11 @@ localStorage.setItem("nivelAtual", 1);
     flash.remove();
     msg.remove();
     document.body.classList.remove("tremer");
-  }, 1200); 
+  }, 1200); // ⬅ tempo realista
+}
 
 
-  }
+
 
   function mostrarLixoRemovido(x, y) {
     const numParticulas = 12;
@@ -386,7 +388,7 @@ localStorage.setItem("nivelAtual", 1);
 
 
 
-  // START DO NÍVEL 
+  //START DO NÍVEL 
 
   function iniciarNivel() {
     progresso = 0;
@@ -405,7 +407,7 @@ localStorage.setItem("nivelAtual", 1);
     criarLixos(qtd);
   }
 
-  //  INIT
+  //INIT 
   function init() {
     bindSettingsUI();
 
